@@ -1,0 +1,50 @@
+{
+  "name": "m4m_frontend",
+  "version": "0.0.1",
+  "description": "M4M Web App",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run eslint && echo Warning: No test specified",
+    "eslint": "eslint .",
+    "watch": "webpack --watch --progress",
+    "build": "webpack --config webpack.config.js --progress",
+    "start": "webpack-dev-server --hot --history-api-fallback"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M4MController/frontend.git"
+  },
+  "author": "M4M",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M4MController/frontend/issues"
+  },
+  "homepage": "https://github.com/M4MController/frontend#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3",
+    "webpack-cli": "^2.0.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/preset-react": "^7.0.0-beta.42",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.18.2",
+    "eslint-plugin-react": "^7.7.0",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.1.1",
+    "webpack-dev-server": "^3.1.1"
+  }
+}
