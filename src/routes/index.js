@@ -25,13 +25,12 @@ export default class extends RouteComponent {
           </Link>
 
           <div className="app__menu app-content-height">
-            <div style={{'color': 'white', padding: '20px'}}>
-              It can contains the site map:
-              <br/>
-              <Link to="/test" style={{'color': 'white'}}>Go to test</Link>
-              <br/>
-              <Link to="/404" style={{'color': 'white'}}>Go to 404</Link>
-            </div>
+            <div className="app__menu-text">MENU</div>
+
+            <br/>
+            <Link to="/test" style={{'color': 'white'}}>Go to test</Link>
+            <br/>
+            <Link to="/404" style={{'color': 'white'}}>Go to 404</Link>
           </div>
         </div>
 
