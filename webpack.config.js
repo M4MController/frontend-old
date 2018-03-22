@@ -47,6 +47,7 @@ module.exports = [
       contentBase: [path.join(__dirname, 'public'), path.join(__dirname, 'dist')],
       publicPath: '/',
       hot: true,
+      port: process.env['PORT'],
     },
   },
 ];
