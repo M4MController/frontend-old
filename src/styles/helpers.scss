@@ -6,7 +6,7 @@
   }
 }
 
-@each $property in block, inline-block, inline {
+@each $property in block, inline-block, inline, table, table-cell, table-row {
   .#{ $property } {
     display: $property !important
   }
@@ -26,4 +26,18 @@
 
 .hidden {
   display: none !important
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-width {
+  width: 100vw;
+}
+
+@each $property in height, width {
+  .max-#{$property} {
+    #{$property}: 100%;
+  }
 }

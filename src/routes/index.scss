@@ -1,0 +1,54 @@
+@import "src/styles/constants.scss";
+@import "src/styles/helpers.scss";
+
+$app-header-logo-margin: 20px;
+
+.app-menu-width {
+  width: $app-menu-width;
+}
+
+.app-content-width {
+  width: calc(100vw - #{$app-menu-width});
+}
+
+.app-content-height {
+  height: calc(100vh - #{$app-header-height} - 1px);
+}
+
+.app-header-height {
+  height: $app-header-height;
+}
+
+.app {
+  &__logo {
+    height: calc(#{$app-header-height} - 2 * #{$app-header-logo-margin});
+
+    padding: $app-header-logo-margin 0 $app-header-logo-margin 0;
+
+    background: $app-menu-background;
+    border-right: 1px solid gray;
+
+    box-shadow: 0 -1px black inset;
+  }
+
+  &__header {
+    height: $app-header-height;
+    width: calc(100vw - #{$app-menu-width} - 1px);
+
+    background: $app-menu-background;
+    border-bottom: 1px solid gray;
+  }
+
+  &__menu {
+    width: $app-menu-width;
+
+    background: $app-menu-background;
+  }
+
+  &__content {
+    width: 100%;
+
+    padding: $app-content-padding;
+    background: $app-content-background;
+  }
+}

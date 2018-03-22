@@ -12,6 +12,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import promise from 'redux-promise';
 import App from './routes';
 
+import 'src/styles/global.scss'; // must be imported into the project at least once
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
