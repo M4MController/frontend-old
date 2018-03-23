@@ -76,4 +76,4 @@ cp nginx.conf /etc/nginx/nginx.conf
 sudo service nginx restart
 ```
 
-Open `http://localhost` in the browser.
+Open `http://localhost` in the browser
