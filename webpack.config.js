@@ -28,7 +28,7 @@ module.exports = [
           },
         },
         {
-          test: /\.scss$/,
+          test: /\.(css|scss)$/,
           use: [{
             loader: 'style-loader',
           }, {
@@ -47,6 +47,9 @@ module.exports = [
       contentBase: [path.join(__dirname, 'public'), path.join(__dirname, 'dist')],
       publicPath: '/',
       hot: true,
+      disableHostCheck: true,
+      host: '0.0.0.0',
+      port: process.env['PORT'],
     },
   },
 ];

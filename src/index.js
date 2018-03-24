@@ -12,6 +12,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import promise from 'redux-promise';
 import App from './routes';
 
+// must be imported into the project at least once
+import 'normalize.css';
+import 'src/styles/global.scss';
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
