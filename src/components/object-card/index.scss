@@ -2,12 +2,12 @@
 
 .o-card {
   display: inline-block;
-	height: auto;
+  height: auto;
   -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
 
-	&__col {
+  &__col {
     display: inline-block;
     padding: 0 20px;
     vertical-align: middle; // if in other .class - doesn't work o_O
@@ -17,22 +17,22 @@
     float: right;
   }
 
-	&__header-wrapper {
-		background: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?1481011582195555');
+  &__header-wrapper {
+    background: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?1481011582195555');
     background-size: cover;
   }
-  
+
   &__header, &__body, &__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-	&__header {
-		padding: 20px 0px;
+  &__header {
+    padding: 20px 0px;
     color: $object-card-header-color;
   }
-  
+
   &__body {
     background: $object-card-body-background;
   }
@@ -41,20 +41,20 @@
     background: $object-card-footer-background;
   }
 
-	&__header_ok {
-		background: $object-card-header-ok-background;
+  &__header_ok {
+    background: $object-card-header-ok-background;
   }
 
   &__header_error {
-		background: $object-card-header-error-background;
-	}
+    background: $object-card-header-error-background;
+  }
 
-	&__title {
+  &__title {
     font-size: $big-font-size;
     font-weight: normal;
     margin: 0 0 10px 0;
-	}
-  
+  }
+
   &__counter-info {
     height: 40px;
   }

@@ -65,10 +65,10 @@ body {
 }
 
 .n-mark {
-	display: inline-block;
+  display: inline-block;
   padding: 5px 10px;
-	border-radius: 50px;
-	font-style: normal;
+  border-radius: 50px;
+  font-style: normal;
 
   &_ok {
     color: $mark-ok-color;
