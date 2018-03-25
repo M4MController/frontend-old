@@ -1,5 +1,5 @@
 /**
- * Created by HaseProgram on 25/03/2018.
+ * Created by Dmitry Zaytsev on 25/03/2018.
  */
 
 'use strict';
@@ -57,9 +57,9 @@ export default class extends React.Component {
   Header (props) {
     const controllersErrorsCount = props.controllersErrorsCount;
     if (controllersErrorsCount && controllersErrorsCount > 0) {
-      return <this.HeaderError {...props} />
+      return <this.HeaderError {...props} />;
     }
-    return <this.HeaderOk {...props} />
+    return <this.HeaderOk {...props} />;
   }
 
   Counter (props) {

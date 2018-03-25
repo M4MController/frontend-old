@@ -51,9 +51,10 @@ $app-header-logo-margin: 20px;
   }
 
   &__content {
-    width: 100%;
+    width: calc(100vw - #{$app-menu-width} - 2 * #{$app-content-padding});
 
     padding: $app-content-padding;
     background: $app-content-background;
+    
   }
 }
