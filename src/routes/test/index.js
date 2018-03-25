@@ -10,7 +10,7 @@ import RouteComponent from 'src/routes/route-component';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import TestPath from './sub-path';
-import API from '../../api/Api';
+import API from 'src/api';
 
 export default class extends RouteComponent {
   render () {

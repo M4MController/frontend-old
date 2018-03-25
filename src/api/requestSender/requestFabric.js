@@ -1,10 +1,10 @@
 import AuthorizationRequest from 'src/api/requestSender/userRequests/authorizationRequest';
 import UserInfoRequest from 'src/api/requestSender/userRequests/userinfoRequest';
-import UserControllersRequest from 'src/api/requestSender/controllerRequests/usercontrollersRequest';
-import UserControllerSensorsRequest from 'src/api/requestSender/controllerRequests/usercontrollersensorsRequest';
-import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests/usercontrollerstatsRequest';
-import UserSensorStatsRequest from 'src/api/requestSender/sensorRequest/usersensorstatsRequest';
-import UserSensorDataRequest from 'src/api/requestSender/sensorRequest/usersensordataRequest';
+import UserControllersRequest from 'src/api/requestSender/controllerRequests/userControllersRequest';
+import UserControllerSensorsRequest from 'src/api/requestSender/controllerRequests/userControllerSensorsRequest';
+import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests/userControllerstatsRequest';
+import UserSensorStatsRequest from 'src/api/requestSender/sensorRequest/userSensorStatsRequest';
+import UserSensorDataRequest from 'src/api/requestSender/sensorRequest/userSensorDataRequest';
 
 export let defaultsettings = {
   httpprotocol: 'http',
