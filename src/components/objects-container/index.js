@@ -39,8 +39,8 @@ export default class extends React.Component {
   }
 
   static get propTypes () {
-    match: PropTypes.shape({
-        children: PropTypes.node,
+    children: PropTypes.shape({
+      children: PropTypes.node,
     }).isRequired;
   }
 }
