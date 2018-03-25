@@ -1,5 +1,6 @@
 let instance;
-import {defaultsettings, RequestFabric} from 'src/api/requestSender/requestFabric';
+import { defaultsettings, RequestFabric } from 'src/api/requestSender/requestFabric';
+
 let settings = defaultsettings;
 
 //  set host:
@@ -7,9 +8,9 @@ let settings = defaultsettings;
 
 //  set protocol:
 // let settings.http = 'http' || 'https'
-class Api{
-  constructor() {
-    if(instance)
+class Api {
+  constructor () {
+    if (instance)
       return instance;
 
     this._requestFabric = new RequestFabric(settings);

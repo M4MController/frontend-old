@@ -18,9 +18,9 @@ export default class extends RouteComponent {
       <button onClick={
         () => {
           let request = API.authorization();
-          request.execute('test@test.ru','password').then(res => {
+          request.execute('test@test.ru', 'password').then(res => {
             alert('NO ERROR\n' + JSON.stringify(res));
-          }).catch( err => {
+          }).catch(err => {
             alert('ERROR\n' + JSON.stringify(err));
           });
         }
@@ -33,13 +33,12 @@ export default class extends RouteComponent {
           let request = API.userinfo();
           request.execute().then(res => {
             alert('NO ERROR\n' + JSON.stringify(res));
-          }).catch( err => {
+          }).catch(err => {
             alert('ERROR\n' + JSON.stringify(err));
           });
         }
       }>userinfo</button>
     );
-
 
     return (
       <div>

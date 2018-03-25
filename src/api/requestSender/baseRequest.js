@@ -1,31 +1,31 @@
-
 import requestSender from 'src/api/requestSender/requestSender';
-export default class BaseRequest{
-  constructor() {
+
+export default class BaseRequest {
+  constructor () {
   }
 
-  get url() {
+  get url () {
     return this._url;
   }
 
-  set url(value) {
-    if(!value || typeof value !== 'string')
+  set url (value) {
+    if (!value || typeof value !== 'string')
       throw new TypeError('url undefined or not a string');
     this._url = value;
   }
 
-  get method() {
+  get method () {
     return this._method;
   }
 
-  set method(value) {
-    if(!value || typeof value !== 'string')
+  set method (value) {
+    if (!value || typeof value !== 'string')
       throw new TypeError('method undefined or not a string');
     this._method = value;
   }
 
-  _prepareRequest(params){
-    if(!this._url || !this._method){
+  _prepareRequest (params) {
+    if (!this._url || !this._method) {
       throw new TypeError('url or method undefined');
     }
 
@@ -35,8 +35,8 @@ export default class BaseRequest{
       withCredentials: true,
     };
 
-    if(params){
-      if(typeof params === 'object'){
+    if (params) {
+      if (typeof params === 'object') {
         Object.keys(params).forEach((key) => {
           options[key] = params[key];
         });

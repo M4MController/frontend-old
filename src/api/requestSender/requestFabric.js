@@ -9,7 +9,7 @@ import UserSensorDataRequest from 'src/api/requestSender/sensorRequest/usersenso
 export let defaultsettings = {
   httpprotocol: 'http',
   host: 'localhost:3000',
-  requests : {
+  requests: {
     authorization: {
       request: AuthorizationRequest,
       url: '/user/sign_in',
@@ -48,10 +48,8 @@ export let defaultsettings = {
   },
 };
 
-
-
-export class RequestFabric{
-  constructor(settings) {
+export class RequestFabric {
+  constructor (settings) {
     let self = this;
     this.settings = settings || defaultsettings;
 
@@ -63,8 +61,8 @@ export class RequestFabric{
     });
   }
 
-  _withoutParamsRequest(name){
-    let httpprot =  this.settings.httpprotocol;
+  _withoutParamsRequest (name) {
+    let httpprot = this.settings.httpprotocol;
     let host = this.settings.host;
     let request = new (this.settings.requests[name].request)();
     request.url = `${httpprot}://${host}${this.settings.requests[name].url}`;
