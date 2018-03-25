@@ -23,13 +23,17 @@ export default class extends React.Component {
   }
 
   render () {
-	const blocks = this.props.children;
+	  const blocks = this.props.children;
     return (
       <ScrollArea className="objects-container">
         {blocks.map(block => {
-          return <this.Block content={block} />
-		    })}
+          return <this.Block content={block} />;
+        })}
       </ScrollArea>
     );
+  }
+
+  get displayName() {
+    return 'ObjectsContainer';
   }
 }

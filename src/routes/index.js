@@ -26,33 +26,34 @@ export default class extends RouteComponent {
       counters: [
         {
           name: 'Electricity',
-          amount: 1234
+          amount: 1234,
         },
         {
           name: 'Hot water',
-          amount: 6
+          amount: 6,
         },
         {
           name: 'Cold water',
-          amount: 42
+          amount: 42,
         },
         {
           name: 'Electricity',
-          amount: 1234
+          amount: 1234,
         },
         {
           name: 'Hot water',
-          amount: 6
+          amount: 6,
         },
         {
           name: 'Cold water',
-          amount: 42
-        }
+          amount: 42,
+        },
       ],
       curMonthAmount: 6789,
       lastMonthAmount: 5678,
-      yearAverageAmount: 6000
-    }
+      yearAverageAmount: 6000,
+    };
+    
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">

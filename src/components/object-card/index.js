@@ -64,12 +64,12 @@ export default class extends React.Component {
 
   Counter (props) {
     return (  
-        <tr className="o-card__counter-info">
-          <td className="o-card__counter-name">{props.name}</td>
-          <td className="o-card__counter-amount">
-            <i className="n-mark n-mark_ok">{props.amount}</i> ₽
-          </td>
-        </tr>
+      <tr className="o-card__counter-info">
+        <td className="o-card__counter-name">{props.name}</td>
+        <td className="o-card__counter-amount">
+          <i className="n-mark n-mark_ok">{props.amount}</i> ₽
+        </td>
+      </tr>
     );
   }
 
@@ -132,5 +132,9 @@ export default class extends React.Component {
         <this.Footer {...this.props} />
       </div>
     );
+  }
+
+  get displayName() {
+    return 'ObjectCard';
   }
 }
