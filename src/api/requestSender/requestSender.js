@@ -1,4 +1,4 @@
 let axios = require('axios');
-export function requestSender (options) {
+export default function requestSender (options) {
   return axios(options);
 }

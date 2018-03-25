@@ -1,5 +1,6 @@
 let instance;
-let settings, RequestFabric = require('src/api/requestSender/requestFabric');
+import {defaultsettings, RequestFabric} from 'src/api/requestSender/requestFabric';
+let settings = defaultsettings;
 
 //  set host:
 // let settings.host = <host>
@@ -7,8 +8,7 @@ let settings, RequestFabric = require('src/api/requestSender/requestFabric');
 //  set protocol:
 // let settings.http = 'http' || 'https'
 
-
-module.export = class Api{
+export default class Api{
   constructor() {
     if(instance)
       return instance;
@@ -20,4 +20,4 @@ module.export = class Api{
     });
     instance = this;
   }
-};
+}

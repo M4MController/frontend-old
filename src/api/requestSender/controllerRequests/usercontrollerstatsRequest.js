@@ -1,6 +1,6 @@
-let BaseRequest = require('src/api/requestSender/baseRequest');
+import BaseRequest from 'src/api/requestSender/baseRequest';
 
-export class UserControllerStatsRequest extends BaseRequest{
+export default  class UserControllerStatsRequest extends BaseRequest{
   execute(controller_id) {
     if(!controller_id || typeof controller_id !== 'number')
       throw new TypeError('controller_id undefiend or not a number');
@@ -8,4 +8,4 @@ export class UserControllerStatsRequest extends BaseRequest{
     this._url = this._url.replace(/:\w+/,controller_id);
     return this._prepareRequest();
   }
-};
+}

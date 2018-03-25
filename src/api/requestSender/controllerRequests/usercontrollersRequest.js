@@ -1,7 +1,7 @@
-let BaseRequest = require('src/api/requestSender/baseRequest');
+import BaseRequest from 'src/api/requestSender/baseRequest';
 
-export class UserControllersRequest extends BaseRequest{
+export default  class UserControllersRequest extends BaseRequest{
   execute() {
     return this._prepareRequest();
   }
-};
+}

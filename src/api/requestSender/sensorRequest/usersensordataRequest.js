@@ -1,6 +1,6 @@
-let BaseRequest = require('src/api/requestSender/baseRequest');
+import BaseRequest from 'src/api/requestSender/baseRequest';
 
-export class UserSensorDataRequest extends BaseRequest{
+export default  class UserSensorDataRequest extends BaseRequest{
   execute(sensor_id,date,limit) {
     if(!sensor_id || typeof sensor_id !== 'number')
       throw new TypeError('sensor_id undefiend or not a number');
@@ -18,4 +18,4 @@ export class UserSensorDataRequest extends BaseRequest{
       },
     });
   }
-};
+}

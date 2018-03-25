@@ -1,6 +1,5 @@
-let BaseRequest = require('src/api/requestSender/baseRequest');
-
-export class AutorizationRequest extends BaseRequest{
+import BaseRequest from 'src/api/requestSender/baseRequest';
+export default class AutorizationRequest extends BaseRequest{
   constructor() {
     super();
   }
@@ -20,4 +19,4 @@ export class AutorizationRequest extends BaseRequest{
       },
     });
   }
-};
+}

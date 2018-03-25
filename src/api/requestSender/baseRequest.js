@@ -1,5 +1,6 @@
-let requestSender = require('src/api/requestSender/requestSender');
-export class BaseRequest{
+
+import requestSender from 'src/api/requestSender/requestSender';
+export default class BaseRequest{
   constructor() {
   }
 
@@ -45,4 +46,4 @@ export class BaseRequest{
 
     return requestSender(options);
   }
-};
+}

@@ -1,10 +1,10 @@
-let AutorizationRequest = require('src/api/requestSender/userRequests/autorizationRequest');
-let UserInfoRequest = require('src/api/requestSender/userRequests/userinfoRequest');
-let UserControllersRequest = require('src/api/requestSender/controllerRequests/usercontrollersRequest');
-let UserControllerSensorsRequest = require('src/api/requestSender/controllerRequests/usercontrollersensorsRequest');
-let UserControllerStatsRequest = require('src/api/requestSender/controllerRequests/usercontrollerstatsRequest');
-let UserSensorStatsRequest = require('src/api/requestSender/sensorRequest/usersensorstatsRequest');
-let UserSensorDataRequest = require('src/api/requestSender/sensorRequest/usersensordataRequest');
+import AutorizationRequest from 'src/api/requestSender/userRequests/autorizationRequest';
+import UserInfoRequest from 'src/api/requestSender/userRequests/userinfoRequest';
+import UserControllersRequest from 'src/api/requestSender/controllerRequests/usercontrollersRequest';
+import UserControllerSensorsRequest from 'src/api/requestSender/controllerRequests/usercontrollersensorsRequest';
+import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests/usercontrollerstatsRequest';
+import UserSensorStatsRequest from 'src/api/requestSender/sensorRequest/usersensorstatsRequest';
+import UserSensorDataRequest from 'src/api/requestSender/sensorRequest/usersensordataRequest';
 
 export let defaultsettings = {
   httpprotocol: 'http',
@@ -66,10 +66,9 @@ export class RequestFabric{
   _withoutParamsRequest(name){
     let httpprot =  this.settings.httpprotocol;
     let host = this.settings.host;
-
-    let request = new (this.settings[name].request)();
-    request.url = `${httpprot}://${host}/${this.settings[name].url}`;
-    request.method = this.settings[name].method;
+    let request = new (this.settings.requests[name].request)();
+    request.url = `${httpprot}://${host}/${this.settings.requests[name].url}`;
+    request.method = this.settings.requests[name].method;
     return request;
   }
 }
