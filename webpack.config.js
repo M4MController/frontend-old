@@ -5,6 +5,7 @@
 'use strict';
 
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = [
   {
@@ -51,5 +52,10 @@ module.exports = [
       host: '0.0.0.0',
       port: process.env['PORT'],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        CONFIG: JSON.stringify(require(process.env['M4M_WEB_CONFIG'] || './config.json')),
+      }),
+    ],
   },
 ];
