@@ -5,6 +5,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ScrollArea from 'react-scrollbar';
 
 import 'index.scss';
@@ -26,8 +27,8 @@ export default class extends React.Component {
 	  const blocks = this.props.children;
     return (
       <ScrollArea className="objects-container">
-        {blocks.map(block => {
-          return <this.Block content={block} />;
+        {blocks.map((block, index) => {
+          return <this.Block key={index} content={block} />;
         })}
       </ScrollArea>
     );
@@ -35,5 +36,11 @@ export default class extends React.Component {
 
   get displayName() {
     return 'ObjectsContainer';
+  }
+
+  static get propTypes () {
+    return {
+      match: PropTypes.children,
+    };
   }
 }

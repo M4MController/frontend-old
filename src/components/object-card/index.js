@@ -85,10 +85,10 @@ export default class extends React.Component {
     return (
       <div className="o-card__body">
         <table className="o-card__col">
-          {countersArrLeft.map(c => <this.Counter {...c} />)}
+          {countersArrLeft.map((c, index) => <this.Counter key={index} {...c} />)}
         </table>
         <table className="o-card__col o-card__col_right">
-          {countersArrRight.map(c => <this.Counter {...c} />)}
+          {countersArrRight.map((c, index) => <this.Counter key={index} {...c} />)}
         </table>
       </div>
     );
