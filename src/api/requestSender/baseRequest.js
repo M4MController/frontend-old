@@ -32,6 +32,7 @@ export default class BaseRequest{
     let options = {
       url: this._url,
       method: this._method,
+      withCredentials: true,
     };
 
     if(params){

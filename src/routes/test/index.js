@@ -14,18 +14,30 @@ import API from '../../api/Api';
 
 export default class extends RouteComponent {
   render () {
-    let button = (
+    let button_signin = (
       <button onClick={
         () => {
-          let api = new API();
-          let request = api.authorization();
+          let request = API.authorization();
           request.execute('test@test.ru','password').then(res => {
-            alert(JSON.stringify(res));
+            alert('NO ERROR\n' + JSON.stringify(res));
           }).catch( err => {
-            alert(JSON.stringify(err));
+            alert('ERROR\n' + JSON.stringify(err));
           });
         }
       }>sign_in</button>
+    );
+
+    let button_userinfo = (
+      <button onClick={
+        () => {
+          let request = API.userinfo();
+          request.execute().then(res => {
+            alert('NO ERROR\n' + JSON.stringify(res));
+          }).catch( err => {
+            alert('ERROR\n' + JSON.stringify(err));
+          });
+        }
+      }>userinfo</button>
     );
 
 
@@ -39,7 +51,10 @@ export default class extends RouteComponent {
         }
         Test API
         {
-          button
+          button_signin
+        }
+        {
+          button_userinfo
         }
         <Switch>
           <Route path='/test/:id' component={TestPath}/>

@@ -7,8 +7,7 @@ let settings = defaultsettings;
 
 //  set protocol:
 // let settings.http = 'http' || 'https'
-
-export default class Api{
+class Api{
   constructor() {
     if(instance)
       return instance;
@@ -21,3 +20,5 @@ export default class Api{
     instance = this;
   }
 }
+
+export default new Api();
