@@ -24,7 +24,7 @@ export default class extends React.Component {
   }
 
   render () {
-	  const blocks = this.props.children;
+    const blocks = this.props.children;
     return (
       <ScrollArea className="objects-container">
         {blocks.map((block, index) => {
@@ -39,8 +39,8 @@ export default class extends React.Component {
   }
 
   static get propTypes () {
-    return {
-      match: PropTypes.children,
-    };
+    match: PropTypes.shape({
+        children: PropTypes.node,
+    }).isRequired;
   }
 }
