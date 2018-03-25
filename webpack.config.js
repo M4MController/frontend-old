@@ -6,6 +6,8 @@
 
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = [
   {
     entry: ['./src/index.js'],
@@ -51,5 +53,18 @@ module.exports = [
       host: '0.0.0.0',
       port: process.env['PORT'],
     },
+    plugins: [
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: path.resolve(__dirname, 'src/index.html'),
+        inject: true,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+        },
+        chunksSortMode: 'dependency',
+      }),
+    ],
   },
 ];
