@@ -18,7 +18,7 @@ export default class extends RouteComponent {
       <button onClick={
         () => {
           let api = new API();
-          let request = api.autorization();
+          let request = api.authorization();
           request.execute('test@test.ru','password').then(res => {
             alert(JSON.stringify(res));
           }).catch( err => {

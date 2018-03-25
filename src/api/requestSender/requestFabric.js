@@ -1,4 +1,4 @@
-import AutorizationRequest from 'src/api/requestSender/userRequests/autorizationRequest';
+import AuthorizationRequest from 'src/api/requestSender/userRequests/authorizationRequest';
 import UserInfoRequest from 'src/api/requestSender/userRequests/userinfoRequest';
 import UserControllersRequest from 'src/api/requestSender/controllerRequests/usercontrollersRequest';
 import UserControllerSensorsRequest from 'src/api/requestSender/controllerRequests/usercontrollersensorsRequest';
@@ -10,8 +10,8 @@ export let defaultsettings = {
   httpprotocol: 'http',
   host: 'localhost:3000',
   requests : {
-    autorization: {
-      request: AutorizationRequest,
+    authorization: {
+      request: AuthorizationRequest,
       url: '/user/sign_in',
       method: 'POST',
     },
