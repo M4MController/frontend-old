@@ -7,6 +7,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = [
   {
     entry: ['./src/index.js'],
@@ -55,6 +57,17 @@ module.exports = [
     plugins: [
       new webpack.DefinePlugin({
         CONFIG: JSON.stringify(require(process.env['M4M_WEB_CONFIG'] || './config.json')),
+      }),
+      new HtmlWebpackPlugin({
+        filename: 'index.html',
+        template: path.resolve(__dirname, 'src/index.html'),
+        inject: true,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+        },
+        chunksSortMode: 'dependency',
       }),
     ],
   },
