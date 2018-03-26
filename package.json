@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/M4MController/frontend#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
@@ -43,6 +44,7 @@
     "css-loader": "^0.28.11",
     "eslint": "^4.18.2",
     "eslint-plugin-react": "^7.7.0",
+    "html-webpack-plugin": "^3.1.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",

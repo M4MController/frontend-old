@@ -1,0 +1,6 @@
+{
+  "backend": {
+    "schema": "http",
+    "host": "localhost:4000"
+  }
+}

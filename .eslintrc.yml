@@ -13,6 +13,8 @@ parserOptions:
     experimentalObjectRestSpread: true
 plugins:
   - react
+globals:
+  CONFIG: true
 rules:
   indent:
     - error
