@@ -11,12 +11,49 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import Test from './test';
 import NotFound from './not-found';
+import Object from 'src/components/object';
+import Container from 'src/components/container';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
 
 export default class extends RouteComponent {
   render () {
+    const cardData = {
+      controllersErrorsCount: 0,
+      controllersCount: 6,
+      name: 'HOUSE NEAR THE ROAD',
+      counters: [
+        {
+          name: 'Electricity',
+          amount: 1234,
+        },
+        {
+          name: 'Hot water',
+          amount: 6,
+        },
+        {
+          name: 'Cold water',
+          amount: 42,
+        },
+        {
+          name: 'Electricity',
+          amount: 1234,
+        },
+        {
+          name: 'Hot water',
+          amount: 6,
+        },
+        {
+          name: 'Cold water',
+          amount: 42,
+        },
+      ],
+      curMonthAmount: 6789,
+      lastMonthAmount: 5678,
+      yearAverageAmount: 6000,
+    };
+
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">
@@ -48,7 +85,22 @@ export default class extends RouteComponent {
           <div className="app__content app-content-height">
             <Switch>
               <Route exact path='/'>
-                <h1>Home page</h1>
+                <Container>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                </Container>
               </Route>
               <Route path='/test' component={Test}/>
               <Route component={NotFound}/>
