@@ -17,7 +17,7 @@ export default class extends React.Component {
 
   Block(props) {
     return (
-      <div className="objects-container__block">
+      <div className="blocks-container__block">
         {props.content}
       </div>
     );
@@ -26,7 +26,7 @@ export default class extends React.Component {
   render () {
     const blocks = this.props.children;
     return (
-      <ScrollArea className="objects-container">
+      <ScrollArea className="blocks-container">
         {blocks.map((block, index) => {
           return <this.Block key={index} content={block} />;
         })}
@@ -35,12 +35,12 @@ export default class extends React.Component {
   }
 
   get displayName() {
-    return 'ObjectsContainer';
+    return 'BlocksContainer';
   }
 
   static get propTypes () {
     return {
-      children: PropTypes.node
+      children: PropTypes.node,
     };
   }
 }

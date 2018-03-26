@@ -1,22 +1,33 @@
 @import "src/styles/constants.scss";
 
-.o-card {
-  display: inline-block;
-  height: auto;
-  width: 480px;
-  text-align: left;
-  -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+.amount-table {
+  &__row_left {
+    min-width: 110px;
+  }
+  
+  &__row_right {
+    min-width: 90px;
+  }
 
+  &__row_big {
+    height: 35px;
+  }
+
+  &__name {
+    text-align: left;
+    padding: 0 15px 0 0;
+  }
+
+  &__amount {
+    text-align: right;
+  }
+}
+
+.object {
   &__col {
     display: inline-block;
     padding: 0 20px;
     vertical-align: middle; // if in other .class - doesn't work o_O
-  }
-
-  &__col_right {
-    float: right;
   }
 
   &__header-wrapper {
@@ -56,31 +67,5 @@
     font-size: $big-font-size;
     font-weight: normal;
     margin: 0 0 10px 0;
-  }
-
-  &__counter-info {
-    height: 35px;
-  }
-
-  &__counter-name {
-    text-align: left;
-    padding: 0 15px 0 0;
-  }
-
-  &__counter-amount {
-    text-align: right;
-  }
-
-  &__totals-info {
-    height: 20px;
-  }
-
-  &__totals-name {
-    text-align: left;
-    padding: 0 15px 0 0;
-  }
-
-  &__totals-amount {
-    text-align: right;
   }
 }
