@@ -6,9 +6,11 @@ import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests
 import UserSensorStatsRequest from 'src/api/requestSender/sensorRequest/userSensorStatsRequest';
 import UserSensorDataRequest from 'src/api/requestSender/sensorRequest/userSensorDataRequest';
 
+const backendConfig = CONFIG['backend'];
+
 export let defaultsettings = {
-  httpprotocol: 'http',
-  host: 'localhost:3000',
+  httpprotocol: backendConfig['schema'],
+  host: backendConfig['host'],
   requests: {
     authorization: {
       request: AuthorizationRequest,
