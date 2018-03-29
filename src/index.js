@@ -6,10 +6,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import {createStore} from 'redux';
+import rootSaga from './sagas';
 
 import reducer from './reducers';
 import Routes from './routes';
@@ -18,9 +20,12 @@ import Routes from './routes';
 import 'normalize.css';
 import 'src/styles/global.scss';
 
+const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducer,
+  applyMiddleware(sagaMiddleware),
 );
+sagaMiddleware.run(rootSaga);
 
 class App extends React.Component {
   render() {

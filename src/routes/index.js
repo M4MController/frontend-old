@@ -21,7 +21,6 @@ import 'index.scss';
 import 'src/styles/helpers.scss';
 
 import * as LanguageActions from 'src/actions/language';
-import i18n from 'src/i18n';
 
 @withRouter
 @connect(state => ({
@@ -33,15 +32,10 @@ class IndexRoute extends RouteComponent {
     this.languageActions = bindActionCreators(LanguageActions, this.props.dispatch);
   }
 
-  componentWillMount() {
-    // todo: create saga for language
-    this.setLanguage();
-  }
-
   setLanguage(currentLanguage = this.props.language.current) {
     this.languageActions.changeLanguage(currentLanguage);
     // todo: move language update into saga
-    i18n(currentLanguage);
+    // i18n(currentLanguage);
   }
 
   render() {

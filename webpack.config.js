@@ -25,20 +25,26 @@ module.exports = [
           loader: 'babel-loader',
           options: {
             presets: [
-              '@babel/preset-env',
+              [
+                '@babel/preset-env',
+                {
+                  useBuiltIns: 'usage',
+                },
+              ],
               '@babel/preset-react',
             ],
           },
         },
         {
           test: /\.(css|scss)$/,
-          use: [{
-            loader: 'style-loader',
-          }, {
-            loader: 'css-loader',
-          }, {
-            loader: 'sass-loader',
-          }],
+          use: [
+            {
+              loader: 'style-loader',
+            }, {
+              loader: 'css-loader',
+            }, {
+              loader: 'sass-loader',
+            }],
         },
       ],
     },

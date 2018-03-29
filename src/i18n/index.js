@@ -14,11 +14,19 @@ const languages = {
   ru,
 };
 
-const defaultLanguage = en;
+const defaultLanguage = {
+  lng: 'en',
+  resources: en,
+};
 
-export default function(language) {
-  i18next.init({
-    lng: language,
-    resources: languages[language] || defaultLanguage,
-  });
+export default function init(lang) {
+  const foundResources = languages[lang];
+  const language = foundResources ? {
+    lng: lang,
+    resources: foundResources,
+  } : defaultLanguage;
+  i18next.init(language);
 }
+
+
+init(defaultLanguage.lng);
