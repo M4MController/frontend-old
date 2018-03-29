@@ -6,5 +6,9 @@
   "ignore": [
     'node_modules',
     'dist'
+  ],
+  "plugins": [
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-decorators'
   ]
 }
