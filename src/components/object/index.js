@@ -19,18 +19,18 @@ export default class extends React.Component {
   }
 
   HeaderOk (props) {
-    const message = props.controllersCount > 1 ? 'controllers' : 'controller';
     return (
       <div className="object__header-wrapper">
         <div className="object__header object__header_ok">
           <div className="object__col">
             <h2 className="object__title">{props.name}</h2>
             <span className="object__controllers-info">
-              <i className="n-mark n-mark_ok">{props.controllersCount}</i> active {message}
+              <i className="n-mark n-mark_ok">{props.controllersCount}</i>
+              {$t('card_object_active_controllers', {count: props.controllersCount})}
             </span>
           </div>
           <div className="object__col object__col_right">
-            <Link to="/" className="btn btn_neutral">MORE</Link>
+            <Link to="/" className="btn btn_neutral">{$t('card_object_more')}</Link>
           </div>
         </div>
       </div>
@@ -38,18 +38,18 @@ export default class extends React.Component {
   }
 
   HeaderError (props) {
-    const message = props.errorsCount > 1 ? 'controllers' : 'controller';
     return (
       <div className="object__header-wrapper">
         <div className="object__header object__header_error">
           <div className="object__col">
             <h2 className="object__title">{props.name}</h2>
             <span className="object__controllers-info">
-              <i className="n-mark n-mark_error">{props.controllersErrorsCount}</i> {message} error
+              <i className="n-mark n-mark_error">{props.controllersErrorsCount}</i>
+              {$t('card_object_error_controllers', {count: props.errorsCount})}
             </span>
           </div>
           <div className="object__col object__col_right">
-            <Link to="/" className="btn btn_warning">MORE</Link>
+            <Link to="/" className="btn btn_warning">{$t('MORE')}</Link>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default class extends React.Component {
   }
 
   AmountTable (props) {
-    const rows = props.children;   
+    const rows = props.children;
     return (
       <table className="object__col">
         <tbody>
@@ -99,7 +99,7 @@ export default class extends React.Component {
       divider++;
     }
     const countersArrLeft = props.counters.slice(0, divider);
-    
+
     return (
       <div className="object__body">
         <this.AmountTable>
@@ -131,20 +131,20 @@ export default class extends React.Component {
       <div className="object__footer">
         <this.AmountTable>
           <this.AmountTableRow>
-            <span>Current month</span>
+            <span>{$t('card_object_current_month')}</span>
             <i className="n-mark">{props.curMonthAmount}</i>
           </this.AmountTableRow>
           <this.AmountTableRow>
-            <span>Last month</span>
+            <span>{$t('card_object_last_month')}</span>
             <i className="n-mark">{props.lastMonthAmount}</i>
           </this.AmountTableRow>
           <this.AmountTableRow>
-            <span>Year average</span>
+            <span>{$t('card_object_average_year')}</span>
             <i className="n-mark">{props.yearAverageAmount}</i>
           </this.AmountTableRow>
         </this.AmountTable>
         <div className="object__col object__col_right">
-          <Link to="/" className="btn btn_ok">PAY</Link>
+          <Link to="/" className="btn btn_ok">{$t('card_object_pay')}</Link>
         </div>
       </div>
     );
