@@ -7,13 +7,14 @@
 import React from 'react';
 
 import RouteComponent from 'src/routes/route-component';
-import { Link, Route, Switch } from 'react-router-dom';
+import {Link, Route, Switch, withRouter} from 'react-router-dom';
 
 import TestPath from './sub-path';
 import API from 'src/api';
 
+@withRouter
 export default class extends RouteComponent {
-  render () {
+  render() {
     let button_signin = (
       <button onClick={
         () => {

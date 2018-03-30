@@ -6,23 +6,45 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import promise from 'redux-promise';
-import App from './routes';
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import {Provider} from 'react-redux';
+import {BrowserRouter as Router} from 'react-router-dom';
+
+import rootSaga from './sagas';
+
+import reducer from './reducers';
+import Routes from './routes';
 
 // must be imported into the project at least once
 import 'normalize.css';
 import 'src/styles/global.scss';
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
-
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware}>
-    <Router>
-      <App/>
-    </Router>
-  </Provider>,
-  document.getElementById('app'),
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware),
 );
+sagaMiddleware.run(rootSaga);
+
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <Routes/>
+        </Router>
+      </Provider>
+    );
+  }
+}
+
+const render = function() {
+  ReactDOM.render(
+    <App/>,
+    document.getElementById('app'),
+  );
+};
+
+render();
+store.subscribe(render);

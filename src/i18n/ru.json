@@ -1,0 +1,18 @@
+{
+  "ru": {
+    "translation": {
+      "test_message": "Это тестовое сообщение",
+      "card_object_more": "БОЛЬШЕ",
+      "card_object_current_month": "Текущий месяц",
+      "card_object_last_month": "Предыдущий месяц",
+      "card_object_average_year": "Среднее за год",
+      "card_object_pay": "ОПЛАТИТЬ",
+      "card_object_active_controllers_0": "контроллер",
+      "card_object_active_controllers_1": "контроллера",
+      "card_object_active_controllers_2": "контроллеров",
+      "card_object_error_controllers_0": "ошибок",
+      "card_object_error_controllers_1": "ошибки",
+      "card_object_error_controllers_2": "ошибок"
+    }
+  }
+}

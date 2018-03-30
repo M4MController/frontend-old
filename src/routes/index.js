@@ -5,9 +5,12 @@
 'use strict';
 
 import React from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import RouteComponent from 'src/routes/route-component';
-import { Link, Route, Switch } from 'react-router-dom';
+import {Link, Route, Switch} from 'react-router-dom';
 
 import Test from './test';
 import NotFound from './not-found';
@@ -17,8 +20,25 @@ import Container from 'src/components/container';
 import 'index.scss';
 import 'src/styles/helpers.scss';
 
-export default class extends RouteComponent {
-  render () {
+import * as LanguageActions from 'src/actions/language';
+
+@withRouter
+@connect(state => ({
+  language: state.language,
+}))
+class IndexRoute extends RouteComponent {
+  constructor(...args) {
+    super(...args);
+    this.languageActions = bindActionCreators(LanguageActions, this.props.dispatch);
+  }
+
+  setLanguage(currentLanguage = this.props.language.current) {
+    this.languageActions.changeLanguage(currentLanguage);
+    // todo: move language update into saga
+    // i18n(currentLanguage);
+  }
+
+  render() {
     const cardData = {
       controllersErrorsCount: 0,
       controllersCount: 6,
@@ -65,7 +85,9 @@ export default class extends RouteComponent {
             <div className="app__menu-text">MENU</div>
 
             <br/>
-            <Link to="/test" style={{'color': 'white'}}>Go to test</Link>
+            <button onClick={() => this.setLanguage('ru')}>ru</button>
+            <button onClick={() => this.setLanguage('en')}>en</button>
+            <Link to="/test" style={{'color': 'white'}}>{$t('test_message')}</Link>
             <br/>
             <Link to="/404" style={{'color': 'white'}}>Go to 404</Link>
           </div>
@@ -111,3 +133,5 @@ export default class extends RouteComponent {
     );
   }
 }
+
+export default IndexRoute;

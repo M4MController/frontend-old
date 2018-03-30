@@ -1,0 +1,16 @@
+{
+  "en": {
+    "translation": {
+      "test_message": "This is a test message",
+      "card_object_more": "MORE",
+      "card_object_current_month": "Current month",
+      "card_object_last_month": "Last month",
+      "card_object_average_year": "Year average",
+      "card_object_pay": "PAY",
+      "card_object_active_controllers": "active controller",
+      "card_object_active_controllers_plural": "active controllers",
+      "card_object_error_controllers": "controller error",
+      "card_object_error_controllers_plural": "controller errors"
+    }
+  }
+}

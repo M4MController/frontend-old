@@ -4,9 +4,13 @@
 
 'use strict';
 
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
+import {t} from 'i18next';
 
-const rootReducer = combineReducers({
+import language from './language';
+
+window.$t = t;
+
+export default combineReducers({
+  language,
 });
-
-export default rootReducer;
