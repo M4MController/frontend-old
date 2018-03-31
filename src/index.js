@@ -16,6 +16,8 @@ import rootSaga from './sagas';
 import reducer from './reducers';
 import Routes from './routes';
 
+import * as objectActionTypes from 'src/actionTypes/object';
+
 // must be imported into the project at least once
 import 'normalize.css';
 import 'src/styles/global.scss';
@@ -26,6 +28,10 @@ const store = createStore(
   applyMiddleware(sagaMiddleware),
 );
 sagaMiddleware.run(rootSaga);
+
+const initStore = function(store) {
+  store.dispatch({type: objectActionTypes.FETCH});
+};
 
 class App extends React.Component {
   render() {
@@ -46,5 +52,6 @@ const render = function() {
   );
 };
 
+initStore(store);
 render();
 store.subscribe(render);
