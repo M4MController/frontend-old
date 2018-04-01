@@ -5,7 +5,6 @@
 'use strict';
 
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
@@ -27,18 +26,15 @@ import * as ObjectActions from 'src/actions/object';
 @connect(state => ({
   language: state.language,
   object: state.object,
+  execution: state.execution,
 }))
 class IndexRoute extends RouteComponent {
   constructor(...args) {
     super(...args);
-    this.languageActions = bindActionCreators(LanguageActions, this.props.dispatch);
-    this.objectActions = bindActionCreators(ObjectActions, this.props.dispatch);
-    const a = this.objectActions.fetch();
-    debugger;
   }
 
   setLanguage(currentLanguage = this.props.language.current) {
-    this.languageActions.changeLanguage(currentLanguage);
+    this.props.dispatch(LanguageActions.changeLanguage(currentLanguage));
   }
 
   render() {
@@ -99,9 +95,8 @@ class IndexRoute extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.object.isFetching)}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.object.fetchingError)}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.object.items)}</div>
+              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[ObjectActions.updateAll])}</div>
+              <div style={{color: 'white'}}>{JSON.stringify(this.props.object)}</div>
             </div>
           </div>
 

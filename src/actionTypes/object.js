@@ -4,10 +4,5 @@
 
 'use strict';
 
-// actions received by saga only
-export const FETCH = 'OBJECT_FETCH_REQUESTED';
+export const UPDATE_ALL = 'OBJECTS_UPDATE_ALL';
 
-// actions should be dispatched from saga only
-export const FETCH_BEGAN = 'OBJECTS_FETCH_BEGAN';
-export const FETCH_SUCCEED = 'OBJECTS_FETCH_SUCCEED';
-export const FETCH_FAILED = 'OBJECTS_FETCH_FAILED';

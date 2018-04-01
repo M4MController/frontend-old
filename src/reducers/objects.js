@@ -4,33 +4,17 @@
 
 'use strict';
 
-import * as objectTypes from 'src/actionTypes/object';
+import * as objectActions from 'src/actions/object';
 
 const initialState = {
   items: [],
-  isFetching: false,
-  fetchError: null,
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case objectTypes.FETCH_BEGAN: {
+    case objectActions.updateAll: {
       return {
-        isFetching: true,
-        fetchingError: null,
-      };
-    }
-    case objectTypes.FETCH_SUCCEED: {
-      return {
-        isFetching: false,
-        fetchingError: null,
         items: action.items,
-      };
-    }
-    case objectTypes.FETCH_FAILED: {
-      return {
-        isFetching: false,
-        fetchingError: action.error,
       };
     }
     default: {

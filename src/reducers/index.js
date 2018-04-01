@@ -7,12 +7,14 @@
 import {combineReducers} from 'redux';
 import {t} from 'i18next';
 
+import execution from './execution';
 import language from './language';
 import object from './objects';
 
 window.$t = t;
 
 export default combineReducers({
+  execution,
   language,
   object,
 });
