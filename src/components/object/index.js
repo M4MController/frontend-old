@@ -5,8 +5,10 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from 'src/components/card';
+import { AmountTable, AmountTableRow } from 'src/components/card/amounttable';
 
 import 'index.scss';
 
@@ -20,18 +22,16 @@ export default class extends React.Component {
 
   HeaderOk (props) {
     return (
-      <div className="object__header-wrapper">
-        <div className="object__header object__header_ok">
-          <div className="object__col">
-            <h2 className="object__title">{props.name}</h2>
-            <span className="object__controllers-info">
-              <i className="n-mark n-mark_ok">{props.controllersCount}</i>
-              {$t('card_object_active_controllers', {count: props.controllersCount})}
-            </span>
-          </div>
-          <div className="object__col object__col_right">
-            <Link to="/" className="btn btn_neutral">{$t('card_object_more')}</Link>
-          </div>
+      <div className="object__header">
+        <div className="card__col">
+          <h2 className="card__title">{props.name}</h2>
+          <span className="object__controllers-info">
+            <i className="n-mark n-mark_ok">{props.controllersCount}</i>
+            {$t('card_object_active_controllers', {count: props.controllersCount})}
+          </span>
+        </div>
+        <div className="card__col">
+          <Link to="/controllers" className="btn btn_neutral">{$t('card_object_more')}</Link>
         </div>
       </div>
     );
@@ -39,18 +39,16 @@ export default class extends React.Component {
 
   HeaderError (props) {
     return (
-      <div className="object__header-wrapper">
-        <div className="object__header object__header_error">
-          <div className="object__col">
-            <h2 className="object__title">{props.name}</h2>
-            <span className="object__controllers-info">
-              <i className="n-mark n-mark_error">{props.controllersErrorsCount}</i>
-              {$t('card_object_error_controllers', {count: props.errorsCount})}
-            </span>
-          </div>
-          <div className="object__col object__col_right">
-            <Link to="/" className="btn btn_warning">{$t('MORE')}</Link>
-          </div>
+      <div className="object__header">
+        <div className="card__col">
+          <h2 className="object__title">{props.name}</h2>
+          <span className="object__controllers-info">
+            <i className="n-mark n-mark_error">{props.controllersErrorsCount}</i>
+            {$t('card_object_error_controllers', {count: props.errorsCount})}
+          </span>
+        </div>
+        <div className="card__col">
+          <Link to="/controllers" className="btn btn_warning">{$t('MORE')}</Link>
         </div>
       </div>
     );
@@ -64,33 +62,6 @@ export default class extends React.Component {
     return <this.HeaderOk {...props} />;
   }
 
-  AmountTable (props) {
-    const rows = props.children;
-    return (
-      <table className="object__col">
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
-    );
-  }
-
-  AmountTableRow (props) {
-    const data = props.children;
-    let className = 'amount-table__name';
-    let classAmount = 'amount-table__amount';
-    if (!props.responsive) {
-      className += ' amount-table__row_left';
-      classAmount += ' amount-table__row_right';
-    }
-    return (
-      <tr className={props.rowClass}>
-        <td className={className}>{data[0]}</td>
-        <td className={classAmount}>{data[1]} ₽</td>
-      </tr>
-    );
-  }
-
   Body (props) {
     const  length = props.counters.length;
     let divider = length / 2;
@@ -102,26 +73,26 @@ export default class extends React.Component {
 
     return (
       <div className="object__body">
-        <this.AmountTable>
+        <AmountTable>
           {countersArrLeft.map((c, index) => {
             return (
-              <this.AmountTableRow key={index} rowClass="amount-table__row_big">
+              <AmountTableRow key={index} rowClass="amount-table__row_big">
                 {c.name}
                 <i className="n-mark n-mark_ok">{c.amount}</i>
-              </this.AmountTableRow>
+              </AmountTableRow>
             );
           })}
-        </this.AmountTable>
-        <this.AmountTable>
+        </AmountTable>
+        <AmountTable>
           {countersArrRight.map((c, index) => {
             return (
-              <this.AmountTableRow key={index} rowClass="amount-table__row_big" responsive="true">
+              <AmountTableRow key={index} rowClass="amount-table__row_big" responsive="true">
                 {c.name}
                 <i className="n-mark n-mark_ok">{c.amount}</i>
-              </this.AmountTableRow>
+              </AmountTableRow>
             );
           })}
-        </this.AmountTable>
+        </AmountTable>
       </div>
     );
   }
@@ -129,21 +100,21 @@ export default class extends React.Component {
   Footer (props) {
     return (
       <div className="object__footer">
-        <this.AmountTable>
-          <this.AmountTableRow>
+        <AmountTable>
+          <AmountTableRow>
             <span>{$t('card_object_current_month')}</span>
             <i className="n-mark">{props.curMonthAmount}</i>
-          </this.AmountTableRow>
-          <this.AmountTableRow>
+          </AmountTableRow>
+          <AmountTableRow>
             <span>{$t('card_object_last_month')}</span>
             <i className="n-mark">{props.lastMonthAmount}</i>
-          </this.AmountTableRow>
-          <this.AmountTableRow>
+          </AmountTableRow>
+          <AmountTableRow>
             <span>{$t('card_object_average_year')}</span>
             <i className="n-mark">{props.yearAverageAmount}</i>
-          </this.AmountTableRow>
-        </this.AmountTable>
-        <div className="object__col object__col_right">
+          </AmountTableRow>
+        </AmountTable>
+        <div className="card__col">
           <Link to="/" className="btn btn_ok">{$t('card_object_pay')}</Link>
         </div>
       </div>
@@ -151,8 +122,9 @@ export default class extends React.Component {
   }
 
   render () {
+    const status = this.props.controllersErrorsCount === 0;
     return (
-      <Card>
+      <Card ok={status}>
         <this.Header {...this.props} />
         <this.Body {...this.props} />
         <this.Footer {...this.props} />
@@ -162,5 +134,11 @@ export default class extends React.Component {
 
   get displayName() {
     return 'Object';
+  }
+
+  static get propTypes () {
+    return {
+      controllersErrorsCount: PropTypes.number,
+    };
   }
 }

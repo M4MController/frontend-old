@@ -10,7 +10,14 @@
       "card_object_active_controllers": "active controller",
       "card_object_active_controllers_plural": "active controllers",
       "card_object_error_controllers": "controller error",
-      "card_object_error_controllers_plural": "controller errors"
+      "card_object_error_controllers_plural": "controller errors",
+      "card_controller_accural": "Accural",
+      "card_controller_overpay": "Overpay",
+      "card_controller_summary": "Summary payment",
+      "card_controller_current_month": "Current month",
+      "card_controller_last_month": "Last month",
+      "card_controller_average_year": "Year average",
+      "card_controller_forecast": "forecast"
     }
   }
 }

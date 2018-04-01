@@ -12,7 +12,14 @@
       "card_object_active_controllers_2": "контроллеров",
       "card_object_error_controllers_0": "ошибок",
       "card_object_error_controllers_1": "ошибки",
-      "card_object_error_controllers_2": "ошибок"
+      "card_object_error_controllers_2": "ошибок",
+      "card_controller_accural": "Начисление",
+      "card_controller_overpay": "Переплата",
+      "card_controller_summary": "Итого к оплате",
+      "card_controller_current_month": "Текущий месяц",
+      "card_controller_last_month": "Предыдущий месяц",
+      "card_controller_average_year": "Среднее за год",
+      "card_controller_forecast": "прогноз"
     }
   }
 }

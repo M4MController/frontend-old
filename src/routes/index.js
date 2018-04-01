@@ -15,6 +15,7 @@ import {Link, Route, Switch} from 'react-router-dom';
 import Test from './test';
 import NotFound from './not-found';
 import Object from 'src/components/object';
+import Controller from 'src/components/controller';
 import Container from 'src/components/container';
 
 import 'index.scss';
@@ -74,6 +75,19 @@ class IndexRoute extends RouteComponent {
       yearAverageAmount: 6000,
     };
 
+    const controllerData = {
+      controllerError: false,
+      controllerName: 'ELECTRICITY',
+      companyName: 'AnyCompany-Name',
+      curMonthAmount: 3789,
+      curMonthForecast: 7232,
+      lastMonthAmount: 5678,
+      yearAverageAmount: 6000,
+      accural: 100,
+      overpay: 70,
+      summary: 30,
+    };
+
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">
@@ -122,6 +136,16 @@ class IndexRoute extends RouteComponent {
                   <Object {...cardData}/>
                   <Object {...cardData}/>
                   <Object {...cardData}/>
+                </Container>
+              </Route>
+              <Route exact path='/controllers'>
+                <Container>
+                  <Controller {...controllerData}/>
+                  <Controller {...controllerData}/>
+                  <Controller {...controllerData}/>
+                  <Controller {...controllerData}/>
+                  <Controller {...controllerData}/>
+                  <Controller {...controllerData}/>
                 </Container>
               </Route>
               <Route path='/test' component={Test}/>
