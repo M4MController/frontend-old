@@ -42,18 +42,25 @@ export default class extends React.Component {
     );
   }
 
-  render () {
+  render() {
+    const header = this.props.header ? (
+      <this.Header ok={this.props.ok}>
+        {this.props.header}
+      </this.Header>
+    ) : undefined;
+    const footer = this.props.footer ? (
+      <this.Footer>
+        {this.props.footer}
+      </this.Footer>
+    ) : undefined;
+
     return (
       <div className="card">
-        <this.Header ok={this.props.ok}>
-          {this.props.children[0]}
-        </this.Header>
+        {header}
         <this.Body>
-          {this.props.children[1]}
+          {this.props.children}
         </this.Body>
-        <this.Footer>
-          {this.props.children[2]}
-        </this.Footer>
+        {footer}
       </div>
     );
   }
@@ -62,8 +69,10 @@ export default class extends React.Component {
     return 'Card';
   }
 
-  static get propTypes () {
+  static get propTypes() {
     return {
+      header: PropTypes.node,
+      footer: PropTypes.node,
       children: PropTypes.node,
       ok: PropTypes.bool,
     };

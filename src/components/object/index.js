@@ -124,10 +124,11 @@ export default class extends React.Component {
   render () {
     const status = this.props.controllersErrorsCount === 0;
     return (
-      <Card ok={status}>
-        <this.Header {...this.props} />
+      <Card ok={status}
+        header={this.Header(this.props)}
+        footer={this.Footer(this.props)}
+      >
         <this.Body {...this.props} />
-        <this.Footer {...this.props} />
       </Card>
     );
   }
