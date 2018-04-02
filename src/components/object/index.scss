@@ -1,71 +1,8 @@
-@import "src/styles/constants.scss";
-
-.amount-table {
-  &__row_left {
-    min-width: 110px;
-  }
-  
-  &__row_right {
-    min-width: 90px;
-  }
-
-  &__row_big {
-    height: 35px;
-  }
-
-  &__name {
-    text-align: left;
-    padding: 0 15px 0 0;
-  }
-
-  &__amount {
-    text-align: right;
-  }
-}
-
 .object {
-  &__col {
-    display: inline-block;
-    padding: 0 20px;
-    vertical-align: middle; // if in other .class - doesn't work o_O
-  }
-
-  &__header-wrapper {
-    background: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?1481011582195555');
-    background-size: cover;
-    background-position: center;
-  }
-
   &__header, &__body, &__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  &__header {
-    padding: 20px 0px;
-    color: $object-card-header-color;
-  }
-
-  &__body {
-    background: $object-card-body-background;
-  }
-
-  &__footer {
-    background: $object-card-footer-background;
-  }
-
-  &__header_ok {
-    background: $object-card-header-ok-background;
-  }
-
-  &__header_error {
-    background: $object-card-header-error-background;
-  }
-
-  &__title {
-    font-size: $big-font-size;
-    font-weight: normal;
-    margin: 0 0 10px 0;
+    width: 100%;
   }
 }
