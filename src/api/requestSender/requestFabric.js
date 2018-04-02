@@ -1,5 +1,7 @@
 import AuthorizationRequest from 'src/api/requestSender/userRequests/authorizationRequest';
 import UserInfoRequest from 'src/api/requestSender/userRequests/userinfoRequest';
+import UserObjectsRequest from 'src/api/requestSender/objectRequests/userObjectsRequest';
+import UserObjectControllersRequest from 'src/api/requestSender/objectRequests/userObjectControllersRequest';
 import UserControllersRequest from 'src/api/requestSender/controllerRequests/userControllersRequest';
 import UserControllerSensorsRequest from 'src/api/requestSender/controllerRequests/userControllerSensorsRequest';
 import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests/userControllerstatsRequest';
@@ -20,6 +22,16 @@ export let defaultsettings = {
     userinfo: {
       request: UserInfoRequest,
       url: '/user/user_info',
+      method: 'GET',
+    },
+    userObjects: {
+      request: UserObjectsRequest,
+      url: '/object/get_user_objects',
+      method: 'GET',
+    },
+    userObjectControllers: {
+      request: UserObjectControllersRequest,
+      url: '/object/:object_id/get_controllers',
       method: 'GET',
     },
     usercontrollers: {

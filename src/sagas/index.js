@@ -7,9 +7,11 @@
 import {all} from 'redux-saga/effects';
 
 import language from './language';
+import object from './object';
 
 export default function* () {
   yield all([
     language(),
+    object(),
   ]);
 }

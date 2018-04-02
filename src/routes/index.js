@@ -5,7 +5,6 @@
 'use strict';
 
 import React from 'react';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
@@ -22,21 +21,21 @@ import 'index.scss';
 import 'src/styles/helpers.scss';
 
 import * as LanguageActions from 'src/actions/language';
+import * as ObjectActions from 'src/actions/object';
 
 @withRouter
 @connect(state => ({
   language: state.language,
+  object: state.object,
+  execution: state.execution,
 }))
 class IndexRoute extends RouteComponent {
   constructor(...args) {
     super(...args);
-    this.languageActions = bindActionCreators(LanguageActions, this.props.dispatch);
   }
 
   setLanguage(currentLanguage = this.props.language.current) {
-    this.languageActions.changeLanguage(currentLanguage);
-    // todo: move language update into saga
-    // i18n(currentLanguage);
+    this.props.dispatch(LanguageActions.changeLanguage(currentLanguage));
   }
 
   render() {
@@ -110,11 +109,8 @@ class IndexRoute extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <span style={{color: 'white'}}>It can contains some content:</span>
-              <img src="/images/logo.svg" className="app-header-height"/>
-              <img src="/images/logo.svg" className="app-header-height"/>
-              <img src="/images/logo.svg" className="app-header-height"/>
-              <img src="/images/logo.svg" className="app-header-height"/>
+              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[ObjectActions.updateAll])}</div>
+              <div style={{color: 'white'}}>{JSON.stringify(this.props.object)}</div>
             </div>
           </div>
 
