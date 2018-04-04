@@ -1,7 +1,16 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
+import Controller from '../../../models/controller';
 
 export default class UserControllersRequest extends BaseRequest {
-  execute () {
+  get model() {
+    return Controller;
+  }
+
+  get isMultiple() {
+    return true;
+  }
+
+  execute() {
     return this._prepareRequest();
   }
 }
