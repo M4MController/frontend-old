@@ -1,8 +1,12 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
+import Data from 'src/models/data';
 
 export default class UserSensorDataRequest extends BaseRequest {
-  execute (sensor_id, date, limit) {
+  get model() {
+    return Data;
+  }
 
+  execute(sensor_id, date, limit) {
     if (!sensor_id || typeof sensor_id !== 'number')
       throw new TypeError('sensor_id undefined or not a number');
 

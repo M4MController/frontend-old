@@ -1,38 +1,56 @@
 import requestSender from 'src/api/requestSender/requestSender';
 
 export default class BaseRequest {
-  constructor () {
+  constructor() {
   }
 
-  get url () {
+  get url() {
     return this._url;
   }
 
-  set url (value) {
+  set url(value) {
     if (!value || typeof value !== 'string')
       throw new TypeError('url undefined or not a string');
     this._url = value;
   }
 
-  get method () {
+  get method() {
     return this._method;
   }
 
-  set method (value) {
+  set method(value) {
     if (!value || typeof value !== 'string')
       throw new TypeError('method undefined or not a string');
     this._method = value;
   }
 
-  _prepareRequest (params) {
+  /**
+   * Model which is returned by the request. If null, execute() will return raw data without parsiong into model.
+   * @return {Function}
+   * @private
+   */
+  get model() {
+    return null;
+  }
+
+  /**
+   * If request receives array of records, it must be true;
+   * If request receives a single record, it must be false;
+   * @return {boolean}
+   * @private
+   */
+  get isMultiple() {
+    return false;
+  }
+
+  async _prepareRequest(params) {
     if (!this._url || !this._method) {
       throw new TypeError('url or method undefined');
     }
 
-    let options = {
+    const options = {
       url: this._url,
       method: this._method,
-      withCredentials: true,
     };
 
     if (params) {
@@ -45,6 +63,28 @@ export default class BaseRequest {
       }
     }
 
-    return requestSender(options);
+    const response = await requestSender(options);
+    const code = response['code'];
+    const payload = response['msg'];
+
+    if (code !== 0) {
+      throw {
+        code,
+        error: payload,
+      };
+    }
+
+    if (payload) {
+      if (this.model) {
+        return this.isMultiple ? payload.map(x => new this.model(x)) : new this.model(payload);
+      } else {
+        return payload;
+      }
+    }
+    return true;
+  }
+
+  execute() {
+    return this._prepareRequest();
   }
 }

@@ -19,7 +19,7 @@ export let defaultsettings = {
       url: '/user/sign_in',
       method: 'POST',
     },
-    userinfo: {
+    userInfo: {
       request: UserInfoRequest,
       url: '/user/user_info',
       method: 'GET',
@@ -34,27 +34,27 @@ export let defaultsettings = {
       url: '/object/:object_id/get_controllers',
       method: 'GET',
     },
-    usercontrollers: {
+    userControllers: {
       request: UserControllersRequest,
       url: '/controller/get_user_controllers',
       method: 'GET',
     },
-    usercontrollersensors: {
+    userControllerSensors: {
       request: UserControllerSensorsRequest,
       url: '/controller/:controller_id/get_sensors',
       method: 'GET',
     },
-    usercontrollerstats: {
+    userControllerStats: {
       request: UserControllerStatsRequest,
       url: '/controller/:controller_id/get_controller_stats',
       method: 'GET',
     },
-    usersensorstats: {
+    userSensorStats: {
       request: UserSensorStatsRequest,
       url: '/sensor/:sensor_id/view_stats',
       method: 'GET',
     },
-    usersensordata: {
+    userSensorData: {
       request: UserSensorDataRequest,
       url: '/sensor/:sensor_id/get_data',
       method: 'GET',
@@ -63,7 +63,7 @@ export let defaultsettings = {
 };
 
 export class RequestFabric {
-  constructor (settings) {
+  constructor(settings) {
     let self = this;
     this.settings = settings || defaultsettings;
 
@@ -75,7 +75,7 @@ export class RequestFabric {
     });
   }
 
-  _withoutParamsRequest (name) {
+  _withoutParamsRequest(name) {
     let httpprot = this.settings.httpprotocol;
     let host = this.settings.host;
     let request = new (this.settings.requests[name].request)();
