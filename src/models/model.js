@@ -11,14 +11,14 @@ export default class {
   }
 
   addProxyAttributes() {
-    for (let property in Object.keys(this._proxyAttributes)) {
+    Object.keys(this._proxyAttributes).forEach(property => {
       Object.defineProperty(this, property, {
         enumerable: true,
         get: () => {
           return this._rawData[this._proxyAttributes[property]];
         },
       });
-    }
+    });
   }
 
   get _proxyAttributes() {

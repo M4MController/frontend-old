@@ -22,16 +22,23 @@ import 'src/styles/helpers.scss';
 
 import * as LanguageActions from 'src/actions/language';
 import * as ObjectActions from 'src/actions/object';
+import * as DataActions from 'src/actions/data';
 
 @withRouter
 @connect(state => ({
   language: state.language,
   object: state.object,
+  data: state.data,
   execution: state.execution,
 }))
 class IndexRoute extends RouteComponent {
-  constructor(...args) {
-    super(...args);
+  componentDidMount() {
+    this.props.dispatch(ObjectActions.updateAll());
+    this.props.dispatch(DataActions.updateSensor({
+      sensorId: 1,
+      date: new Date(),
+      limit: 10,
+    }));
   }
 
   setLanguage(currentLanguage = this.props.language.current) {
@@ -111,6 +118,8 @@ class IndexRoute extends RouteComponent {
             <div className="pull-right">
               <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[ObjectActions.updateAll])}</div>
               <div style={{color: 'white'}}>{JSON.stringify(this.props.object)}</div>
+              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[DataActions.updateSensor])}</div>
+              <div style={{color: 'white'}}>{JSON.stringify(this.props.data)}</div>
             </div>
           </div>
 
