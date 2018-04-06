@@ -90,8 +90,10 @@ class IndexRoute extends RouteComponent {
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">
-          <Link to="/" className="app__logo block" align="middle">
-            <img src="/images/logo.svg" className="max-height"/>
+          <Link to="/" className="app__logo block">
+            <div className="max-height" align="center">
+              <img src="/images/logo.svg" className="max-height"/>
+            </div>
           </Link>
 
           <div className="app__menu app-content-height">
