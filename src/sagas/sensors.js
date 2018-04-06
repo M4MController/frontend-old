@@ -8,8 +8,8 @@ const userControllerSensors = api.userControllerSensors();
 const getSensors = function* (action) {
   yield put(executionAction.start(sensorsActions.getSensors));
   try {
-    const object = yield call(() => userControllerSensors.execute(action.controller_id));
-    yield put(sensorsActions.getSensors(action.controller_id,object));
+    const object = yield call(() => userControllerSensors.execute(action.controllerId));
+    yield put(sensorsActions.getSensors(action.controllerId, object));
     yield put(executionAction.done(sensorsActions.getSensors));
   } catch (error) {
     yield put(executionAction.fail(sensorsActions.getSensors,error));
