@@ -13,7 +13,7 @@ import * as objectActions from 'src/actions/object';
 
 const userObjectsRequest = api.userObjects();
 
-const updateAll = function* (action) {
+const updateAll = function* (/*action*/) {
   yield put(executionActions.start(objectActions.updateAll));
   try {
     const objects = yield call(() => userObjectsRequest.execute());

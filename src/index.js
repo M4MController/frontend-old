@@ -22,7 +22,7 @@ import * as objectActions from 'src/actions/object';
 // must be imported into the project at least once
 import 'normalize.css';
 import 'src/styles/global.scss';
-import * as sensorsActions from "./actions/sensors";
+import * as sensorsActions from './actions/sensors';
 
 function configureStore(initialState = {}) {
   const sagaMiddleware = createSagaMiddleware();
@@ -57,7 +57,7 @@ const store = configureStore();
 const initStore = function(store) {
   store.dispatch(objectActions.updateAll());
   store.dispatch(sensorsActions.getSensors(1));
-  debugger;
+  
 };
 
 class App extends React.Component {
