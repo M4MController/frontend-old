@@ -1,9 +1,9 @@
 import {GET_SENSORS} from '../actionTypes/sensors';
 
-export function getSensors(controller_id, response = undefined) {
+export function getSensors(controllerId, response = undefined) {
   return {
     type: GET_SENSORS,
-    controller_id,
+    controllerId,
     response,
   };
 }

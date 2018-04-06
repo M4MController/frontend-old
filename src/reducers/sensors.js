@@ -6,10 +6,10 @@ const initialState = {
 
 function updateData (state, action) {
   if (!action.response) return state;
-  const filter = data => data.controllerId === action.controller_id;
+  const filter = data => data.controllerId === action.controllerId;
   return {
     items: {
-      [action.controller_id]: action.response.filter(filter),
+      [action.controllerId]: action.response.filter(filter),
     },
   };
 }
