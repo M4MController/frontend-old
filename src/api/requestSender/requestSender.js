@@ -1,5 +1,9 @@
 import axios from 'axios';
 
-export default function requestSender (options) {
-  return axios(options);
+export default async function requestSender(options) {
+  const response = await axios({
+    ...options,
+    withCredentials: true,
+  });
+  return response.data;
 }
