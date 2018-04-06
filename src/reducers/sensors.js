@@ -1,17 +1,15 @@
 import * as sensorsActions from '../actions/sensors';
 
 const initialState = {
-  items: [],
+  items: {},
 };
 
 function updateData (state, action) {
   if (!action.response) return state;
-  const filter = data => data.controllerId === action.controllerId;
-  return {
-    items: {
-      [action.controllerId]: action.response.filter(filter),
-    },
-  };
+  let newState = {};
+  Object.assign(newState,state);
+  newState.items[action.response.controlerId] = action.response;
+  return newState;
 }
 
 export default function (state = initialState, action) {
