@@ -14,7 +14,7 @@ const userControllers = api.userObjectControllers();
 function *fetchControllers(action){
     yield put(executionAction.start(controllerActions.fetchControllers));
     try{
-        const response = yield call(() => userControllers.execute());
+        const response = yield call(() => userControllers.execute(action.objectId));
         yield put(controllerActions.fetchControllers(action.objectId, response));
         yield put(executionAction.done(controllerActions.fetchControllers));
 
