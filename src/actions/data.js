@@ -6,7 +6,7 @@
 
 import {UPDATE_SENSOR_DATA} from 'src/actionTypes/data';
 
-export function updateSensor({sensorId, date, limit}, items) {
+export function updateSensor({sensorId, date, limit}, items = undefined) {
   return {
     type: UPDATE_SENSOR_DATA,
     sensorId,

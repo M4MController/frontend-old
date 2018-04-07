@@ -32,13 +32,19 @@ import * as DataActions from 'src/actions/data';
   execution: state.execution,
 }))
 class IndexRoute extends RouteComponent {
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(ObjectActions.updateAll());
     this.props.dispatch(DataActions.updateSensor({
       sensorId: 1,
       date: new Date(),
       limit: 10,
     }));
+
+    setTimeout(() => this.props.dispatch(DataActions.updateSensor({
+      sensorId: 2,
+      date: new Date(),
+      limit: 10,
+    })), 1000);
   }
 
   setLanguage(currentLanguage = this.props.language.current) {

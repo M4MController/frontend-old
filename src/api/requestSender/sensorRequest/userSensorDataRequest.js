@@ -11,9 +11,6 @@ export default class UserSensorDataRequest extends BaseRequest {
   }
 
   async execute(sensor_id, date, limit) {
-    return [
-      {controller_id:1,date: new Date().toString()},
-    ];
     if (!sensor_id || typeof sensor_id !== 'number')
       throw new TypeError('sensor_id undefined or not a number');
 
