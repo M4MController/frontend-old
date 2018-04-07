@@ -9,12 +9,12 @@ import * as controllerActions from '../actions/controller';
 import {put, call, takeEvery} from 'redux-saga/effects';
 import * as executionAction from '../actions/execution';
 
-const userControllers = api.userControllers();
+const userControllers = api.userObjectControllers();
 
 function *fetchControllers(action){
     yield put(executionAction.start(controllerActions.fetchControllers));
     try{
-        const response = yield call(() => userControllers.execute()); // Без параметров?
+        const response = yield call(() => userControllers.execute());
         yield put(controllerActions.fetchControllers(action.objectId, response));
         yield put(executionAction.done(controllerActions.fetchControllers));
 

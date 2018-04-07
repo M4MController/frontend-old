@@ -4,7 +4,7 @@
 
 'use strict';
 
-import * as controllerActions from "../actions/controller";
+import * as controllerActions from '../actions/controller';
 
 const initialState = {
     items: {},
@@ -23,7 +23,7 @@ function updateControllers(state, action){
 
 export default function (state = initialState, action){
     switch (action.type){
-        case controllerActions.fetchControllers: {
+        case controllerActions.fetchControllers.toString(): {
             return updateControllers(state, action)
         }
         default: {
