@@ -11,19 +11,19 @@ import * as executionAction from '../actions/execution';
 
 const userControllers = api.userObjectControllers();
 
-function *fetchControllers(action){
-    yield put(executionAction.start(controllerActions.fetchControllers));
-    try{
-        const response = yield call(() => userControllers.execute(action.objectId));
-        yield put(controllerActions.fetchControllers(action.objectId, response));
-        yield put(executionAction.done(controllerActions.fetchControllers));
+function *fetchControllers(action) {
+  yield put(executionAction.start(controllerActions.fetchControllers));
+  try {
+    const response = yield call(() => userControllers.execute(action.objectId));
+    yield put(controllerActions.fetchControllers(action.objectId, response));
+    yield put(executionAction.done(controllerActions.fetchControllers));
 
-    } catch(err){
-        yield put(executionAction.fail(controllerActions.fetchControllers, err));
-    }
+  } catch (err) {
+    yield put(executionAction.fail(controllerActions.fetchControllers, err));
+  }
 
 }
 
-export default function *(){
-    yield takeEvery(controllerActions.fetchControllers, fetchControllers);
+export default function *() {
+  yield takeEvery(controllerActions.fetchControllers, fetchControllers);
 }
