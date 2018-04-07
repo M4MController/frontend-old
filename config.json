@@ -1,6 +1,6 @@
 {
   "backend": {
     "schema": "http",
-    "host": "localhost:4000"
+    "host": "meter4.me"
   }
 }
