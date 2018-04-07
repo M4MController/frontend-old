@@ -6,11 +6,11 @@
 
 import {FETCH_CONTROLLERS} from '../actionTypes/controller';
 
-export function fetchControllers(objectId){
+export function fetchControllers(objectId, response = undefined){
     return {
         type: FETCH_CONTROLLERS,
         objectId,
-        response
+        response,
     }
 }
 

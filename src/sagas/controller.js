@@ -12,6 +12,15 @@ import * as executionAction from '../actions/execution';
 const userControllers = api.userControllers();
 
 function *fetchControllers(action){
+    yield put(executionAction.start(controllerActions.fetchControllers));
+    try{
+        const response = yield call(() => userControllers.execute()); // Без параметров?
+        yield put(controllerActions.fetchControllers(action.objectId, response));
+        yield put(executionAction.done(controllerActions.fetchControllers));
+
+    } catch(err){
+        yield put(executionAction.fail(controllerActions.fetchControllers, err));
+    }
 
 }
 
