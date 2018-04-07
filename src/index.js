@@ -81,4 +81,3 @@ const render = function() {
 
 initStore(store);
 render();
-store.subscribe(render);
