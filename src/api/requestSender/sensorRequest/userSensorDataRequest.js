@@ -23,7 +23,7 @@ export default class UserSensorDataRequest extends BaseRequest {
     if (!limit || typeof limit !== 'number')
       throw new TypeError('limit undefined or not a number');
 
-    this._url = this._url.replace(/:\w+/, sensor_id);
+    this._url = this._url.replace(/:sensor_id/, sensor_id);
     return this._prepareRequest({
       params: {
         date, limit,
