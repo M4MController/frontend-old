@@ -6,12 +6,14 @@
 
 import {all} from 'redux-saga/effects';
 
+import data from './data';
 import language from './language';
 import object from './object';
 import sensors from './sensors';
 
 export default function* () {
   yield all([
+    data(),
     language(),
     object(),
     sensors(),

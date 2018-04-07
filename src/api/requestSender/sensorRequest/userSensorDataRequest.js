@@ -6,7 +6,11 @@ export default class UserSensorDataRequest extends BaseRequest {
     return Data;
   }
 
-  execute(sensor_id, date, limit) {
+  get isMultiple() {
+    return true;
+  }
+
+  async execute(sensor_id, date, limit) {
     if (!sensor_id || typeof sensor_id !== 'number')
       throw new TypeError('sensor_id undefined or not a number');
 

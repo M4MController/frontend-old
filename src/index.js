@@ -57,7 +57,7 @@ const store = configureStore();
 const initStore = function(store) {
   store.dispatch(objectActions.updateAll());
   store.dispatch(sensorsActions.getSensors(1));
-  
+
 };
 
 class App extends React.Component {
