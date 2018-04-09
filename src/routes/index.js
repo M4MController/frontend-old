@@ -32,7 +32,14 @@ import * as DataActions from 'src/actions/data';
   execution: state.execution,
 }))
 class IndexRoute extends RouteComponent {
-  componentWillMount() {
+  async componentWillMount() {
+    // todo: убрать это отсюда как можно скорее
+    try {
+      await require('src/api').authorization().execute('ml@gmail.com', '123456');
+    } catch (e) {
+      console.log('Can not authorize', e);
+    }
+
     this.props.dispatch(ObjectActions.updateAll());
     this.props.dispatch(DataActions.updateSensor({
       sensorId: 1,
