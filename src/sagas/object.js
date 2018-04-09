@@ -14,7 +14,7 @@ import * as objectActions from 'src/actions/object';
 const userObjectsRequest = api.userObjects();
 
 const updateAll = function* (action) {
-  if (action.response) yield cancel(); // if items are provided we're not need to fetch them
+  if (action.items) yield cancel(); // if items are provided we're not need to fetch them
   yield put(executionActions.start(objectActions.updateAll));
   try {
     const objects = yield call(() => userObjectsRequest.execute());
