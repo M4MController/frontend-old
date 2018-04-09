@@ -6,12 +6,13 @@
 
 import api from '../api';
 import * as controllerActions from '../actions/controller';
-import {put, call, takeEvery} from 'redux-saga/effects';
+import {put, call, takeEvery, cancel} from 'redux-saga/effects';
 import * as executionAction from '../actions/execution';
 
 const userControllers = api.userObjectControllers();
 
 function *fetchControllers(action) {
+  if (action.response) yield cancel(); // if items are provided we're not need to fetch them
   yield put(executionAction.start(controllerActions.fetchControllers));
   try {
     const response = yield call(() => userControllers.execute(action.objectId));
