@@ -10,7 +10,4 @@ export default class UserControllersRequest extends BaseRequest {
     return true;
   }
 
-  execute() {
-    return this._prepareRequest();
-  }
 }

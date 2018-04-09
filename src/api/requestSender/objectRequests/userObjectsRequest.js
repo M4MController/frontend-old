@@ -9,4 +9,15 @@ export default class extends BaseRequest {
   get isMultiple() {
     return true;
   }
+
+ async execute() {
+    return [
+        {
+          "id": 1,
+          "name": "Имя Объекта",
+          "user_id": 1,
+          "adres": "Улица Пушкина, Дом Колотушкина"
+        }
+      ]
+  }
 }

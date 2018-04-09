@@ -41,33 +41,29 @@ class IndexRoute extends RouteComponent {
     super(...args);
   }
 
-  async componentWillMount() {
-    this.setState({
-      objects: []
-    });
-
-
+  async componentDidMount() {
     // todo: убрать это отсюда как можно скорее
     try {
-      await api.authorization().execute('ml@gmail.com', '123456');
+      // await api.authorization().execute('ml@gmail.com', '123456');
     } catch (e) {
       console.log('Can not authorize', e);
     }
 
     const objects = await api.userObjects().execute();
-    for (let object in objects) {
+    for (let object of objects) {
+      // console.log(objects);
       object.controllers = await api.userObjectControllers().execute(object.id);
 
-      for (let controller in object.controllers) {
+      for (let controller of object.controllers) {
         controller.sensors = await api.userControllerSensors().execute(controller.id);
 
-        for (let sensor in controller.sensors) {
+        for (let sensor of controller.sensors) {
           sensor.data = await api.userSensorData().execute(sensor.id);
         }
       }
     }
 
-    this.setProps({
+    this.setState({
       objects,
     });
   }
@@ -159,6 +155,7 @@ class IndexRoute extends RouteComponent {
                   <div>
                   {
                     this.state.objects.map(object => {
+                      console.log(object);
                       return <Object key={object.id} object={object}/>
                     })
                   }
