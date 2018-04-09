@@ -24,6 +24,9 @@ import * as LanguageActions from 'src/actions/language';
 import * as ObjectActions from 'src/actions/object';
 import * as DataActions from 'src/actions/data';
 
+// todo: убрать это отсюда как можно скорее
+import api from 'src/api';
+
 @withRouter
 @connect(state => ({
   language: state.language,
@@ -35,7 +38,7 @@ class IndexRoute extends RouteComponent {
   async componentWillMount() {
     // todo: убрать это отсюда как можно скорее
     try {
-      await require('src/api').authorization().execute('ml@gmail.com', '123456');
+      await api.authorization().execute('ml@gmail.com', '123456');
     } catch (e) {
       console.log('Can not authorize', e);
     }
@@ -142,20 +145,7 @@ class IndexRoute extends RouteComponent {
             <Switch>
               <Route exact path='/'>
                 <Container>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
+
                 </Container>
               </Route>
               <Route exact path='/controllers'>
