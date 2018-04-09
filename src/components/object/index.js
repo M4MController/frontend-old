@@ -6,70 +6,79 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Card from 'src/components/card';
-import { AmountTable, AmountTableRow } from 'src/components/card/amounttable';
+import {AmountTable, AmountTableRow} from 'src/components/card/amounttable';
 
 import 'index.scss';
 
 export default class extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.Header = this.Header.bind(this);
     this.Body = this.Body.bind(this);
     this.Footer = this.Footer.bind(this);
   }
 
-  HeaderOk (props) {
+  HeaderOk(props) {
     return (
       <div className="object__header">
         <div className="card__col">
-          <h2 className="card__title">{props.name}</h2>
+          <h2 className="card__title">{props.object.name}</h2>
           <span className="object__controllers-info">
-            <i className="n-mark n-mark_ok">{props.controllersCount}</i>
-            {$t('card_object_active_controllers', {count: props.controllersCount})}
+            <i className="n-mark n-mark_ok">{props.sensors.length}</i>
+            {$t('card_object_active_controllers', {count: props.sensors.length})}
           </span>
         </div>
         <div className="card__col">
-          <Link to="/controllers" className="btn btn_neutral">{$t('card_object_more')}</Link>
+          <Link to={`/object/${props.object.id}`} className="btn btn_neutral">{$t('card_object_more')}</Link>
         </div>
       </div>
     );
   }
 
-  HeaderError (props) {
+  HeaderError(props) {
     return (
+      // todo:
       <div className="object__header">
         <div className="card__col">
-          <h2 className="object__title">{props.name}</h2>
+          <h2 className="object__title">{props.object.name}</h2>
           <span className="object__controllers-info">
-            <i className="n-mark n-mark_error">{props.controllersErrorsCount}</i>
-            {$t('card_object_error_controllers', {count: props.errorsCount})}
+            <i className="n-mark n-mark_error">{'props.controllersErrorsCount'}</i>
+            {$t('card_object_error_controllers', {count: 'props.errorsCount'})}
           </span>
         </div>
         <div className="card__col">
-          <Link to="/controllers" className="btn btn_warning">{$t('MORE')}</Link>
+          <Link to={`/object/${props.object.id}`} className="btn btn_warning">{$t('card_object_more')}</Link>
         </div>
       </div>
     );
   }
 
-  Header (props) {
-    const controllersErrorsCount = props.controllersErrorsCount;
+  Header(props) {
+    const controllersErrorsCount = 0;// todo: props.controllersErrorsCount;
     if (controllersErrorsCount && controllersErrorsCount > 0) {
       return <this.HeaderError {...props} />;
     }
     return <this.HeaderOk {...props} />;
   }
 
-  Body (props) {
-    const  length = props.counters.length;
+  Body(props) {
+    const sensors =
+      props.controllers[props.object.id].map(c => props.sensors[c.id]).reduce((s, c) => (c || []).concat(s), []);
+
+    const counters = sensors.map(sensor => ({
+      name: sensor.name,
+      value: this.props.data[sensor.id].sort((a, b) => a.date > b.date)[0].value,
+    }));
+
+    const length = counters.length;
     let divider = length / 2;
-    const countersArrRight = props.counters.slice(-divider);
-    if(length % 2 !== 0) {
+    const countersArrRight = counters.slice(-divider);
+    if (length % 2 !== 0) {
       divider++;
     }
-    const countersArrLeft = props.counters.slice(0, divider);
+    const countersArrLeft = counters.slice(0, divider);
 
     return (
       <div className="object__body">
@@ -78,7 +87,7 @@ export default class extends React.Component {
             return (
               <AmountTableRow key={index} rowClass="amount-table__row_big">
                 {c.name}
-                <i className="n-mark n-mark_ok">{c.amount}</i>
+                <i className="n-mark n-mark_ok">{c.value}</i>
               </AmountTableRow>
             );
           })}
@@ -88,7 +97,7 @@ export default class extends React.Component {
             return (
               <AmountTableRow key={index} rowClass="amount-table__row_big" responsive="true">
                 {c.name}
-                <i className="n-mark n-mark_ok">{c.amount}</i>
+                <i className="n-mark n-mark_ok">{c.value}</i>
               </AmountTableRow>
             );
           })}
@@ -97,21 +106,21 @@ export default class extends React.Component {
     );
   }
 
-  Footer (props) {
+  Footer(props) {
     return (
       <div className="object__footer">
         <AmountTable>
           <AmountTableRow>
             <span>{$t('card_object_current_month')}</span>
-            <i className="n-mark">{props.curMonthAmount}</i>
+            <i className="n-mark">{'props.curMonthAmount'}</i>
           </AmountTableRow>
           <AmountTableRow>
             <span>{$t('card_object_last_month')}</span>
-            <i className="n-mark">{props.lastMonthAmount}</i>
+            <i className="n-mark">{'props.lastMonthAmount'}</i>
           </AmountTableRow>
           <AmountTableRow>
             <span>{$t('card_object_average_year')}</span>
-            <i className="n-mark">{props.yearAverageAmount}</i>
+            <i className="n-mark">{'props.yearAverageAmount'}</i>
           </AmountTableRow>
         </AmountTable>
         <div className="card__col">
@@ -121,12 +130,12 @@ export default class extends React.Component {
     );
   }
 
-  render () {
+  render() {
     const status = this.props.controllersErrorsCount === 0;
     return (
       <Card ok={status}
-        header={this.Header(this.props)}
-        footer={this.Footer(this.props)}
+            header={this.Header(this.props)}
+            footer={this.Footer(this.props)}
       >
         <this.Body {...this.props} />
       </Card>
@@ -137,8 +146,12 @@ export default class extends React.Component {
     return 'Object';
   }
 
-  static get propTypes () {
+  static get propTypes() {
     return {
+      object: PropTypes.object,
+      controllers: PropTypes.object,
+      sensors: PropTypes.object,
+      data: PropTypes.object,
       controllersErrorsCount: PropTypes.number,
     };
   }

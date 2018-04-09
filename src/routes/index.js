@@ -30,6 +30,8 @@ import api from 'src/api';
 @withRouter
 @connect(state => ({
   language: state.language,
+  controller: state.controller,
+  sensor: state.sensor,
   object: state.object,
   data: state.data,
   execution: state.execution,
@@ -134,10 +136,6 @@ class IndexRoute extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[ObjectActions.updateAll])}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.object)}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[DataActions.updateSensor])}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.data)}</div>
             </div>
           </div>
 
@@ -145,20 +143,11 @@ class IndexRoute extends RouteComponent {
             <Switch>
               <Route exact path='/'>
                 <Container>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
+                  {
+                    this.props.object.items && this.props.object.items.map(object => {
+                      return <Object key={object.id} object={object} controllers={this.props.controller.items} sensors={this.props.sensor.items} data={this.props.data.items}/>
+                    })
+                  }
                 </Container>
               </Route>
               <Route exact path='/controllers'>
