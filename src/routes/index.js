@@ -41,7 +41,7 @@ class IndexRoute extends RouteComponent {
     super(...args);
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     // todo: убрать это отсюда как можно скорее
     try {
       // await api.authorization().execute('ml@gmail.com', '123456');
@@ -51,7 +51,7 @@ class IndexRoute extends RouteComponent {
 
     const objects = await api.userObjects().execute();
     for (let object of objects) {
-      // console.log(objects);
+      console.log(objects);
       object.controllers = await api.userObjectControllers().execute(object.id);
 
       for (let controller of object.controllers) {
@@ -62,6 +62,8 @@ class IndexRoute extends RouteComponent {
         }
       }
     }
+
+    debugger;
 
     this.setState({
       objects,
