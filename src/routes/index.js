@@ -145,7 +145,20 @@ class IndexRoute extends RouteComponent {
             <Switch>
               <Route exact path='/'>
                 <Container>
-                  <Controller {...controllerData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
+                  <Object {...cardData}/>
                 </Container>
               </Route>
               <Route exact path='/controllers'>
