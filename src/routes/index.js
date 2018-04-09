@@ -31,6 +31,8 @@ import Objects from "../components/objects";
 @withRouter
 @connect(state => ({
   language: state.language,
+  controller: state.controller,
+  sensor: state.sensor,
   object: state.object,
   data: state.data,
   execution: state.execution,
