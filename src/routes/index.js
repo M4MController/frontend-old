@@ -37,7 +37,16 @@ import api from 'src/api';
   execution: state.execution,
 }))
 class IndexRoute extends RouteComponent {
+  constructor(...args) {
+    super(...args);
+  }
+
   async componentWillMount() {
+    this.setState({
+      objects: []
+    });
+
+
     // todo: убрать это отсюда как можно скорее
     try {
       await api.authorization().execute('ml@gmail.com', '123456');
@@ -58,7 +67,7 @@ class IndexRoute extends RouteComponent {
       }
     }
 
-    this.setState({
+    this.setProps({
       objects,
     });
   }
@@ -147,11 +156,13 @@ class IndexRoute extends RouteComponent {
             <Switch>
               <Route exact path='/'>
                 <Container>
+                  <div>
                   {
-                    this.props.object.items && this.props.object.items.map(object => {
+                    this.state.objects.map(object => {
                       return <Object key={object.id} object={object}/>
                     })
                   }
+                  </div>
                 </Container>
               </Route>
               <Route exact path='/controllers'>
