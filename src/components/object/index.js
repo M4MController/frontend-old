@@ -63,6 +63,7 @@ export default class extends React.Component {
   }
 
   Body (props) {
+    debugger;
     const  length = props.counters.length;
     let divider = length / 2;
     const countersArrRight = props.counters.slice(-divider);

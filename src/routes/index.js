@@ -26,6 +26,7 @@ import * as DataActions from 'src/actions/data';
 
 // todo: убрать это отсюда как можно скорее
 import api from 'src/api';
+import Objects from "../components/objects";
 
 @withRouter
 @connect(state => ({
@@ -144,22 +145,21 @@ class IndexRoute extends RouteComponent {
           <div className="app__content app-content-height">
             <Switch>
               <Route exact path='/'>
-                <Container>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                </Container>
+                  <Objects />
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
+                  {/*<Object {...cardData}/>*/}
               </Route>
               <Route exact path='/controllers'>
                 <Container>
