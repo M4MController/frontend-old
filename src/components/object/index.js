@@ -7,10 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import Card from 'src/components/card';
-import {AmountTable, AmountTableRow} from 'src/components/card/amounttable';
+import Card from 'src/components/card/index';
+import {AmountTable, AmountTableRow} from 'src/components/card/amounttable/index';
 
-import 'index.scss';
+import './index.scss';
 
 export default class extends React.Component {
   constructor(props) {
@@ -26,8 +26,8 @@ export default class extends React.Component {
         <div className="card__col">
           <h2 className="card__title">{props.object.name}</h2>
           <span className="object__controllers-info">
-            <i className="n-mark n-mark_ok">{props.sensors.length}</i>
-            {$t('card_object_active_controllers', {count: props.sensors.length})}
+            <i className="n-mark n-mark_ok">{props.object.sensors.length}</i>
+            {$t('card_object_active_controllers', {count: props.object.sensors.length})}
           </span>
         </div>
         <div className="card__col">
@@ -64,12 +64,13 @@ export default class extends React.Component {
   }
 
   Body(props) {
-    const sensors =
-      props.controllers[props.object.id].map(c => props.sensors[c.id]).reduce((s, c) => (c || []).concat(s), []);
+    const sensors = props.object.controllers.map(c => c.sensors).reduce((s, c) => (c || []).concat(s), []);
+    // const sensors =
+    //   props.controllers[props.object.id].map(c => props.sensors[c.id]).reduce((s, c) => (c || []).concat(s), []);
 
     const counters = sensors.map(sensor => ({
       name: sensor.name,
-      value: this.props.data[sensor.id].sort((a, b) => a.date > b.date)[0].value,
+      value: sensor.data.sort((a, b) => a.date > b.date)[0].value,
     }));
 
     const length = counters.length;

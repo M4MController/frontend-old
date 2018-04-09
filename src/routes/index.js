@@ -26,7 +26,6 @@ import * as DataActions from 'src/actions/data';
 
 // todo: убрать это отсюда как можно скорее
 import api from 'src/api';
-import Objects from "../components/objects";
 
 @withRouter
 @connect(state => ({
@@ -46,18 +45,22 @@ class IndexRoute extends RouteComponent {
       console.log('Can not authorize', e);
     }
 
-    this.props.dispatch(ObjectActions.updateAll());
-    this.props.dispatch(DataActions.updateSensor({
-      sensorId: 1,
-      date: new Date(),
-      limit: 10,
-    }));
+    const objects = await api.userObjects().execute();
+    for (let object in objects) {
+      object.controllers = await api.userObjectControllers().execute(object.id);
 
-    setTimeout(() => this.props.dispatch(DataActions.updateSensor({
-      sensorId: 2,
-      date: new Date(),
-      limit: 10,
-    })), 1000);
+      for (let controller in object.controllers) {
+        controller.sensors = await api.userControllerSensors().execute(controller.id);
+
+        for (let sensor in controller.sensors) {
+          sensor.data = await api.userSensorData().execute(sensor.id);
+        }
+      }
+    }
+
+    this.setState({
+      objects,
+    });
   }
 
   setLanguage(currentLanguage = this.props.language.current) {
@@ -137,31 +140,19 @@ class IndexRoute extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[ObjectActions.updateAll])}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.object)}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[DataActions.updateSensor])}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.data)}</div>
             </div>
           </div>
 
           <div className="app__content app-content-height">
             <Switch>
               <Route exact path='/'>
-                  <Objects />
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
-                  {/*<Object {...cardData}/>*/}
+                <Container>
+                  {
+                    this.props.object.items && this.props.object.items.map(object => {
+                      return <Object key={object.id} object={object}/>
+                    })
+                  }
+                </Container>
               </Route>
               <Route exact path='/controllers'>
                 <Container>
