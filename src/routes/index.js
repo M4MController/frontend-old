@@ -145,7 +145,7 @@ class IndexRoute extends RouteComponent {
             <Switch>
               <Route exact path='/'>
                 <Container>
-
+                  <Controller {...controllerData}/>
                 </Container>
               </Route>
               <Route exact path='/controllers'>
