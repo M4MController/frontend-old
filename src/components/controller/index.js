@@ -46,7 +46,7 @@ export default class extends React.Component {
         <div className="controller__info">
           <span className="card__col">{props.periodName}</span>
           <span className="card__col">
-            {this.props.sensor.value} W
+            {this.props.sensor.data[0].value} W
             {props.children}
           </span>
         </div>
