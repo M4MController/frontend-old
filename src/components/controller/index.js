@@ -46,7 +46,7 @@ export default class extends React.Component {
         <div className="controller__info">
           <span className="card__col">{props.periodName}</span>
           <span className="card__col">
-            {props.periodAmount} W 
+            {props.sensor.value} W
             {props.children}
           </span>
         </div>
@@ -56,31 +56,31 @@ export default class extends React.Component {
   }
 
   Body (props) {
-    const forecast = props.curMonthForecast;
+    const forecast = props.curMonthForecast = 1000;
     const currentPeriod = {
       periodName: $t('card_controller_current_month'),
-      periodAmount: props.curMonthAmount,
-      percent: 100 * props.curMonthAmount / forecast,
+      periodAmount: props.sensor.value,
+      percent: 20,//100 * props.curMonthAmount / forecast,
     };
     const lastMonthPeriod = {
       periodName: $t('card_controller_last_month'),
-      periodAmount: props.lastMonthAmount,
-      percent: forecast < props.lastMonthAmount ? 100 * props.curMonthAmount / forecast : 100,
+      periodAmount: 300,//props.lastMonthAmount,
+      percent: 80,//forecast < props.lastMonthAmount ? 100 * props.curMonthAmount / forecast : 100,
     };
     const averagePeriod = {
       periodName: $t('card_controller_average_year'),
-      periodAmount: props.yearAverageAmount,
-      percent: forecast < props.yearAverageAmount ? 100 * props.curMonthAmount / forecast : 100,
+      periodAmount: 240,//props.yearAverageAmount,
+      percent: 70,//forecast < props.yearAverageAmount ? 100 * props.curMonthAmount / forecast : 100,
     };
     return (
       <div className="controller__body">
-        <this.ControllerAmount {...currentPeriod}>
+        <this.ControllerAmount {...props}>
           <span className="controller__payment-forecast">
             &nbsp;({props.curMonthForecast} {$t('card_controller_forecast')})
           </span>
         </this.ControllerAmount>
-        <this.ControllerAmount {...lastMonthPeriod} />
-        <this.ControllerAmount {...averagePeriod} />
+        <this.ControllerAmount {...props} />
+        <this.ControllerAmount {...props} />
       </div>
     );
   }
@@ -91,15 +91,15 @@ export default class extends React.Component {
         <AmountTable>
           <AmountTableRow responsive="true">
             <span>{$t('card_controller_accural')}</span>
-            <i className="n-mark">{props.accural}</i>
+            <i className="n-mark">{props.sensor.value}</i>
           </AmountTableRow>
           <AmountTableRow responsive="true">
             <span>{$t('card_controller_overpay')}</span>
-            <i className="n-mark">{props.overpay}</i>
+            <i className="n-mark">{props.sensor.value}</i>
           </AmountTableRow>
           <AmountTableRow responsive="true">
             <span>{$t('card_controller_summary')}</span>
-            <i className="n-mark">{props.summary}</i>
+            <i className="n-mark">{props.sensor.value}</i>
           </AmountTableRow>
         </AmountTable>
         <div className="card__col">
