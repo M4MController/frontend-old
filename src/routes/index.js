@@ -59,7 +59,7 @@ class IndexRoute extends RouteComponent {
 
         for (let sensor of controller.sensors) {
 
-          sensor.data = await api.userSensorData().execute(sensor.id);
+          sensor.data = await api.userSensorData().execute(sensor.id, new Date(1970,1,1).toISOString(), 1000);
         }
       }
     }
