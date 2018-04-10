@@ -26,7 +26,7 @@ class IndexRoute extends RouteComponent {
     this.state = {sensors: []};
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     let sensors = [];
 
     const controllers = await api.userObjects().execute(this.props.match.params.id);

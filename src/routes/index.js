@@ -42,7 +42,7 @@ class IndexRoute extends RouteComponent {
     this.state = {objects:[]};
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     // todo: убрать это отсюда как можно скорее
     try {
       // await api.authorization().execute('ml@gmail.com', '123456');
