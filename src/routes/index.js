@@ -45,7 +45,7 @@ class IndexRoute extends RouteComponent {
   async componentDidMount() {
     // todo: убрать это отсюда как можно скорее
     try {
-      // await api.authorization().execute('ml@gmail.com', '123456');
+      await api.authorization().execute('ml@gmail.com', '123456');
     } catch (e) {
       console.log('Can not authorize', e);
     }
