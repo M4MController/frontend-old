@@ -24,7 +24,7 @@ export default class extends React.Component {
   }
 
   render () {
-    const blocks = this.props.children;
+    const blocks = this.props.children || [];
     return (
       <ScrollArea className="blocks-container">
         {blocks.map((block, index) => {

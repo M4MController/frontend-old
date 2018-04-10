@@ -39,6 +39,7 @@ import api from 'src/api';
 class IndexRoute extends RouteComponent {
   constructor(...args) {
     super(...args);
+    this.state = {objects:[]};
   }
 
   async componentWillMount() {
@@ -51,22 +52,22 @@ class IndexRoute extends RouteComponent {
 
     const objects = await api.userObjects().execute();
     for (let object of objects) {
-      console.log(objects);
       object.controllers = await api.userObjectControllers().execute(object.id);
 
       for (let controller of object.controllers) {
         controller.sensors = await api.userControllerSensors().execute(controller.id);
 
         for (let sensor of controller.sensors) {
+
           sensor.data = await api.userSensorData().execute(sensor.id);
         }
       }
     }
 
-    debugger;
-
-    this.setState({
-      objects,
+    this.setState(() => {
+      return ({
+        objects,
+      });
     });
   }
 
@@ -123,6 +124,7 @@ class IndexRoute extends RouteComponent {
       summary: 30,
     };
 
+    // alert( this.state.objects.length);
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">
@@ -154,14 +156,11 @@ class IndexRoute extends RouteComponent {
             <Switch>
               <Route exact path='/'>
                 <Container>
-                  <div>
                   {
                     this.state.objects.map(object => {
-                      console.log(object);
                       return <Object key={object.id} object={object}/>
                     })
                   }
-                  </div>
                 </Container>
               </Route>
               <Route exact path='/controllers'>

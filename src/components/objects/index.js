@@ -29,7 +29,7 @@ class Objects extends React.Component {
   }
 
   componentWillMount(){
-    this.props.dispatch(ObjectAction.updateAll());
+    // this.props.dispatch(ObjectAction.updateAll());
   }
 
   render(){

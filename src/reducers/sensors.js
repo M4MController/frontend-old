@@ -1,7 +1,18 @@
 import * as sensorsActions from '../actions/sensors';
 
 const initialState = {
-  items: {},
+  items: {1:[
+      {
+        "id": 1,
+        "name": "test_sensor",
+        "controller_id": 1,
+        "activation_date": "2001-01-01T00:00:00Z",
+        "status": 1,
+        "deactivation_date": null,
+        "SensorType": 1,
+        "Company": "GASPROM"
+      }
+    ]},
 };
 
 function updateData (state, action) {

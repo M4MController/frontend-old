@@ -29,7 +29,7 @@ export default class extends React.Component {
           <h2 className="card__title">{props.object.name}</h2>
           <span className="object__controllers-info">
             <i className="n-mark n-mark_ok">{sensors.length}</i>
-            {$t('card_object_active_controllers', {count: props.object.sensors.length})}
+            {$t('card_object_active_controllers', {count: sensors.length})}
           </span>
         </div>
         <div className="card__col">
@@ -115,15 +115,15 @@ export default class extends React.Component {
         <AmountTable>
           <AmountTableRow>
             <span>{$t('card_object_current_month')}</span>
-            <i className="n-mark">{'props.curMonthAmount'}</i>
+            <i className="n-mark">{props.curMonthAmount}</i>
           </AmountTableRow>
           <AmountTableRow>
             <span>{$t('card_object_last_month')}</span>
-            <i className="n-mark">{'props.lastMonthAmount'}</i>
+            <i className="n-mark">{props.lastMonthAmount}</i>
           </AmountTableRow>
           <AmountTableRow>
             <span>{$t('card_object_average_year')}</span>
-            <i className="n-mark">{'props.yearAverageAmount'}</i>
+            <i className="n-mark">{props.yearAverageAmount}</i>
           </AmountTableRow>
         </AmountTable>
         <div className="card__col">
@@ -135,6 +135,7 @@ export default class extends React.Component {
 
   render() {
     const status = this.props.controllersErrorsCount === 0;
+    // return <div>{this.props.object.id}</div>;
     return (
       <Card ok={status}
             header={this.Header(this.props)}
@@ -152,9 +153,6 @@ export default class extends React.Component {
   static get propTypes() {
     return {
       object: PropTypes.object,
-      controllers: PropTypes.object,
-      sensors: PropTypes.object,
-      data: PropTypes.object,
       controllersErrorsCount: PropTypes.number,
     };
   }
