@@ -4,6 +4,10 @@
 
 'use strict';
 
+if (window.location.hostname !== 'localhost' && window.location.protocol !== 'http:') {
+  window.location = 'http://' + window.location.hostname + window.location.pathname + window.location.hash;
+}
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { composeWithDevTools } from 'redux-devtools-extension';
