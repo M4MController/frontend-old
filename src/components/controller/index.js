@@ -46,7 +46,7 @@ export default class extends React.Component {
         <div className="controller__info">
           <span className="card__col">{props.periodName}</span>
           <span className="card__col">
-            {this.props.sensor.data[0].value} W
+            {props.periodAmount} W
             {props.children}
           </span>
         </div>
@@ -56,10 +56,10 @@ export default class extends React.Component {
   }
 
   Body (props) {
-    const forecast = props.curMonthForecast = 1000;
+    const forecast = props.curMonthForecast;
     const currentPeriod = {
       periodName: $t('card_controller_current_month'),
-      periodAmount: props.sensor.value,
+      periodAmount: props.sensor.data[0].value,
       percent: 20,//100 * props.curMonthAmount / forecast,
     };
     const lastMonthPeriod = {
@@ -74,13 +74,13 @@ export default class extends React.Component {
     };
     return (
       <div className="controller__body">
-        <this.ControllerAmount {...props}>
+        <this.ControllerAmount {...currentPeriod}>
           <span className="controller__payment-forecast">
             &nbsp;({props.curMonthForecast} {$t('card_controller_forecast')})
           </span>
         </this.ControllerAmount>
-        <this.ControllerAmount {...props} />
-        <this.ControllerAmount {...props} />
+        <this.ControllerAmount {...lastMonthPeriod} />
+        <this.ControllerAmount {...averagePeriod} />
       </div>
     );
   }
@@ -91,15 +91,15 @@ export default class extends React.Component {
         <AmountTable>
           <AmountTableRow responsive="true">
             <span>{$t('card_controller_accural')}</span>
-            <i className="n-mark">{props.sensor.value}</i>
+            <i className="n-mark">{props.sensor.data[0].value}</i>
           </AmountTableRow>
           <AmountTableRow responsive="true">
             <span>{$t('card_controller_overpay')}</span>
-            <i className="n-mark">{props.sensor.value}</i>
+            <i className="n-mark">{props.sensor.data[0].value}</i>
           </AmountTableRow>
           <AmountTableRow responsive="true">
             <span>{$t('card_controller_summary')}</span>
-            <i className="n-mark">{props.sensor.value}</i>
+            <i className="n-mark">{props.sensor.data[0].value}</i>
           </AmountTableRow>
         </AmountTable>
         <div className="card__col">
