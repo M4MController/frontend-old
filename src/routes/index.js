@@ -13,16 +13,16 @@ import {Link, Route, Switch} from 'react-router-dom';
 
 import Test from './test';
 import NotFound from './not-found';
+import ObjectRoute from './object';
+
 import Object from 'src/components/object';
-import Controller from 'src/components/controller';
 import Container from 'src/components/container';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
 
 import * as LanguageActions from 'src/actions/language';
-import * as ObjectActions from 'src/actions/object';
-import * as DataActions from 'src/actions/data';
+
 
 // todo: убрать это отсюда как можно скорее
 import api from 'src/api';
@@ -163,16 +163,7 @@ class IndexRoute extends RouteComponent {
                   }
                 </Container>
               </Route>
-              <Route exact path='/controllers'>
-                <Container>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                </Container>
-              </Route>
+              <Route exact path='/object/:id' component={ObjectRoute}/>
               <Route path='/test' component={Test}/>
               <Route component={NotFound}/>
             </Switch>

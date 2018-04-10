@@ -25,8 +25,8 @@ export default class extends React.Component {
     return (
       <div className="controller__header">
         <div className="card__col">
-          <h2 className="card__title">{props.controllerName}</h2>
-          <span className="controller__company-name">{props.companyName}</span>
+          <h2 className="card__title">{props.sensor.name}</h2>
+          <span className="controller__company-name">{props.sensor.company}</span>
         </div>
         <div className="card__col">
           <Link to="/" className={btnClass}>{$t('card_object_more')}</Link>
@@ -127,6 +127,7 @@ export default class extends React.Component {
 
   static get propTypes () {
     return {
+      sensor: PropTypes.object,
       controllerError: PropTypes.bool,
     };
   }
