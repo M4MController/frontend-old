@@ -33,7 +33,7 @@ class IndexRoute extends RouteComponent {
     for (let controller of controllers) {
       let s = await api.userControllerSensors().execute(controller.id);
       for (let sensor of s) {
-        sensor.data = await api.userSensorData().execute(sensor.id, new Date(1970,1,1).toISOString(), 1000);
+        sensor.data = await api.userSensorData().execute(sensor.id, new Date().toISOString(), 1000);
       }
       sensors = sensors.concat(s);
     }
