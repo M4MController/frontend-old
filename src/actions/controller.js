@@ -4,14 +4,20 @@
 
 'use strict';
 
-import {FETCH_CONTROLLERS} from '../actionTypes/controller';
-
-export function fetchControllers(objectId, response = undefined) {
+export function fetchControllers(objectId) {
   return {
-    type: FETCH_CONTROLLERS,
+    type: fetchControllers.toString(),
     objectId,
-    response,
   };
 }
 
-fetchControllers.toString = () => FETCH_CONTROLLERS;
+fetchControllers.toString = () => 'FETCH_CONTROLLERS';
+
+export function createController(payload) {
+  return {
+    type: createController.toString(),
+    payload,
+  };
+}
+
+createController.toString = () => 'CREATE_CONTROLLER';

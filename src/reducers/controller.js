@@ -4,30 +4,14 @@
 
 'use strict';
 
-import * as controllerActions from '../actions/controller';
+import {createController} from 'src/actions/controller';
 
-const initialState = {
-  items: {},
-};
-
-function updateControllers(state, action) {
-  if (action.response === undefined)
-    return state;
-
-  let newState = {};
-  Object.assign(newState, state);
-  newState.items[action.objectId] = action.response;
-
-  return newState;
-}
-
-export default function (state = initialState, action) {
-  switch (action.type) {
-    case controllerActions.fetchControllers.toString(): {
-      return updateControllers(state, action);
-    }
-    default: {
-      return state;
+// redux-orm reducer
+export default function({type, payload}, Controller) {
+  switch (type) {
+    case createController.toString(): {
+      Controller.upsert(payload);
+      break;
     }
   }
 }

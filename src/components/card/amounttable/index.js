@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 import 'index.scss';
 
-class AmountTable extends React.Component {
+export class AmountTable extends React.Component {
   constructor(props){
     super(props);
   }
@@ -36,7 +36,7 @@ class AmountTable extends React.Component {
   }
 }
 
-class AmountTableRow extends React.Component {
+export class AmountTableRow extends React.Component {
   constructor(props){
     super(props);
   }
@@ -69,5 +69,3 @@ class AmountTableRow extends React.Component {
     };
   }
 }
-
-export {AmountTable, AmountTableRow};

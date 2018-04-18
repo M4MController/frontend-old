@@ -4,25 +4,29 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr} from 'redux-orm';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'user';
+  }
+
+  static get fields() {
     return {
-      'name': 'name',
-      'familyName': 'family_name',
-      'secondName': 'second_name',
-      'dateReceiving': 'date_receiving',
-      'issuedBy': 'issued_by',
-      'divisionNumber': 'division_number',
-      'registrationAddress': 'registration_addres',
-      'mailingAddress': 'mailing_addres',
-      'birthday': 'birth_day',
-      'sex': 'sex',
-      'homePhone': 'home_phone',
-      'mobilePhone': 'mobile_phone',
-      'citizenship': 'citizenship',
-      'email': 'e_mail',
+      id: attr(),
+      familyName: attr(),
+      secondName: attr(),
+      dateReceiving: attr(),
+      issuedBy: attr(),
+      divisionNumber: attr(),
+      registrationAddress: attr(),
+      mailingAddress: attr(),
+      birthday: attr(),
+      sex: attr(),
+      homePhone: attr(),
+      mobilePhone: attr(),
+      citizenship: attr(),
+      email: attr(),
     };
   }
 }

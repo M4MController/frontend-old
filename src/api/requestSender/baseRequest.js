@@ -25,19 +25,35 @@ export default class BaseRequest {
   }
 
   /**
-   * Model which is returned by the request. If null, execute() will return raw data without parsiong into model.
-   * @return {Function}
+   * Function translates incoming raw record to data understanding by models.
+   * @return {Object}
+   * @protected
+   */
+  _recordParse(rawRecord) {
+    const proxyAttributes = this._recordProxyAttributes;
+    if (proxyAttributes) {
+      const result = {};
+      Object.keys(proxyAttributes).forEach(key => {
+        result[key] = rawRecord[proxyAttributes[key]];
+      });
+      return result;
+    }
+    return rawRecord;
+  }
+
+  /**
+   * Helper for model parsing
+   * @return {Object}
    * @private
    */
-  get model() {
-    return null;
+  get _recordProxyAttributes() {
+    return {};
   }
 
   /**
    * If request receives array of records, it must be true;
    * If request receives a single record, it must be false;
    * @return {boolean}
-   * @private
    */
   get isMultiple() {
     return false;
@@ -75,11 +91,7 @@ export default class BaseRequest {
     }
 
     if (payload) {
-      if (this.model) {
-        return this.isMultiple ? payload.map(x => new this.model(x)) : new this.model(payload);
-      } else {
-        return payload;
-      }
+      return this.isMultiple ? payload.map(x => this._recordParse(x)) : this._recordParse(payload);
     }
     return true;
   }

@@ -24,6 +24,7 @@
     "axios": "^0.18.0",
     "i18next": "^10.6.0",
     "normalize.css": "^8.0.0",
+    "npm": "^6.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -35,6 +36,7 @@
     "redux-orm": "^0.9.4",
     "redux-promise": "^0.5.3",
     "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1",
     "webpack-cli": "^2.0.12"
   },
   "devDependencies": {

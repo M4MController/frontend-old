@@ -15,16 +15,16 @@ const sensorDataRequest = api.userSensorData();
 
 const updateSensor = function* (action) {
   if (action.items) yield cancel(); // if items are provided we're not need to fetch them
-  yield put(executionActions.start(dataActions.updateSensor));
+  yield put(executionActions.start(dataActions.fetchData));
   try {
     const data = yield call(() => sensorDataRequest.execute(action.sensorId, action.date.toString(), action.limit));
-    yield put(dataActions.updateSensor(action, data));
-    yield put(executionActions.done(dataActions.updateSensor));
+    yield put(dataActions.fetchData(action, data));
+    yield put(executionActions.done(dataActions.fetchData));
   } catch (error) {
-    yield put(executionActions.fail(dataActions.updateSensor, error));
+    yield put(executionActions.fail(dataActions.fetchData, error));
   }
 };
 
 export default function* () {
-  yield takeEvery(dataActions.updateSensor, updateSensor);
+  yield takeEvery(dataActions.fetchData, updateSensor);
 }

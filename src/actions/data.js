@@ -4,15 +4,24 @@
 
 'use strict';
 
-import {UPDATE_SENSOR_DATA} from 'src/actionTypes/data';
+import {getCurrentMonth} from 'src/utils/dates';
 
-export function updateSensor({sensorId, date, limit}, items = undefined) {
+export function fetchData(sensorId, date = getCurrentMonth(), limit = 1000) {
   return {
-    type: UPDATE_SENSOR_DATA,
+    type: fetchData.toString(),
     sensorId,
     date,
     limit,
-    items,
   };
 }
-updateSensor.toString = () => UPDATE_SENSOR_DATA;
+
+fetchData.toString = () => 'FETCH_DATA';
+
+export function createData(payload) {
+  return {
+    type: createData.toString(),
+    payload,
+  };
+}
+
+createData.toString = () => 'CRATE_DATA';

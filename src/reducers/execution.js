@@ -4,13 +4,13 @@
 
 'use strict';
 
-import * as executionTypes from 'src/actionTypes/execution';
+import {start, done, fail} from 'src/actions/execution';
 
 const initialState = {};
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case executionTypes.START: {
+    case start.toString(): {
       return {
         ...initialState,
         [action.actionName]: {
@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
         },
       };
     }
-    case executionTypes.DONE: {
+    case done.toString(): {
       return {
         ...initialState,
         [action.actionName]: {
@@ -28,7 +28,7 @@ export default function(state = initialState, action) {
         },
       };
     }
-    case executionTypes.FAILED: {
+    case fail.toString(): {
       return {
         ...initialState,
         [action.actionName]: {

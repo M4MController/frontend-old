@@ -1,9 +1,22 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
-import Controller from 'src/models/controller';
 
 export default class extends BaseRequest {
-  get model() {
-    return Controller;
+  _recordParse(rawRecord) {
+    const record = super._recordParse(rawRecord);
+    record.activationDate = new Date(rawRecord['activation_date']);
+    record.deactivationDate = new Date(rawRecord['deactivation_date']);
+    return record;
+  }
+
+  get _recordProxyAttributes() {
+    return {
+      'id': 'id',
+      'name': 'name',
+      'status': 'status',
+      'mac': 'mac',
+      'meta': 'meta',
+      'controller': 'controller_id', // one-to-many relation field
+    };
   }
 
   get isMultiple() {

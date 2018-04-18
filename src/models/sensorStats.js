@@ -4,41 +4,35 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr, oneToOne} from 'redux-orm';
+import sensorStatsReducer from 'src/reducers/sensorStats';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'sensor_stats';
+  }
+
+  static get fields() {
     return {
-      'type': 'type',
-      'name': 'name',
-      'status': 'status',
-      'accural': 'accural',
-      'over': 'over',
-      'result': 'result',
+      type: attr(),
+      name: attr(),
+      accural: attr(),
+      over: attr(),
+      result: attr(),
+      currentMonth: attr(),
+      prevYearMonth: attr(),
+      prevYearAverage: attr(),
+      sensor: oneToOne('sensor', 'stats'),
     };
   }
 
-  /**
-   * Sum of the current month
-   * @return {Number}
-   */
-  get currentMonth() {
-    return this._rawData['stats']['current_month'];
+  static get options() {
+    return {
+      idAttribute: 'sensor',
+    };
   }
 
-  /**
-   * Sum of the same month of the previous year
-   * @return {Number}
-   */
-  get prevYearMonth() {
-    return this._rawData['stats']['prev_year_month'];
-  }
-
-  /**
-   * Average cost of the previous year
-   * @return {Number}
-   */
-  get prevYearAverage() {
-    return this._rawData['stats']['prev_year_average'];
+  static get reducer() {
+    return sensorStatsReducer;
   }
 }

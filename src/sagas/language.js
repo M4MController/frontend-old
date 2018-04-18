@@ -5,7 +5,7 @@
 'use strict';
 
 import {takeEvery} from 'redux-saga/effects';
-import * as languageActions from 'src/actionTypes/language';
+import {changeLanguage} from 'src/actions/language';
 import i18n from 'src/i18n';
 
 const changeCurrent = function* ({payload}) {
@@ -13,5 +13,5 @@ const changeCurrent = function* ({payload}) {
 };
 
 export default function* () {
-  yield takeEvery(languageActions.CHANGE_CURRENT, changeCurrent);
+  yield takeEvery(changeLanguage, changeCurrent);
 }

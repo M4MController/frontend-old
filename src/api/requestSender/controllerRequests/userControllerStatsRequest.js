@@ -1,9 +1,13 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
-import ControllerStats from 'src/models/controllerStats';
 
 export default class UserControllerStatsRequest extends BaseRequest {
-  get model() {
-    return ControllerStats;
+  _recordProxyAttributes() {
+    return {
+      'controller': 'controller_id', // one-to-many relation field
+      'month': 'month',
+      'prevMonth': 'prev_month',
+      'prevYear': 'prev_year',
+    };
   }
 
   execute(controller_id) {

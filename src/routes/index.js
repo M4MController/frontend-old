@@ -7,99 +7,32 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-
-import RouteComponent from 'src/routes/route-component';
 import {Link, Route, Switch} from 'react-router-dom';
 
+import RouteComponent from 'src/routes/route-component';
+
+import IndexRoute from './index-route';
+import ObjectRoute from './object';
 import Test from './test';
 import NotFound from './not-found';
-import Object from 'src/components/object';
-import Controller from 'src/components/controller';
-import Container from 'src/components/container';
+
+import {changeLanguage} from 'src/actions/language';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
 
-import * as LanguageActions from 'src/actions/language';
-import * as ObjectActions from 'src/actions/object';
-import * as DataActions from 'src/actions/data';
-
 @withRouter
 @connect(state => ({
   language: state.language,
-  object: state.object,
-  data: state.data,
-  execution: state.execution,
-}))
-class IndexRoute extends RouteComponent {
-  componentWillMount() {
-    this.props.dispatch(ObjectActions.updateAll());
-    this.props.dispatch(DataActions.updateSensor({
-      sensorId: 1,
-      date: new Date(),
-      limit: 10,
-    }));
-
-    setTimeout(() => this.props.dispatch(DataActions.updateSensor({
-      sensorId: 2,
-      date: new Date(),
-      limit: 10,
-    })), 1000);
-  }
-
+}), {
+  changeLanguage,
+})
+export default class extends RouteComponent {
   setLanguage(currentLanguage = this.props.language.current) {
-    this.props.dispatch(LanguageActions.changeLanguage(currentLanguage));
+    this.props.changeLanguage(currentLanguage);
   }
 
   render() {
-    const cardData = {
-      controllersErrorsCount: 0,
-      controllersCount: 6,
-      name: 'HOUSE NEAR THE ROAD',
-      counters: [
-        {
-          name: 'Electricity',
-          amount: 1234,
-        },
-        {
-          name: 'Hot water',
-          amount: 6,
-        },
-        {
-          name: 'Cold water',
-          amount: 42,
-        },
-        {
-          name: 'Electricity',
-          amount: 1234,
-        },
-        {
-          name: 'Hot water',
-          amount: 6,
-        },
-        {
-          name: 'Cold water',
-          amount: 42,
-        },
-      ],
-      curMonthAmount: 6789,
-      lastMonthAmount: 5678,
-      yearAverageAmount: 6000,
-    };
-
-    const controllerData = {
-      controllerError: false,
-      controllerName: 'ELECTRICITY',
-      companyName: 'AnyCompany-Name',
-      curMonthAmount: 3789,
-      curMonthForecast: 7232,
-      lastMonthAmount: 5678,
-      yearAverageAmount: 6000,
-      accural: 100,
-      overpay: 70,
-      summary: 30,
-    };
-
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">
@@ -124,43 +57,14 @@ class IndexRoute extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[ObjectActions.updateAll])}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.object)}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.execution[DataActions.updateSensor])}</div>
-              <div style={{color: 'white'}}>{JSON.stringify(this.props.data)}</div>
+
             </div>
           </div>
 
           <div className="app__content app-content-height">
             <Switch>
-              <Route exact path='/'>
-                <Container>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                  <Object {...cardData}/>
-                </Container>
-              </Route>
-              <Route exact path='/controllers'>
-                <Container>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                  <Controller {...controllerData}/>
-                </Container>
-              </Route>
+              <Route exact path='/' component={IndexRoute}/>
+              <Route path='/object/:id' component={ObjectRoute}/>
               <Route path='/test' component={Test}/>
               <Route component={NotFound}/>
             </Switch>
@@ -170,5 +74,3 @@ class IndexRoute extends RouteComponent {
     );
   }
 }
-
-export default IndexRoute;

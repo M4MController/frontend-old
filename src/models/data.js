@@ -4,15 +4,24 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr, fk} from 'redux-orm';
+import dataReducer from 'src/reducers/data';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'data';
+  }
+
+  static get fields() {
     return {
-      'sensorId': 'sensor_id',
-      'date': 'date',
-      'hash': 'hash',
-      'value': 'value',
+      sensor: fk('sensor', 'data'),
+      date: attr(),
+      hash: attr(),
+      value: attr(),
     };
+  }
+
+  static get reducer() {
+    return dataReducer;
   }
 }

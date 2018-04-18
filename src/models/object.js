@@ -4,15 +4,24 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr, fk} from 'redux-orm';
+import objectReducer from 'src/reducers/object';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'object';
+  }
+
+  static get fileds() {
     return {
-      'id': 'id',
-      'name': 'name',
-      'userId': 'user_id',
-      'address': 'adres',
+      id: attr(),
+      name: attr(),
+      address: attr(),
+      user: fk('user', 'objects'),
     };
+  }
+
+  static get reducer() {
+    return objectReducer;
   }
 }
