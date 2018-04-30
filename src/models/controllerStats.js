@@ -4,15 +4,19 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr, oneToOne} from 'redux-orm';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'controller_stats';
+  }
+
+  static get fields() {
     return {
-      'controllerId': 'controller_id',
-      'month': 'month',
-      'prevMonth': 'prev_month',
-      'prevYear': 'prev_year',
+      month: attr(),
+      prevMonth: attr(),
+      prevYear: attr(),
+      controller: oneToOne('controller', 'stats'),
     };
   }
 }

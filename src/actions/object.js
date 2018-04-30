@@ -4,12 +4,19 @@
 
 'use strict';
 
-import {UPDATE_ALL} from 'src/actionTypes/object';
-
-export function updateAll(items) {
+export function fetchObjects() {
   return {
-    type: UPDATE_ALL,
-    items,
+    type: fetchObjects.toString(),
   };
 }
-updateAll.toString = () => UPDATE_ALL;
+
+fetchObjects.toString = () => 'FETCH_OBJECTS';
+
+export function createObject(payload) {
+  return {
+    type: createObject.toString(),
+    payload,
+  };
+}
+
+createObject.toString = () => 'CREATE_OBJECT';

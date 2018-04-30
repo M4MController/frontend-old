@@ -2,9 +2,8 @@ import AuthorizationRequest from 'src/api/requestSender/userRequests/authorizati
 import UserInfoRequest from 'src/api/requestSender/userRequests/userinfoRequest';
 import UserObjectsRequest from 'src/api/requestSender/objectRequests/userObjectsRequest';
 import UserObjectControllersRequest from 'src/api/requestSender/objectRequests/userObjectControllersRequest';
-import UserControllersRequest from 'src/api/requestSender/controllerRequests/userControllersRequest';
 import UserControllerSensorsRequest from 'src/api/requestSender/controllerRequests/userControllerSensorsRequest';
-import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests/userControllerstatsRequest';
+import UserControllerStatsRequest from 'src/api/requestSender/controllerRequests/userControllerStatsRequest';
 import UserSensorStatsRequest from 'src/api/requestSender/sensorRequest/userSensorStatsRequest';
 import UserSensorDataRequest from 'src/api/requestSender/sensorRequest/userSensorDataRequest';
 
@@ -32,11 +31,6 @@ export let defaultsettings = {
     userObjectControllers: {
       request: UserObjectControllersRequest,
       url: '/object/:object_id/get_controllers',
-      method: 'GET',
-    },
-    userControllers: {
-      request: UserControllersRequest,
-      url: '/controller/get_user_controllers',
       method: 'GET',
     },
     userControllerSensors: {

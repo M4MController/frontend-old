@@ -4,16 +4,16 @@
 
 'use strict';
 
-import {changeLanguage} from 'src/actions/language';
+import {changeCurrentObject} from 'src/actions/common';
 
 const initialState = {
-  current: 'en',
+  currentObjectId: 0,
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case changeLanguage.toString(): {
-      return {current: action.payload.current};
+    case changeCurrentObject.toString(): {
+      return {currentObjectId: action.objectId};
     }
     default: {
       return state;

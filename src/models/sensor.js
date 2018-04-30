@@ -4,32 +4,27 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr, fk} from 'redux-orm';
+import sensorReducer from 'src/reducers/sensor';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'sensor';
+  }
+
+  static get fields() {
     return {
-      'id': 'id',
-      'name': 'name',
-      'status': 'status',
-      'company': 'company',
-      'controllerId': 'controller_id',
+      id: attr(),
+      name: attr(),
+      status: attr(),
+      company: attr(),
+      activationDate: attr(),
+      deactivationDate: attr(),
+      controller: fk('controller', 'sensors'),
     };
   }
 
-  /**
-   * Date when sensor was activated
-   * @return {Date}
-   */
-  get activationDate() {
-    return new Date(this._rawData['activation_date']);
-  }
-
-  /**
-   * Date when sensor was deactivated
-   * @return {Date}
-   */
-  get deactivationDate() {
-    return new Date(this._rawData['deactivation_date']);
+  static get reducer() {
+    return sensorReducer;
   }
 }

@@ -4,13 +4,13 @@
 
 'use strict';
 
-import {CHANGE_CURRENT} from 'src/actionTypes/language';
-
 export function changeLanguage(language) {
   return {
-    type: CHANGE_CURRENT,
+    type: changeLanguage.toString(),
     payload: {
       current: language,
     },
   };
 }
+
+changeLanguage.toString = () => 'CHANGE_LANGUAGE';

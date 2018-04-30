@@ -1,9 +1,13 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
-import Object from 'src/models/object';
 
 export default class extends BaseRequest {
-  get model() {
-    return Object;
+  get _recordProxyAttributes() {
+    return {
+      'id': 'id',
+      'name': 'name',
+      'user': 'user_id', // one-to-many relation field
+      'address': 'adres',
+    };
   }
 
   get isMultiple() {

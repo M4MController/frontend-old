@@ -14,16 +14,16 @@ import * as objectActions from 'src/actions/object';
 const userObjectsRequest = api.userObjects();
 
 const updateAll = function* (/*action*/) {
-  yield put(executionActions.start(objectActions.updateAll));
+  yield put(executionActions.start(objectActions.fetchObjects));
   try {
     const objects = yield call(() => userObjectsRequest.execute());
-    yield put(objectActions.updateAll(objects));
-    yield put(executionActions.done(objectActions.updateAll));
+    yield put(objectActions.fetchObjects(objects));
+    yield put(executionActions.done(objectActions.fetchObjects));
   } catch (error) {
-    yield put(executionActions.fail(objectActions.updateAll, error));
+    yield put(executionActions.fail(objectActions.fetchObjects, error));
   }
 };
 
 export default function* () {
-  yield takeEvery(objectActions.updateAll, updateAll);
+  yield takeEvery(objectActions.fetchObjects, updateAll);
 }

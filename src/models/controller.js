@@ -4,33 +4,26 @@
 
 'use strict';
 
-import Model from './model';
+import {Model, attr, fk} from 'redux-orm';
+import controllerReducer from 'src/reducers/controller';
 
 export default class extends Model {
-  get _proxyAttributes() {
+  static get modelName() {
+    return 'controller';
+  }
+
+  static get fields() {
     return {
-      'id': 'id',
-      'name': 'name',
-      'status': 'status',
-      'mac': 'mac',
-      'meta': 'meta',
-      'userId': 'user_id',
+      id: attr(),
+      name: attr(),
+      status: attr(),
+      max: attr(),
+      meta: attr(),
+      object: fk('object', 'controllers'),
     };
   }
 
-  /**
-   * Date when controller was activated
-   * @return {Date}
-   */
-  get activationDate() {
-    return new Date(this._rawData['activation_date']);
-  }
-
-  /**
-   * Date when controller was deactivated
-   * @return {Date}
-   */
-  get deactivationDate() {
-    return new Date(this._rawData['deactivation_date']);
+  static get reducer() {
+    return controllerReducer;
   }
 }

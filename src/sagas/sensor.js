@@ -6,16 +6,16 @@ import * as executionAction from '../actions/execution';
 const userControllerSensors = api.userControllerSensors();
 
 const getSensors = function* (action) {
-  yield put(executionAction.start(sensorsActions.getSensors));
+  yield put(executionAction.start(sensorsActions.fetchSensors));
   try {
     const object = yield call(() => userControllerSensors.execute(action.controllerId));
-    yield put(sensorsActions.getSensors(action.controllerId, object));
-    yield put(executionAction.done(sensorsActions.getSensors));
+    yield put(sensorsActions.fetchSensors(action.controllerId, object));
+    yield put(executionAction.done(sensorsActions.fetchSensors));
   } catch (error) {
-    yield put(executionAction.fail(sensorsActions.getSensors,error));
+    yield put(executionAction.fail(sensorsActions.fetchSensors, error));
   }
 };
 
 export default function *() {
-  yield takeEvery(sensorsActions.getSensors, getSensors);
+  yield takeEvery(sensorsActions.fetchSensors, getSensors);
 }

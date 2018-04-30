@@ -4,30 +4,30 @@
 
 'use strict';
 
-import {
-  START,
-  DONE,
-  FAILED,
-} from 'src/actionTypes/execution';
-
 export function start(actionName) {
   return {
-    type: START,
+    type: start.toString(),
     actionName: actionName,
   };
 }
+
+start.toString = () => 'EXECUTION_START';
 
 export function done(actionName) {
   return {
-    type: DONE,
+    type: done.toString(),
     actionName: actionName,
   };
 }
 
+done.toString = () => 'EXECUTION_DONE';
+
 export function fail(actionName, error = 'error info has not provided') {
   return {
-    type: FAILED,
+    type: fail.toString(),
     actionName: actionName,
     error: error,
   };
 }
+
+fail.toString = () => 'EXECUTION_DONE';

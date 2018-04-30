@@ -1,9 +1,21 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
-import SensorStats from 'src/models/sensorStats';
 
 export default class UserSensorStatsRequest extends BaseRequest {
-  get model() {
-    return SensorStats;
+  _recordParse(rawRecord) {
+    const result = super._recordParse(rawRecord);
+    result.currentMonth = rawRecord['stats']['current_month'];
+    result.prevYearMonth = rawRecord['stats']['prev_year_month'];
+    result.prevYearAverage = rawRecord['stats']['prev_year_average'];
+    return result;
+  }
+
+  get _recordProxyAttributes() {
+    return {
+      'controller': 'controller_id', // one-to-many relation field
+      'month': 'month',
+      'prevMonth': 'prev_month',
+      'prevYear': 'prev_year',
+    };
   }
 
   execute(sensor_id) {

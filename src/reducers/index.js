@@ -5,18 +5,17 @@
 'use strict';
 
 import {combineReducers} from 'redux';
-import {t} from 'i18next';
+import {createReducer} from 'redux-orm';
 
-import data from './data';
+import orm from 'src/models';
+
+import common from './common';
 import execution from './execution';
 import language from './language';
-import object from './objects';
-
-window.$t = t;
 
 export default combineReducers({
-  data,
+  orm: createReducer(orm),
+  common,
   execution,
   language,
-  object,
 });

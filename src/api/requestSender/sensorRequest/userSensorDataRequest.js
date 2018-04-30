@@ -1,9 +1,13 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
-import Data from 'src/models/data';
 
 export default class UserSensorDataRequest extends BaseRequest {
-  get model() {
-    return Data;
+  get _recordProxyAttributes() {
+    return {
+      'sensor': 'sensor_id', // one-to-many relation field
+      'date': 'date',
+      'hash': 'hash',
+      'value': 'value',
+    };
   }
 
   get isMultiple() {

@@ -1,26 +1,8 @@
 /**
- * Created by ed on 19/04/2018.
+ * Created by ed on 24/04/2018.
  */
 
 'use strict';
-
-export function fetchSensors(controllerId) {
-  return {
-    type: fetchSensors.toString(),
-    controllerId,
-  };
-}
-
-fetchSensors.toString = () => 'FETCH_SENSORS';
-
-export function createSensor(payload) {
-  return {
-    type: createSensor.toString(),
-    payload,
-  };
-}
-
-createSensor.toString = () => 'CREATE_SENSOR';
 
 export function createSensorStats(payload) {
   return {
