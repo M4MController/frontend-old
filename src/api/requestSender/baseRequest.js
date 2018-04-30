@@ -1,5 +1,13 @@
 import requestSender from 'src/api/requestSender/requestSender';
 
+// todo: remove the stub
+import api from '..';
+const authorizeIfNeeded = async function() {
+  if (authorizeIfNeeded.isAuthorized) return;
+  await api.authorization().execute('ml@gmail.com', '123456');
+  authorizeIfNeeded.isAuthorized = true;
+};
+
 export default class BaseRequest {
   constructor() {
   }
@@ -84,7 +92,8 @@ export default class BaseRequest {
     return true;
   }
 
-  execute() {
+  async execute() {
+    await authorizeIfNeeded(); // todo: remove the stub
     return this._prepareRequest();
   }
 }
