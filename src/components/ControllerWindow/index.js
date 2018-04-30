@@ -10,13 +10,14 @@ import ModularWindow from '../ModularWindow/index'
 import 'index.scss'
 
 export default class ControllerWindow extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state = {address: "00:00:00:00:00"};
     this.submitAction = props.submitAction;
     this.submit = this.submit.bind(this);
+    this.opacity = 1.0;
   }
+
 
   submit(event){
     this.submitAction();

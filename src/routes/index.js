@@ -21,6 +21,13 @@ import {changeLanguage} from 'src/actions/language';
 import 'index.scss';
 import 'src/styles/helpers.scss';
 
+import * as LanguageActions from 'src/actions/language';
+import * as ObjectActions from 'src/actions/object';
+import * as DataActions from 'src/actions/data';
+
+import ControllerWindow from '../components/ControllerWindow/index.js';
+import ModularWindow from '../components/ModularWindow/index.js';
+
 @withRouter
 @connect(state => ({
   language: state.language,
@@ -70,6 +77,8 @@ export default class extends RouteComponent {
             </Switch>
           </div>
         </div>
+
+      <ControllerWindow/>
       </div>
     );
   }
