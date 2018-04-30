@@ -1,6 +1,6 @@
 @import 'src/styles/constants.scss';
 
-$modular-color-background: rgb(23, 172, 166);
+$modular-color-background: $app-content-background;
 $modular-blocking-color: rgba(.5, .5, .5, .5);
 $modular-blocking-color-start: rgba(.5, .5, .5, 0);
 

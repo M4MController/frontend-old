@@ -13,16 +13,20 @@ export default class ControllerWindow extends React.Component{
   constructor(props) {
     super(props);
 
-    this.submitAction = props.submitAction;
-    this.submit = this.submit.bind(this);
+    this.callback = props.receiveData;
+    this.submitAction = this.submitAction.bind(this);
+    this.textChanged = this.textChanged.bind(this);
     this.opacity = 1.0;
+
+    this.state = {address: '00:00:00:00:00:00'};
   }
 
+  textChanged(event){
+    this.setState({address: event.target.value.toUpperCase()});
+  }
 
-  submit(event){
-    this.submitAction();
-    alert("!");
-    console.log("!");
+  submitAction(event){
+    this.callback(this.state.address);
     event.preventDefault();
   }
 
@@ -37,10 +41,11 @@ export default class ControllerWindow extends React.Component{
           Controller
         </div>
         <div className='controller-body'>
-          <form onSubmit={this.submit}>
+          <form onSubmit={this.submitAction}>
             <label>Mac address: </label>
-            <input type='text'
-              pattern='[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}'/>
+            <input type='text' onChange={this.textChanged} value={this.state.address}
+              pattern='[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}:[0-9a-fA-f]{2}'
+            />
               <input type='submit' value='Enter' className='controller-button'/>
           </form>
         </div>

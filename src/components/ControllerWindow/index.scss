@@ -1,6 +1,6 @@
 @import 'src/styles/constants.scss';
 
-$controller-head-background: rgb(21, 133, 128);
+$controller-head-background: $app-menu-background;
 
 .controller-head{
   text-align: center;
@@ -13,11 +13,12 @@ $controller-head-background: rgb(21, 133, 128);
 
 .controller-body{
   font-size: $base-font-size;
+  color: $controller-head-background;
   padding: 10px;
 }
 
 .controller-button{
-  background-color: $btn-neutral-bg-start;
+  background: linear-gradient(to bottom, $btn-ok-bg-start, $btn-ok-bg-end);
   border: 0px solid black;
   color: $btn-neutral-color;
   border-radius: 5px;

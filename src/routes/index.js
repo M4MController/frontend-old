@@ -78,7 +78,7 @@ export default class extends RouteComponent {
           </div>
         </div>
 
-      <ControllerWindow/>
+      <ControllerWindow receiveData={(data) => {}}/>
       </div>
     );
   }
