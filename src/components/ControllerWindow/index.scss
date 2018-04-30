@@ -1,0 +1,31 @@
+@import 'src/styles/constants.scss';
+
+$controller-head-background: rgb(21, 133, 128);
+
+.controller-head{
+  text-align: center;
+  padding: 5px;
+  background-color: $controller-head-background;
+  border-radius: 5px;
+
+  font-size: $big-font-size;
+}
+
+.controller-body{
+  font-size: $base-font-size;
+  padding: 10px;
+}
+
+.controller-button{
+  background-color: $btn-neutral-bg-start;
+  border: 0px solid black;
+  color: $btn-neutral-color;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  width: 75px;
+  height: 30px;
+
+  position: relative;
+  left: 243px;
+}
