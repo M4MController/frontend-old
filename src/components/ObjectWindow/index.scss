@@ -1,0 +1,32 @@
+@import 'src/styles/constants.scss';
+
+$object-head-background: $app-menu-background;
+
+.object-head{
+    text-align: center;
+    padding: 5px;
+    background-color: $object-head-background;
+    border-radius: 5px;
+
+    font-size: $big-font-size;
+}
+
+.object-body{
+    font-size: $base-font-size;
+    color: $object-head-background;
+    padding: 10px;
+}
+
+.object-button{
+    background: linear-gradient(to bottom, $btn-ok-bg-start, $btn-ok-bg-end);
+    border: 0px solid black;
+    color: $btn-neutral-color;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    width: 75px;
+    height: 30px;
+
+    position: relative;
+    left: 208px;
+}

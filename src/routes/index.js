@@ -25,8 +25,7 @@ import * as LanguageActions from 'src/actions/language';
 import * as ObjectActions from 'src/actions/object';
 import * as DataActions from 'src/actions/data';
 
-import ControllerWindow from '../components/ControllerWindow/index.js';
-import ModularWindow from '../components/ModularWindow/index.js';
+import ObjectWindow from '../components/ObjectWindow/index.js';
 
 @withRouter
 @connect(state => ({
@@ -78,7 +77,7 @@ export default class extends RouteComponent {
           </div>
         </div>
 
-      <ControllerWindow receiveData={(data) => {}}/>
+      <ObjectWindow receiveData={(data) => {}}/>
       </div>
     );
   }
