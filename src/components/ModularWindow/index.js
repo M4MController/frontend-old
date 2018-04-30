@@ -14,7 +14,6 @@ export default class ModularWindow extends React.Component{
     const hei = this.props.height || 100;
     return (
       <div className='blocking-object'>
-        Some text goes here
         <div className='modular' style={{width: wid, height: hei}}>
           <body>
             {this.props.children}

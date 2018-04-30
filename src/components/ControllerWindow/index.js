@@ -27,7 +27,7 @@ export default class ControllerWindow extends React.Component{
 
 
   render(){
-    const wid = '350px';
+    const wid = '800px';//'350px';
     const hei = '110px';
 
     return (
