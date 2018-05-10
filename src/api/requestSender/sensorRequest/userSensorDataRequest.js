@@ -1,4 +1,5 @@
 import BaseRequest from 'src/api/requestSender/baseRequest';
+import {getCurrentMonth} from 'src/utils/dates';
 
 export default class UserSensorDataRequest extends BaseRequest {
   get _recordProxyAttributes() {
@@ -14,7 +15,7 @@ export default class UserSensorDataRequest extends BaseRequest {
     return true;
   }
 
-  async execute(sensor_id, date, limit) {
+  async execute(sensor_id, date = getCurrentMonth().toISOString(), limit = 1000) {
     if (!sensor_id || typeof sensor_id !== 'number')
       throw new TypeError('sensor_id undefined or not a number');
 

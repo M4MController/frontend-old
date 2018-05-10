@@ -13,7 +13,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case changeCurrentObject.toString(): {
-      return {currentObjectId: action.objectId};
+      return {currentObjectId: +action.objectId};
     }
     default: {
       return state;

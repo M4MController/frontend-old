@@ -9,9 +9,6 @@ const authorizeIfNeeded = async function() {
 };
 
 export default class BaseRequest {
-  constructor() {
-  }
-
   get url() {
     return this._url;
   }
@@ -100,8 +97,9 @@ export default class BaseRequest {
 
     if (payload) {
       return this.isMultiple ? payload.map(x => this._recordParse(x)) : this._recordParse(payload);
+    } else {
+      return this.isMultiple ? [] : null;
     }
-    return true;
   }
 
   async execute() {

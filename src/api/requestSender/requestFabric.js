@@ -30,7 +30,7 @@ export let defaultsettings = {
     },
     userObjectControllers: {
       request: UserObjectControllersRequest,
-      url: '/object/:object_id/get_controllers',
+      url: '/object/:object_id/get_object_controllers',
       method: 'GET',
     },
     userControllerSensors: {

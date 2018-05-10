@@ -15,6 +15,7 @@ export const selectSensorsWithStats = createSelectorOrm(
   ormSelector,
   session => session.sensor.all().toModelArray().map(sensor => Object.assign({}, sensor.ref, {
     stats: sensor.stats && sensor.stats.ref,
+    objectId: session.controller.withId(sensor.controller.id).object.id,
   })),
 );
 
@@ -23,5 +24,5 @@ export const selectCardSensors = createSelector(
     sensors: selectSensorsWithStats(state),
     objectId: state.common.currentObjectId,
   }),
-  ({sensors, objectId}) => sensors.filter(sensor => sensor.object === objectId),
+  ({sensors, objectId}) => sensors.filter(sensor => sensor.objectId == objectId),
 );

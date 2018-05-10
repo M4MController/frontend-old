@@ -20,19 +20,16 @@ import SensorCard from 'src/components/card-sensor';
 @connect(state => ({
   sensors: selectCardSensors(state),
   execution: state.execution,
-}), {
-  changeCurrentObject,
-  fetchForObjectPage,
-})
+}))
 export default class extends RouteComponent {
   componentWillMount() {
-    const objectId = this.props.id;
-    this.props.changeCurrentObject(objectId);
-    this.props.fetchForObjectPage(objectId);
+    const objectId = this.props.match.params.id;
+    this.props.dispatch(changeCurrentObject(objectId));
+    this.props.dispatch(fetchForObjectPage(objectId));
   }
 
   render() {
-    const loadingState = this.props.execution[this.props.fetchForObjectPage] || {};
+    const loadingState = this.props.execution[fetchForObjectPage] || {};
     const isEmpty = !this.props.sensors.length;
 
     if (loadingState.running) {
