@@ -18,6 +18,8 @@ module.exports = merge(baseWebpackConfig, {
     }),
   ],
   devServer: {
+    publicPath: '/',
+    disableHostCheck: true,
     host: '0.0.0.0',
     port: process.env['PORT'] || 8080,
   },
