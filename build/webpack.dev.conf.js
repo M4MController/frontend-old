@@ -13,10 +13,14 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
-      CONFIG: JSON.stringify(require(process.env['M4M_WEB_CONFIG'] || '../config/dev')),
+      CONFIG: JSON.stringify(
+        require(process.env['M4M_WEB_CONFIG'] || '../config/dev')),
     }),
   ],
   devServer: {
+    publicPath: '/',
+    hot: true,
+    disableHostCheck: true,
     host: '0.0.0.0',
     port: process.env['PORT'] || 8080,
   },
