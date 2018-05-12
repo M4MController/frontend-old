@@ -30,7 +30,7 @@ export let defaultsettings = {
     },
     userObjectControllers: {
       request: UserObjectControllersRequest,
-      url: '/object/:object_id/get_controllers',
+      url: '/object/:object_id/get_object_controllers',
       method: 'GET',
     },
     userControllerSensors: {
@@ -73,7 +73,7 @@ export class RequestFabric {
     let httpprot = this.settings.httpprotocol;
     let host = this.settings.host;
     let request = new (this.settings.requests[name].request)();
-    request.url = `${httpprot}://${host}${this.settings.requests[name].url}`;
+    request.url = `${httpprot}${host}${this.settings.requests[name].url}`;
     request.method = this.settings.requests[name].method;
     return request;
   }

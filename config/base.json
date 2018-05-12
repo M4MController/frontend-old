@@ -1,0 +1,6 @@
+{
+  "backend": {
+    "schema": "http://",
+    "host": "meter4.me"
+  }
+}

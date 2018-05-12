@@ -19,16 +19,16 @@ const fetchForObjectsPageSaga = function* (action) {
   try {
     yield put(start(action.type));
     for (let object of yield call(() => api.userObjects().execute())) {
-      for (let controller of yield call(() => api.userObjectControllers().execute(object.objectId))) {
-        for (let sensor of yield call(() => api.userControllerSensors().execute(controller.objectId))) {
-          for (let data of yield call(() => api.userSensorData().execute(sensor.objectId))) {
+      yield put(createObject(object));
+      for (let controller of yield call(() => api.userObjectControllers().execute(object.id))) {
+        yield put(createController(controller));
+        for (let sensor of yield call(() => api.userControllerSensors().execute(controller.id))) {
+          yield put(createSensor(sensor));
+          for (let data of yield call(() => api.userSensorData().execute(sensor.id))) {
             yield put(createData(data));
           }
-          yield put(createSensor(sensor));
         }
-        yield put(createController(controller));
       }
-      yield put(createObject(object));
     }
     yield put(done(action.type));
   } catch (error) {
@@ -39,17 +39,22 @@ const fetchForObjectsPageSaga = function* (action) {
 const fetchForObjectPageSaga = function* (action) {
   try {
     yield put(start(action.type));
-    for (let controller of yield call(() => api.userObjectControllers().execute(action.objectId))) {
-      for (let sensor of yield call(() => api.userControllerSensors().execute(controller.id))) {
-        const stats = yield call(() => api.userSensorStats().execute(sensor.id));
-        // debugger;
-        yield put(createSensorStats({
-          ...stats,
-          sensor: sensor.id,
-        }));
-        yield put(createSensor(sensor));
+    for (let object of yield call(() => api.userObjects().execute())) {
+      yield put(createObject(object));
+      for (let controller of yield call(() => api.userObjectControllers().execute(object.id))) {
+        yield put(createController(controller));
+        for (let sensor of yield call(() => api.userControllerSensors().execute(controller.id))) {
+          yield put(createSensor(sensor));
+          const stats = yield call(() => api.userSensorStats().execute(sensor.id));
+          yield put(createSensorStats({
+            ...stats,
+            sensor: sensor.id,
+          }));
+          for (let data of yield call(() => api.userSensorData().execute(sensor.id))) {
+            yield put(createData(data));
+          }
+        }
       }
-      yield put(createController(controller));
     }
     yield put(done(action.type));
   } catch (error) {

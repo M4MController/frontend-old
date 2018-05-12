@@ -7,7 +7,7 @@
 export function start(actionName) {
   return {
     type: start.toString(),
-    actionName: actionName,
+    actionName,
   };
 }
 
@@ -16,7 +16,7 @@ start.toString = () => 'EXECUTION_START';
 export function done(actionName) {
   return {
     type: done.toString(),
-    actionName: actionName,
+    actionName,
   };
 }
 
@@ -25,9 +25,9 @@ done.toString = () => 'EXECUTION_DONE';
 export function fail(actionName, error = 'error info has not provided') {
   return {
     type: fail.toString(),
-    actionName: actionName,
-    error: error,
+    actionName,
+    error,
   };
 }
 
-fail.toString = () => 'EXECUTION_DONE';
+fail.toString = () => 'EXECUTION_FAIL';

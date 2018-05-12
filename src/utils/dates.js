@@ -5,6 +5,7 @@
 'use strict';
 
 export const getCurrentMonth = function() {
-  const now = Date.now();
-  return now.setMonth(now.getMonth() - 1);
+  const now = new Date();
+  now.setDate(now.getMonth() - 1);
+  return now;
 };

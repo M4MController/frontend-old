@@ -21,17 +21,14 @@ import {fetchForObjectsPage} from 'src/actions/common';
 @connect(state => ({
   objects: allObjects(state),
   execution: state.execution,
-}), {
-  fetchForObjectsPage,
-},
-)
+}))
 export default class extends RouteComponent {
   componentWillMount() {
-    this.props.fetchForObjectsPage();
+    this.props.dispatch(fetchForObjectsPage());
   }
 
   render() {
-    const loadingState = this.props.execution[this.props.fetchForObjectsPage] || {};
+    const loadingState = this.props.execution[fetchForObjectsPage] || {};
     const isEmpty = !this.props.objects.length;
 
     if (loadingState.running) {
@@ -39,7 +36,7 @@ export default class extends RouteComponent {
     } else if (loadingState.error) {
       return <div>ERROR</div>;
     } else if (isEmpty) {
-      return <div>NO OBJECTS</div>;
+      return <div>NO OBJEsCTS</div>;
     } else {
       return (
         <Container>

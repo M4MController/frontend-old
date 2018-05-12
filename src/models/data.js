@@ -24,4 +24,11 @@ export default class extends Model {
   static get reducer() {
     return dataReducer;
   }
+
+  static get options() {
+    return {
+      // todo: uncomment when data stub will be removed on the backend
+      // idAttribute: 'hash',
+    };
+  }
 }
