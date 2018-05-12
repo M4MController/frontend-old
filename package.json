@@ -8,10 +8,10 @@
     "eslint": "eslint .",
     "build-dev": "webpack --config build/webpack.dev.conf.js --progress",
     "build-prod": "webpack --config build/webpack.prod.conf.js --progress",
-    "start": "webpack-dev-server --config build/webpack.prod.conf.js --history-api-fallback",
+    "start": "webpack-dev-server --config build/webpack.dev.conf.js --history-api-fallback",
     "start-proxy": "node build/proxy.js",
     "start-dev": "webpack-dev-server --config build/webpack.dev.conf.js --history-api-fallback",
-    "start-dev-proxy": "concurrently --kill-others \"npm run start-proxy\" \"npm run start-dev\""
+    "start-dev-proxy": "concurrently --kill-others \"npm run start-proxy\" \"webpack-dev-server --config build/webpack.dev.proxy.conf.js --history-api-fallback\""
   },
   "repository": {
     "type": "git",

@@ -13,7 +13,8 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
-      CONFIG: JSON.stringify(require(process.env['M4M_WEB_CONFIG'] || '../config/dev')),
+      CONFIG: JSON.stringify(
+        require(process.env['M4M_WEB_CONFIG'] || '../config/proxy')),
     }),
   ],
   devServer: {
