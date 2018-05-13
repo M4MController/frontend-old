@@ -15,6 +15,7 @@ import IndexRoute from './index-route';
 import ObjectRoute from './object';
 import Test from './test';
 import NotFound from './not-found';
+import Authorize from './authorize';
 
 import {changeLanguage} from 'src/actions/language';
 
@@ -65,10 +66,12 @@ export default class extends RouteComponent {
             <Switch>
               <Route exact path='/' component={IndexRoute}/>
               <Route path='/object/:id' component={ObjectRoute}/>
-              <Route path='/test' component={Test}/>
+              <Route path='/test' component={Authorize}/>
               <Route component={NotFound}/>
             </Switch>
           </div>
+
+          <Authorize/>
         </div>
       </div>
     );
