@@ -103,7 +103,6 @@ export default class BaseRequest {
   }
 
   async execute() {
-    await authorizeIfNeeded(); // todo: remove the stub
     return this._prepareRequest();
   }
 }

@@ -13,11 +13,11 @@ import RouteComponent from 'src/routes/route-component';
 
 import IndexRoute from './index-route';
 import ObjectRoute from './object';
-import Test from './test';
 import NotFound from './not-found';
 import Authorize from './authorize';
 
 import {changeLanguage} from 'src/actions/language';
+import {fetchUserInfo} from 'src/actions/user';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
@@ -25,15 +25,28 @@ import 'src/styles/helpers.scss';
 @withRouter
 @connect(state => ({
   language: state.language,
+  auth: state.auth,
+  execution: state.execution,
 }), {
   changeLanguage,
+  fetchUserInfo,
 })
 export default class extends RouteComponent {
+  componentWillMount() {
+    this.props.fetchUserInfo();
+  }
+
   setLanguage(currentLanguage = this.props.language.current) {
     this.props.changeLanguage(currentLanguage);
   }
 
   render() {
+    if ((this.props.execution[fetchUserInfo.toString()] || {}).running) {
+      return <div>WAIT</div>;
+    }
+    if (!this.props.auth.isAuthorized) {
+      return <Authorize/>;
+    }
     return (
       <div className="app table">
         <div className="full-height app-menu-width pull-left">
@@ -70,8 +83,6 @@ export default class extends RouteComponent {
               <Route component={NotFound}/>
             </Switch>
           </div>
-
-          <Authorize/>
         </div>
       </div>
     );

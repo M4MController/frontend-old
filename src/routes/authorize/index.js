@@ -7,7 +7,11 @@
 import React from 'react';
 import RouteComponent from 'src/routes/route-component';
 
-import './index.scss'
+import './index.scss';
+
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import {authorization} from 'src/actions/auth';
 
 const image = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNj' +
   'AiIGhlaWdo%0D%0AdD0iMzAxIj4KICAgIDxkZWZzPgogICAgICAgIDxzdHlsZT4KICAgICAgICAgICAgLmNscy0xLC5j%0D%0AbHMtM3' +
@@ -36,6 +40,12 @@ const image = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmc
   '0ANiIvPgogICAgPHJlY3Qgd2lkdGg9IjI3LjUzMSIgaGVpZ2h0PSI1MC4xMjUiIHg9IjEuMDYzIiB5%0D%0APSIxMTUuMzc1IiBjbGFz' +
   'cz0iY2xzLTMiIHJ4PSIxMy43NjYiIHJ5PSIxMy43NjYiLz4KPC9zdmc+%0D%0ACg==';
 
+@withRouter
+@connect(state => ({
+  execution: state.execution,
+}), {
+  authorization,
+})
 export default class extends RouteComponent{
   constructor(props){
     super(props);
@@ -49,10 +59,8 @@ export default class extends RouteComponent{
   }
 
   login(event){
-    if (this.props.loginCallback !== undefined)
-      this.props.loginCallback(this.state);
-
     event.preventDefault();
+    this.props.authorization(this.state.login, this.state.password);
   }
 
   register(event){
@@ -72,27 +80,28 @@ export default class extends RouteComponent{
 
   render(){
     return (
-    <div className='auth-container'>
-      <div className='auth-top'>
-        <img src={image} className='image-container'/>
+      <div className='auth-container'>
+        <div className='auth-top'>
+          <img src={image} className='image-container'/>
+        </div>
+        <div className='auth-main'>
+          <form>
+            <h2>Authorization</h2>
+            <div className='line-content'>
+              <label>Login: </label>
+              <input type='text' onChange={this.loginChanged} value={this.state.login} style={{marginLeft: '30px'}}/>
+            </div>
+            <div className='line-content'>
+              <label>Password: </label>
+              <input type='password' onChange={this.passwordChanged} value={this.state.password}/>
+            </div>
+            <div className='buttons-content'>
+              <button disabled={this.props.execution[authorization]} className='button-style' onClick={this.register}>Register</button>
+              <button className='button-style' onClick={this.login}>Log in</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className='auth-main'>
-        <form>
-          <h2>Authorization</h2>
-          <div className='line-content'>
-            <label>Login: </label>
-            <input type='text' onChange={this.loginChanged} value={this.state.login} style={{marginLeft: '30px'}}/>
-          </div>
-          <div className='line-content'>
-            <label>Password: </label>
-            <input type='password' onChange={this.passwordChanged} value={this.state.password}/>
-          </div>
-          <div className='buttons-content'>
-            <button className='button-style' onClick={this.register}>Register</button>
-            <button className='button-style' onClick={this.login}>Log in</button>
-          </div>
-        </form>
-      </div>
-    </div>);
+    );
   }
 }
