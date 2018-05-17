@@ -79,6 +79,12 @@ export default class extends RouteComponent{
   }
 
   render(){
+    if ((this.props.execution[authorization] || {}).running) {
+      return <div>AUTHORIZING</div>;
+    }
+
+    const hasError = (this.props.execution[authorization] || {}).error;
+
     return (
       <div className='auth-container'>
         <div className='auth-top'>
@@ -88,11 +94,11 @@ export default class extends RouteComponent{
           <form>
             <h2>Authorization</h2>
             <div className='line-content'>
-              <label>Login: </label>
+              <label style={{color: hasError ? 'red' : ''}}>Login: </label>
               <input type='text' onChange={this.loginChanged} value={this.state.login} style={{marginLeft: '30px'}}/>
             </div>
             <div className='line-content'>
-              <label>Password: </label>
+              <label style={{color: hasError ? 'red' : ''}}>Password: </label>
               <input type='password' onChange={this.passwordChanged} value={this.state.password}/>
             </div>
             <div className='buttons-content'>
