@@ -4,6 +4,15 @@
 
 'use strict';
 
+export function createUser(payload) {
+  return {
+    type: createUser.toString(),
+    payload,
+  };
+}
+
+createUser.toString = () => 'CREATE_USER';
+
 export function fetchUserInfo() {
   return {
     type: fetchUserInfo.toString(),
