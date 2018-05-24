@@ -16,8 +16,14 @@ import ObjectRoute from './object';
 import NotFound from './not-found';
 import Authorize from './authorize';
 
+import MenuObjects from 'src/components/menu-objects';
+import MenuFinance from 'src/components/menu-finance';
+import MenuSettings from 'src/components/menu-settings';
+
 import {changeLanguage} from 'src/actions/language';
 import {fetchUserInfo} from 'src/actions/user';
+
+import {selectAllObjects} from 'src/selectors/object';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
@@ -27,6 +33,8 @@ import 'src/styles/helpers.scss';
   language: state.language,
   auth: state.auth,
   execution: state.execution,
+  objects: selectAllObjects(state),
+  currentObjectId: state.common.currentObjectId,
 }), {
   changeLanguage,
   fetchUserInfo,
@@ -58,13 +66,12 @@ export default class extends RouteComponent {
 
           <div className="app__menu app-content-height">
             <div className="app__menu-text">MENU</div>
-
-            <br/>
-            <button onClick={() => this.setLanguage('ru')}>ru</button>
-            <button onClick={() => this.setLanguage('en')}>en</button>
-            <Link to="/test" style={{'color': 'white'}}>{$t('test_message')}</Link>
-            <br/>
-            <Link to="/404" style={{'color': 'white'}}>Go to 404</Link>
+            <MenuObjects objects={this.props.objects || []}
+              currentObjectId={this.props.currentObjectId}
+              isActive={true}
+            />
+            <MenuFinance/>
+            <MenuSettings/>
           </div>
         </div>
 
