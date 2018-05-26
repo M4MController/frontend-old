@@ -15,7 +15,9 @@ export default class extends React.Component {
       this.state = {showMenu: false};
       this.hideMenu = this.hideMenu.bind(this);
 
-      this.menuElems = [{text: "Log out", onClick: this.hideMenu},];
+      this.menuElems = [{text: "Log out", onClick: this.hideMenu},
+                        {text: "Item 2", onClick: this.hideMenu},
+                        {text: "Item 3", onClick: this.hideMenu},];
   }
 
   toggle() {
@@ -33,7 +35,7 @@ export default class extends React.Component {
     return (<noscript/>);
   }
   render() {
-    let img = 'public/no-image.jpg';
+    let img = 'public/images/no-image.jpg';
     let username = 'Unnamed';
     if(this.props.user)
       img = (this.props.user.secondName + this.props.user.familyName) || username;
@@ -41,7 +43,8 @@ export default class extends React.Component {
       <div className='container'>
         <img src={img} className='avatar'/>
         <span className='username'>{username}</span>
-        <span className='username' onClick={this.toggle}>X</span>
+        <img src='public/images/down-arrow.png' className='drop-down' onClick={this.toggle}/>
+
         {this.getMenu()}
       </div>
     );

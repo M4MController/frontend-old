@@ -1,12 +1,43 @@
 @import "src/styles/constants.scss";
 
+$menu-background-color: #1fc0b8;
+$menu-right-strip: #1c8a83;
+$menu-item-hover-background-color: #1c8a83;
+$menu-item-hover-strip: #186c65;
+
+$menu-item-width: 90px;
+$menu-item-height: 20px;
+
 .menu-container {
   position: absolute;
 
-  background-color: $btn-neutral-bg-start;
+  right: 10px;
+
+  background-color: $menu-background-color;
   color: $object-card-body-background;
   text-align: right;
 
   font-size: $base-font-size;
   font-family: $base-font-family;
+
+}
+
+.menu-item {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+
+  padding: 5px;
+  height: $menu-item-height;
+  width:  $menu-item-width;
+  border-right: 3px solid $menu-right-strip;
+
+  &:hover{
+    font-size: $big-font-size;
+    background-color: $menu-item-hover-background-color;
+    border-right-color: $menu-item-hover-strip;
+  }
 }

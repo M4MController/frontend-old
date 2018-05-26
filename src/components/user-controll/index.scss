@@ -2,6 +2,7 @@
 
 $avatar-size: 45px;
 $border-line: 2px;
+$drop-down-size: 15px;
 
 .container{
   height: $app-header-height;
@@ -18,6 +19,14 @@ $border-line: 2px;
   border: $object-card-body-background $border-line solid;
 
   margin: 0 10px 0 10px;
+}
+
+.drop-down{
+  position: relative;
+  top: 2px;
+  //top: $drop-down-size/2;
+
+  height: $drop-down-size;
 }
 
 .username{
