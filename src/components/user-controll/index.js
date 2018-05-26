@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Menu from './Pop-Up-Menu';
 
@@ -14,14 +15,30 @@ export default class extends React.Component {
       this.toggle = this.toggle.bind(this);
       this.state = {showMenu: false};
       this.hideMenu = this.hideMenu.bind(this);
+      this.handleClick = this.handleClick.bind(this);
 
       this.menuElems = [{text: "Log out", onClick: this.hideMenu},
                         {text: "Item 2", onClick: this.hideMenu},
                         {text: "Item 3", onClick: this.hideMenu},];
   }
 
+  handleClick(event) {
+    const domNode = ReactDOM.findDOMNode(this);
+
+    if(!domNode || !domNode.contains(event.target))
+      this.setState({showMenu: false});
+  }
+
   toggle() {
     this.setState({showMenu: !this.state.showMenu});
+  }
+
+  componentWillMount() {
+    document.addEventListener('click', this.handleClick);
+  }
+
+  componentWillUnmoun() {
+    document.removeEventListener('click', this.handleClick);
   }
 
   hideMenu() {

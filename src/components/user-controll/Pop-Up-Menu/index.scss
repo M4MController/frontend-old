@@ -1,8 +1,8 @@
 @import "src/styles/constants.scss";
 
-$menu-background-color: #1fc0b8;
+$menu-background-color: $object-card-footer-background;
 $menu-right-strip: #1c8a83;
-$menu-item-hover-background-color: #1c8a83;
+$menu-item-hover-background-color: darken($menu-background-color, 40);
 $menu-item-hover-strip: #186c65;
 
 $menu-item-width: 90px;
@@ -14,7 +14,7 @@ $menu-item-height: 20px;
   right: 10px;
 
   background-color: $menu-background-color;
-  color: $object-card-body-background;
+  color: $object-card-header-color;
   text-align: right;
 
   font-size: $base-font-size;
@@ -35,9 +35,11 @@ $menu-item-height: 20px;
   width:  $menu-item-width;
   border-right: 3px solid $menu-right-strip;
 
+  cursor: pointer;
+
   &:hover{
-    font-size: $big-font-size;
     background-color: $menu-item-hover-background-color;
     border-right-color: $menu-item-hover-strip;
+    color: $mark-ok-color;
   }
 }
