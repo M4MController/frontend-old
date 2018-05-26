@@ -1,0 +1,12 @@
+@import "src/styles/constants.scss";
+
+.menu-container {
+  position: absolute;
+
+  background-color: $btn-neutral-bg-start;
+  color: $object-card-body-background;
+  text-align: right;
+
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+}

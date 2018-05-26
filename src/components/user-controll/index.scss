@@ -25,3 +25,13 @@ $border-line: 2px;
   color: $object-card-body-background;
   margin: 0 5px 0 5px;
 }
+
+.visible{
+  border: 1px red solid;
+  opacity: 1;
+}
+
+.hidden{
+  border: 2px blue dotted;
+  opacity: 0;
+}
