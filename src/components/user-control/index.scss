@@ -1,47 +1,54 @@
 @import "src/styles/constants.scss";
 
 $avatar-size: 45px;
-$border-line: 2px;
+$border-line: 1px;
 $drop-down-size: 15px;
 
-.container{
+.container {
   height: $app-header-height;
   margin-right: 10px;
 }
 
-.avatar{
+.avatar {
   position: relative;
   top: ($app-header-height - $avatar-size - $border-line)/2;
 
   width: $avatar-size;
   height: $avatar-size;
-  border-radius: $avatar-size/2;
+  border-radius: 50%;
   border: $object-card-body-background $border-line solid;
 
   margin: 0 10px 0 10px;
 }
 
-.drop-down{
+.drop-down {
   position: relative;
   top: 2px;
-  //top: $drop-down-size/2;
 
   height: $drop-down-size;
 }
 
-.username{
+.username {
   font-family: $base-font-family;
   font-size: $base-font-size;
   color: $object-card-body-background;
   margin: 0 5px 0 5px;
+  cursor: pointer;
 }
 
-.visible{
-  border: 1px red solid;
-  opacity: 1;
+.user-menu {
+  transition: transform ease-in-out 50ms;
+
+  &__visible {
+    display: block;
+  }
+
+  &__hidden {
+    display: none;
+  }
 }
 
-.hidden{
+.hidden {
   border: 2px blue dotted;
   opacity: 0;
 }

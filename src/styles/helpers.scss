@@ -41,3 +41,9 @@
     #{$property}: 100%;
   }
 }
+
+.text {
+  &-danger {
+    color: red;
+  }
+}
