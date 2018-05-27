@@ -1,0 +1,52 @@
+@import "src/styles/constants.scss";
+
+$menu-background-color: $object-card-footer-background;
+$menu-right-strip: #2D8889;
+$menu-item-hover-background-color: darken($menu-background-color, 40);
+$menu-item-hover-strip: #186c65;
+
+$menu-item-width: 140px;
+$menu-item-height: 20px;
+
+.menu-container {
+  position: absolute;
+
+  right: 10px;
+
+  background-color: $menu-background-color;
+  color: $object-card-header-color;
+  box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+
+  text-align: right;
+  overflow: hidden;
+
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+
+  z-index: 999;
+}
+
+.menu-item {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+
+  padding: 10px;
+  height: $menu-item-height;
+  width:  $menu-item-width;
+  border-right: 3px solid $menu-right-strip;
+  border-bottom: 1px solid #cbcbcb;
+
+  cursor: pointer;
+
+  &:hover{
+    background-color: $menu-item-hover-background-color;
+    border-right-color: $menu-item-hover-strip;
+    color: $mark-ok-color;
+
+    //transition: ;
+  }
+}

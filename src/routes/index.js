@@ -15,9 +15,12 @@ import IndexRoute from './index-route';
 import ObjectRoute from './object';
 import NotFound from './not-found';
 import Authorize from './authorize';
+import UserControl from 'src/components/user-control';
 
 import {changeLanguage} from 'src/actions/language';
 import {fetchUserInfo} from 'src/actions/user';
+
+import {selectCurrentUser} from 'src/selectors/user';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
@@ -27,6 +30,7 @@ import 'src/styles/helpers.scss';
   language: state.language,
   auth: state.auth,
   execution: state.execution,
+  user: selectCurrentUser(state) || {},
 }), {
   changeLanguage,
   fetchUserInfo,
@@ -71,7 +75,9 @@ export default class extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-
+              <UserControl user={this.props.user} onLogout={
+                () => alert('Log out has not supported yet')
+              }/>
             </div>
           </div>
 

@@ -5,6 +5,7 @@
 'use strict';
 
 import {Model, attr} from 'redux-orm';
+import userReducer from 'src/reducers/user';
 
 export default class extends Model {
   static get modelName() {
@@ -28,5 +29,9 @@ export default class extends Model {
       citizenship: attr(),
       email: attr(),
     };
+  }
+
+  static get reducer() {
+    return userReducer;
   }
 }
