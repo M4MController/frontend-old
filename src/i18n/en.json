@@ -17,7 +17,10 @@
       "card_controller_current_month": "Current month",
       "card_controller_last_month": "Last month",
       "card_controller_average_year": "Year average",
-      "card_controller_forecast": "forecast"
+      "card_controller_forecast": "forecast",
+      "menu_objects_caption": "Objects",
+      "menu_finance_caption": "Finance",
+      "menu_settings_caption": "Settings"
     }
   }
 }
