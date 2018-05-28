@@ -13,8 +13,9 @@ import * as executionAction from 'src/actions/execution';
 const fetchUserInfo = function* (action) {
   yield put(executionAction.start(action.type));
   try {
-    yield call(() => api.userInfo().execute());
+    const user = yield call(() => api.userInfo().execute());
     yield put(authAction.setAuthState(true));
+    yield put(userActions.createUser(user));
     yield put(executionAction.done(action.type));
   } catch (e) {
     yield put(executionAction.fail(action.type, e));

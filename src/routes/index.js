@@ -19,11 +19,13 @@ import Authorize from './authorize';
 import MenuObjects from 'src/components/menu-objects';
 import MenuFinance from 'src/components/menu-finance';
 import MenuSettings from 'src/components/menu-settings';
+import UserControl from 'src/components/user-control';
 
 import {changeLanguage} from 'src/actions/language';
 import {fetchUserInfo} from 'src/actions/user';
 
 import {selectAllObjects} from 'src/selectors/object';
+import {selectCurrentUser} from 'src/selectors/user';
 
 import 'index.scss';
 import 'src/styles/helpers.scss';
@@ -35,6 +37,7 @@ import 'src/styles/helpers.scss';
   execution: state.execution,
   objects: selectAllObjects(state),
   currentObjectId: state.common.currentObjectId,
+  user: selectCurrentUser(state) || {},
 }), {
   changeLanguage,
   fetchUserInfo,
@@ -78,7 +81,9 @@ export default class extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-
+              <UserControl user={this.props.user} onLogout={
+                () => alert('Log out has not supported yet')
+              }/>
             </div>
           </div>
 
