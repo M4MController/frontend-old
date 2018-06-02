@@ -17,11 +17,11 @@ export default class extends React.Component {
     return (
       <div className="m-option">
         <Link to={this.props.linkTo} className={
-          `m-option__header ${this.props.isActive ?
-            'm-option__header__active' : ''}`
+          `m-option__item ${this.props.isActive ?
+            'active-item' : ''}`
         }>
           <Icon className="m-option__icon" name={this.props.icon}/>
-          <span className="m-option__caption">
+          <span className="m-option__caption text-default">
             {this.props.caption}
           </span>
           <span className="m-option__array">
@@ -36,8 +36,8 @@ export default class extends React.Component {
         {
           (this.props.items || []).map(object =>
             <Link to={object.linkTo} className={
-              `m-option__item ${object.isActive ?
-                'm-option__item__active' : ''}`}
+              `m-option__item m-option__item__child ${object.isActive ?
+                'active-item' : ''}`}
             key={object.id}>
               <i className="m-option__dot"/>
               {object.caption}

@@ -68,7 +68,7 @@ export default class extends RouteComponent {
           </Link>
 
           <div className="app__menu app-content-height">
-            <div className="app__menu-text">MENU</div>
+            <div className="app__menu-text text-default">MENU</div>
             <MenuObjects objects={this.props.objects || []}
               currentObjectId={this.props.currentObjectId}
               isActive={true}
@@ -81,9 +81,8 @@ export default class extends RouteComponent {
         <div className="full-height pull-left">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <UserControl user={this.props.user} onLogout={
-                () => alert('Log out has not supported yet')
-              }/>
+              <UserControl className="app__user-control" user={this.props.user}
+                onLogout={() => alert('Log out has not supported yet')}/>
             </div>
           </div>
 

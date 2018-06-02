@@ -1,7 +1,9 @@
+@import "grid";
+
 // App
-$app-header-height: 90px;
-$app-menu-width: 300px;
-$app-content-padding: 10px;
+$app-header-height: $grid-step * 8;
+$app-menu-width: $grid-step * 32;
+$app-content-padding: $grid-step * 2;
 
 // Colors
 $app-menu-background: rgb(32, 37, 45);
@@ -37,6 +39,6 @@ $font-inactive-color: rgb(141, 141, 141);
 
 // Fonts
 $base-font-family: Arial, Helvetica, sans-serif;
-$base-font-size: 17px;
-$big-font-size: 20px;
-$small-font-size: 15px;
+$small-font-size: $v-step * 1;
+$base-font-size: $grid-step * 2;
+$large-font-size: $grid-step * 3;

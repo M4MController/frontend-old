@@ -1,7 +1,8 @@
 @import "src/styles/constants.scss";
 @import "src/styles/helpers.scss";
 
-$app-header-logo-margin: 20px;
+$app-header-logo-margin: $grid-step * 2;
+$head-l-margin: $grid-step * 2;
 
 .app-menu-width {
   width: $app-menu-width;
@@ -46,8 +47,12 @@ $app-header-logo-margin: 20px;
     color: whitesmoke;
   }
 
+  &__user-control {
+    width: $grid-step * 30;
+  }
+
   &__menu-text {
-    padding: 60px 0 20px 25px;
+    padding: $grid-step * 3 0 $grid-step * 2 $head-l-margin;
   }
 
   &__content {

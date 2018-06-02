@@ -1,43 +1,51 @@
 @import "src/styles/constants.scss";
+@import "src/styles/grid.scss";
 
-$avatar-size: 45px;
+// don't care about variable names, we will use scoped styles in the future
+$control-padding-h: $grid-step;
+$control-padding-v: $grid-step;
+$control-height: $app-header-height - 2 * $control-padding-v;
+$control-width: $grid-step * 30;
+$avatar-r-margin: $grid-step;
 $border-line: 1px;
-$drop-down-size: 15px;
+$drop-down-size: $grid-step * 2;
+$text-size: $base-font-size;
+$user-menu-width: $grid-step * 20;
 
 .container {
-  height: $app-header-height;
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+
+  height: $control-height;
+  padding: $control-padding-h $control-padding-v;
 }
 
 .avatar {
-  position: relative;
-  top: ($app-header-height - $avatar-size - $border-line)/2;
-
-  width: $avatar-size;
-  height: $avatar-size;
+  width: $control-height;
+  height: $control-height;
   border-radius: 50%;
-  border: $object-card-body-background $border-line solid;
+  border: white $border-line solid;
 
-  margin: 0 10px 0 10px;
+  margin-right: $avatar-r-margin;
 }
 
 .drop-down {
-  position: relative;
-  top: 2px;
-
-  height: $drop-down-size;
+  width: $drop-down-size;
+  margin-left: $grid-step;
 }
 
 .username {
-  font-family: $base-font-family;
-  font-size: $base-font-size;
-  color: $object-card-body-background;
-  margin: 0 5px 0 5px;
+  overflow-wrap: break-word;
+  color: white;
   cursor: pointer;
+  vertical-align: center;
 }
 
 .user-menu {
   transition: transform ease-in-out 50ms;
+  right: $grid-step;
+  margin-top: -$grid-step;
+  width: $user-menu-width;
 
   &__visible {
     display: block;

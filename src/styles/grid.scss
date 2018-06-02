@@ -1,0 +1,15 @@
+$grid-step: 8px;
+$v-step: $grid-step;
+
+$min-grid-size: 1;
+$max-grid-size: 32;
+
+@for $size from $min-grid-size through $min-grid-size {
+  @each $property in magrin, padding {
+    @each $side in left, right, top, bottom {
+      .#{ $property }-#{ $side }-#{ #size }x {
+        #{ $property }-#{ $side }: $grid-step * $size;
+      }
+    }
+  }
+}

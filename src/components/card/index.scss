@@ -1,4 +1,4 @@
-@import "src/styles/constants.scss";
+@import "src/styles/global.scss";
 
 .card {
   display: inline-block;
@@ -10,7 +10,7 @@
 
   &__col {
     display: inline-block;
-    padding: 0 20px;
+    padding: 0 $grid-step;
     vertical-align: middle; // if in other .class - doesn't work o_O
   }
 
@@ -42,7 +42,7 @@
   }
 
   &__title {
-    font-size: $big-font-size;
+    font-size: $large-font-size;
     font-weight: normal;
     margin: 0 0 10px 0;
   }

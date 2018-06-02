@@ -1,3 +1,6 @@
+@import "grid";
+@import "constants";
+
 .pull {
   @each $side in right, left {
     &-#{ $side } {
@@ -43,6 +46,18 @@
 }
 
 .text {
+  &-default {
+    font-size: $base-font-size;
+  }
+
+  &-small {
+    font-size: $small-font-size;
+  }
+
+  &-large {
+    font-size: $large-font-size;
+  }
+
   &-danger {
     color: red;
   }
