@@ -8,6 +8,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Bubble from 'src/components/bubble';
+
 export default class extends React.Component {
   render() {
     const object = this.props.object;
@@ -19,7 +21,7 @@ export default class extends React.Component {
         <div className="card__col">
           <h2 className="object__title">{object.name}</h2>
           <span className="object__controllers-info">
-            <i className="n-mark n-mark_error">{controllersErrorsCount}</i>
+            <Bubble mode="error">{controllersErrorsCount}</Bubble>
             {$t('card_object_error_controllers', {count: errorsCount})}
           </span>
         </div>

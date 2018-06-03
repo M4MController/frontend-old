@@ -8,6 +8,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Bubble from 'src/components/bubble';
 import {AmountTable, AmountTableRow} from 'src/components/card/amounttable';
 
 export default class extends React.Component {
@@ -20,15 +21,15 @@ export default class extends React.Component {
         <AmountTable>
           <AmountTableRow>
             <span>{$t('card_object_current_month')}</span>
-            <i className="n-mark">{stats.curMonthAmount || 100}</i>
+            <Bubble mode="ok">{stats.curMonthAmount || 100}</Bubble>
           </AmountTableRow>
           <AmountTableRow>
             <span>{$t('card_object_last_month')}</span>
-            <i className="n-mark">{stats.lastMonthAmount || 185}</i>
+            <Bubble mode="ok">{stats.lastMonthAmount || 185}</Bubble>
           </AmountTableRow>
           <AmountTableRow>
             <span>{$t('card_object_average_year')}</span>
-            <i className="n-mark">{stats.yearAverageAmount || 5896}</i>
+            <Bubble mode="ok">{stats.yearAverageAmount || 5896}</Bubble>
           </AmountTableRow>
         </AmountTable>
         <div className="card__col">

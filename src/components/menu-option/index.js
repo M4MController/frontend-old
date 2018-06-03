@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 
 import {Link} from 'react-router-dom';
 import Icon from 'src/components/icon';
+import Bubble from 'src/components/bubble';
 
 import './index.scss';
 
@@ -28,9 +29,9 @@ export default class extends React.Component {
           </span>
           {
             this.props.counter ? (
-              <span className="m-option__counter n-mark n-mark_ok">
+              <Bubble mode="ok" className="m-option__counter">
                 {this.props.counter}
-              </span>) : ''
+              </Bubble>) : ''
           }
         </Link>
         {

@@ -7,6 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Bubble from 'src/components/bubble';
 import {AmountTable, AmountTableRow} from 'src/components/card/amounttable';
 
 const getAllSensors = function(object) {
@@ -37,7 +38,7 @@ export default class extends React.Component {
             return (
               <AmountTableRow key={sensor.id} rowClass="amount-table__row_big">
                 {sensor.name}
-                <i className="n-mark n-mark_ok">{sensor.value}</i>
+                <Bubble mode="ok">{sensor.value}</Bubble>
               </AmountTableRow>
             );
           })}
@@ -47,7 +48,7 @@ export default class extends React.Component {
             return (
               <AmountTableRow key={sensor.id} rowClass="amount-table__row_big" responsive="true">
                 {sensor.name}
-                <i className="n-mark n-mark_ok">{sensor.value}</i>
+                <Bubble mode="ok">{sensor.value}</Bubble>
               </AmountTableRow>
             );
           })}

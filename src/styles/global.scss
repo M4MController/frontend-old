@@ -65,20 +65,3 @@ body {
   }
 
 }
-
-.n-mark {
-  display: inline-block;
-  padding: 3px 7px;
-  border-radius: 50px;
-  font-style: normal;
-
-  &_ok {
-    color: $mark-ok-color;
-    background: $mark-ok-background;
-  }
-
-  &_error {
-    color: $mark-error-color;
-    background: $mark-error-background;
-  }
-}
