@@ -1,4 +1,4 @@
-@import "src/styles/global";
+@import "src/styles/constants";
 
 .n-mark {
   display: inline-block;
@@ -7,12 +7,12 @@
   font-style: normal;
 
   &_ok {
-    color: $mark-ok-color;
+    color: $mark-ok-color !important;
     background: $mark-ok-background;
   }
 
   &_error {
-    color: $mark-error-color;
+    color: $mark-error-color !important;
     background: $mark-error-background;
   }
 }

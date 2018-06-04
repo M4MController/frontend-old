@@ -15,14 +15,32 @@
   }
 }
 
-.overflow {
-  @each $value in hidden, scroll, auto {
-    &-#{$value} {
-      overflow: $value
+@each $property in margin, padding {
+  .no-#{ $property } {
+    #{ $property }: 0 !important;
+
+    @each $side in right, left, top, bottom {
+      &-#{ $side } {
+        #{ $property }-#{ $side }: 0 !important;
+      }
     }
   }
 }
 
+@for $i from 1 through 9 {
+  @each $property in margin, padding {
+    .#{ $property }-#{ $i }x {
+      #{ $property }: #{ $grid-step * $i } !important;
+
+      @each $side in right, left, top, bottom {
+        &-#{ $side }-#{ $i }x {
+          #{ $property }: $grid-step * $i !important;
+        }
+      }
+    }
+  }
+
+}
 .clickable {
   cursor: pointer
 }
@@ -31,34 +49,45 @@
   display: none !important
 }
 
-.full-height {
-  height: 100vh;
-}
+.overflow {
+  @each $mode in auto, scroll, hidden {
+    &-#{ $mode } {
+      overflow: $mode;
+    }
 
-.full-width {
-  width: 100vw;
-}
-
-@each $property in height, width {
-  .max-#{$property} {
-    #{$property}: 100%;
+    @each $direction in x, y {
+      &-#{ $direction }-#{ $mode } {
+        overflow-#{ $direction }: $mode;
+      }
+    }
   }
 }
 
-.text {
-  &-default {
-    font-size: $base-font-size;
+.vp {
+  @each $property in height, min-height, max-height {
+    &-#{ $property } {
+      #{ $property }: 100vh;
+    }
   }
 
-  &-small {
-    font-size: $small-font-size;
+  @each $property in width, min-width, max-width {
+    &-#{ $property } {
+      #{ $property }: 100vw;
+    }
   }
+}
 
-  &-large {
-    font-size: $large-font-size;
+.full {
+  @each $property in height, min-height, max-height, width, min-width, max-width {
+    &-#{ $property } {
+      #{ $property }: 100%;
+    }
   }
+}
 
-  &-danger {
-    color: red;
-  }
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

@@ -22,7 +22,7 @@ export default class extends React.Component {
             'active-item' : ''}`
         }>
           <Icon className="m-option__icon" name={this.props.icon}/>
-          <span className="m-option__caption text-default">
+          <span className="m-option__caption text-default text-white">
             {this.props.caption}
           </span>
           <span className="m-option__array">

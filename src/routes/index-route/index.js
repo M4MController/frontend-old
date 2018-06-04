@@ -10,7 +10,6 @@ import {withRouter} from 'react-router-dom';
 
 import RouteComponent from 'src/routes/route-component';
 
-import Container from 'src/components/container';
 import ObjectCard from 'src/components/card-object';
 
 import {selectCardObjects as allObjects} from 'src/selectors/object';
@@ -39,11 +38,13 @@ export default class extends RouteComponent {
       return <div>NO OBJEsCTS</div>;
     } else {
       return (
-        <Container>
+        <div
+          className="grid-static full-width padding-1x">
           {
-            this.props.objects.map(object => <ObjectCard key={object.id} object={object}/>)
+            this.props.objects.map(
+              object => <ObjectCard key={object.id} object={object}/>)
           }
-        </Container>
+        </div>
       );
     }
   }

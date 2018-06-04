@@ -7,6 +7,7 @@ $control-padding-v: $grid-step;
 $control-height: $app-header-height - 2 * $control-padding-v;
 $control-width: $grid-step * 30;
 $avatar-r-margin: $grid-step;
+$avatar-size: $grid-step * 4;
 $border-line: 1px;
 $drop-down-size: $grid-step * 2;
 $text-size: $base-font-size;
@@ -21,8 +22,8 @@ $user-menu-width: $grid-step * 20;
 }
 
 .avatar {
-  width: $control-height;
-  height: $control-height;
+  width: $avatar-size;
+  height: $avatar-size;
   border-radius: 50%;
   border: white $border-line solid;
 

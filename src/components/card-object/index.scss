@@ -1,8 +1,27 @@
+@import "src/styles/constants";
+@import "src/styles/grid";
+
 .object {
-  &__header, &__body, &__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &__tooltip {
+    align-self: center;
+    height: $grid-step * 3;
+    margin-top: $grid-step;
+  }
+
+  &__body {
+    flex: 1;
+  }
+
+  &__amount {
+    height: $grid-step * 3;
+  }
+
+  &__footer {
+    align-self: flex-end;
     width: 100%;
+    background: $object-card-footer-background;
   }
 }
