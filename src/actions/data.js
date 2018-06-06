@@ -6,7 +6,7 @@
 
 import {getCurrentDate} from 'src/utils/dates';
 
-export function fetchData(sensorId, date = getCurrentDate(), limit = 1000) {
+export function fetchData(sensorId, date = getCurrentDate(), limit = 1) {
   return {
     type: fetchData.toString(),
     sensorId,
