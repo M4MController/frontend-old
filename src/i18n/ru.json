@@ -19,7 +19,10 @@
       "card_controller_current_month": "Текущий месяц",
       "card_controller_last_month": "Предыдущий месяц",
       "card_controller_average_year": "Среднее за год",
-      "card_controller_forecast": "прогноз"
+      "card_controller_forecast": "прогноз",
+      "menu_objects_caption": "Объекты",
+      "menu_finance_caption": "Финансы",
+      "menu_settings_caption": "Настройки"
     }
   }
 }

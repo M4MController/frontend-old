@@ -1,0 +1,71 @@
+@import "src/styles/constants.scss";
+
+.image-container{
+  margin: 10px;
+  width: 30%;
+  height: 30%;
+}
+
+.auth-container{
+  width: 500px;
+  height: 350px;
+
+  border: $app-menu-background solid 2px;
+  border-radius: 15px;
+  background-color: white;
+
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.auth-top{
+  border-radius: 15px;
+  background-color: $app-menu-background;
+
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-main{
+  display: flex;
+  display: -webkit-flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.line-content{
+  margin: 5px 0px 5px 0px;
+}
+
+.buttons-content{
+  display: flex;
+  display: -webkit-flex;
+
+  justify-content: center;
+
+  margin: 10px;
+}
+
+.button-style{
+  background-color: $btn-ok-bg-end;//linear-gradient(to bottom, $btn-ok-bg-start, $btn-ok-bg-end);
+  color: $btn-neutral-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+
+  border: $app-menu-background solid 0px;
+  border-radius: 5px;
+
+  width: 75px;
+  height: 30px;
+
+  margin: 10px 10px 0px 10px;
+}
+
+h2{
+  text-align: center;
+  font-family: $base-font-family;
+}

@@ -9,6 +9,12 @@ import {createSelector} from 'redux-orm';
 import {ormSelector} from './orm';
 import orm from 'src/models';
 
+export const selectAllObjects = createSelector(
+  orm,
+  ormSelector,
+  session => session.object.all().toRefArray(),
+);
+
 export const selectCardObjects = createSelector(
   orm,
   ormSelector,

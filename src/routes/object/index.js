@@ -28,6 +28,10 @@ export default class extends RouteComponent {
     this.props.dispatch(fetchForObjectPage(objectId));
   }
 
+  componentWillUnmount() {
+    this.props.dispatch(changeCurrentObject(-1));
+  }
+
   render() {
     const loadingState = this.props.execution[fetchForObjectPage] || {};
     const isEmpty = !this.props.sensors.length;

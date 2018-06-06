@@ -4,8 +4,8 @@
 
 'use strict';
 
-export const getCurrentMonth = function() {
+export const getCurrentDate = function() {
   const now = new Date();
-  now.setDate(now.getMonth() - 1);
+  now.setDate(now.getDate() - 1);
   return now;
 };

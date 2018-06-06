@@ -12,10 +12,12 @@ import orm from 'src/models';
 import common from './common';
 import execution from './execution';
 import language from './language';
+import auth from './auth';
 
 export default combineReducers({
   orm: createReducer(orm),
   common,
   execution,
   language,
+  auth,
 });
