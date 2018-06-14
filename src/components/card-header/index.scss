@@ -1,0 +1,31 @@
+@import "src/styles/constants";
+@import "src/styles/grid";
+
+.header {
+  padding: $grid-step 0;
+  color: $object-card-header-color;
+  background: $object-card-header-ok-background;
+
+  height: 100%;
+
+  &__title {
+    font-size: $large-font-size;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+
+  &__description {
+
+  }
+}
+
+.header-wrapper {
+  background-size: cover;
+  background-image: url('http://europeya.ru.opt-images.1c-bitrix-cdn.ru/upload/medialibrary/78e/78e62266dbe348925c434101403e1219.jpg?1481011582195555');
+  background-clip: border-box;
+  background-position: center;
+
+  overflow: hidden;
+
+  height: $grid-step * 9;
+}

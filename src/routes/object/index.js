@@ -13,7 +13,6 @@ import {changeCurrentObject} from 'src/actions/common';
 import {fetchForObjectPage} from 'src/actions/common';
 import {selectCardSensors} from 'src/selectors/sensor';
 
-import Container from 'src/components/container';
 import SensorCard from 'src/components/card-sensor';
 
 @withRouter
@@ -44,12 +43,12 @@ export default class extends RouteComponent {
       return <div>NO OBJECTS</div>;
     } else {
       return (
-        <Container>
+        <div className="grid-static full-width padding-1x">
           {
             this.props.sensors.map(
               sensor => <SensorCard key={sensor.id} sensor={sensor}/>)
           }
-        </Container>
+        </div>
       );
     }
   }

@@ -1,4 +1,7 @@
 @import "constants";
+@import "card";
+@import "grid";
+@import "typography";
 
 body {
   overflow: hidden;
@@ -6,6 +9,7 @@ body {
   margin: 0;
 
   font-family: $base-font-family;
+  font-size: $base-font-size;
 }
 
 .btn {
@@ -62,21 +66,4 @@ body {
     text-decoration: none;
   }
 
-}
-
-.n-mark {
-  display: inline-block;
-  padding: 3px 7px;
-  border-radius: 50px;
-  font-style: normal;
-
-  &_ok {
-    color: $mark-ok-color;
-    background: $mark-ok-background;
-  }
-
-  &_error {
-    color: $mark-error-color;
-    background: $mark-error-background;
-  }
 }

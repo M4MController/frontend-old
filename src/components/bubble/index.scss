@@ -1,0 +1,18 @@
+@import "src/styles/constants";
+
+.n-mark {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 50px;
+  font-style: normal;
+
+  &_ok {
+    color: $mark-ok-color !important;
+    background: $mark-ok-background;
+  }
+
+  &_error {
+    color: $mark-error-color !important;
+    background: $mark-error-background;
+  }
+}

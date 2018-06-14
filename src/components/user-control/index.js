@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
+import Icon from 'src/components/icon';
+
 import Menu from './Pop-Up-Menu';
 
 import 'index.scss';
@@ -62,11 +64,12 @@ export default class extends React.Component {
       `${this.props.user.familyName} ${this.props.user.secondName}`;
 
     return (
-      <div className='container' onClick={this.toggle}>
-        {/* todo: use icon component */}
-        <img src="/icons/man.svg" className='avatar'/>
-        <span className='username'>{username}</span>
-        <img src='/icons/down-arrow.svg' className='drop-down'/>
+      <div className={this.props.className}>
+        <div className="container" onClick={this.toggle}>
+          <Icon name="man" className='avatar'/>
+          <div className='username'>{username}</div>
+          <img src='/icons/down-arrow.svg' className='drop-down'/>
+        </div>
         {this.getMenu()}
       </div>
     );
@@ -76,6 +79,7 @@ export default class extends React.Component {
     return {
       user: PropTypes.object,
       onLogout: PropTypes.func,
+      className: PropTypes.string,
     };
   }
 }

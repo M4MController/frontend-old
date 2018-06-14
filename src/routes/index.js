@@ -59,16 +59,16 @@ export default class extends RouteComponent {
       return <Authorize/>;
     }
     return (
-      <div className="app table">
-        <div className="full-height app-menu-width pull-left">
+      <div className="grid-static vp-height vp-width">
+        <div className="full-height col-3 no-margin">
           <Link to="/" className="app__logo block">
-            <div className="max-height" align="center">
-              <img src="/images/logo.svg" className="max-height"/>
+            <div className="full-height" align="center">
+              <img src="/images/logo.svg" className="full-height"/>
             </div>
           </Link>
 
-          <div className="app__menu app-content-height">
-            <div className="app__menu-text">MENU</div>
+          <div className="app__menu app-content-height full-width">
+            <div className="app__menu-text text-default text-white">MENU</div>
             <MenuObjects objects={this.props.objects || []}
               currentObjectId={this.props.currentObjectId}
               isActive={true}
@@ -78,16 +78,15 @@ export default class extends RouteComponent {
           </div>
         </div>
 
-        <div className="full-height pull-left">
+        <div className="full-height col-full no-margin">
           <div className="app__header app-header-height">
             <div className="pull-right">
-              <UserControl user={this.props.user} onLogout={
-                () => alert('Log out has not supported yet')
-              }/>
+              <UserControl className="app__user-control" user={this.props.user}
+                onLogout={() => alert('Log out has not supported yet')}/>
             </div>
           </div>
 
-          <div className="app__content app-content-height">
+          <div className="app__content app-content-height overflow-y-auto full-height">
             <Switch>
               <Route exact path='/' component={IndexRoute}/>
               <Route path='/object/:id' component={ObjectRoute}/>
