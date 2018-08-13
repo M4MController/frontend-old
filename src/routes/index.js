@@ -15,6 +15,7 @@ import IndexRoute from './index-route';
 import ObjectRoute from './object';
 import NotFound from './not-found';
 import Authorize from './authorize';
+import Finances from './finances';
 
 import MenuObjects from 'src/components/menu-objects';
 import MenuFinance from 'src/components/menu-finance';
@@ -90,7 +91,7 @@ export default class extends RouteComponent {
             <Switch>
               <Route exact path='/' component={IndexRoute}/>
               <Route path='/object/:id' component={ObjectRoute}/>
-              <Route path='/test' component={Authorize}/>
+              <Route path='/test' component={Finances}/>
               <Route component={NotFound}/>
             </Switch>
           </div>

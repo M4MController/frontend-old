@@ -1,0 +1,96 @@
+@import "src/styles/grid.scss";
+@import "src/styles/constants.scss";
+
+// Colors
+$object-body-color: $object-card-body-background;
+$object-shadow-color: $object-card-header-color;
+$object-splitter-color: darken($object-card-body-background, 20);
+$object-spoiler-header-color: darken($object-card-body-background, 10);
+$object-spoiler-color: darken($object-card-body-background, 5);
+// Sizes
+$subtitle-size: $grid-step ;
+
+.drag {
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-left {
+    align-self: flex-start;
+  }
+
+  &-right {
+    align-self: flex-end;
+  }
+}
+
+.object {
+  display: flex;
+  flex-direction: column;
+
+  background-color: $object-body-color;
+  box-shadow: 0 0 5px $object-shadow-color;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+
+    height: $grid-step * 6;
+    justify-content: center;
+    border-bottom: 2px solid $object-splitter-color;
+
+    &-title {
+      display: flex;
+      flex-direction: column;
+
+      margin: $grid-step * 2;
+
+      font: $base-font-family;
+      font-size: $base-font-size;
+    }
+  }
+}
+
+.spoiler {
+
+  &-header {
+    background-color: $object-spoiler-header-color;
+    padding: $grid-step * 2;
+
+    &-title {
+      font: $base-font-family;
+      font-size: $base-font-size;
+
+      margin-bottom: $grid-step;
+    }
+
+    &-subtitle {
+      font: $base-font-family;
+      font-size: $subtitle-size;
+    }
+  }
+
+  &-body {
+    background-color: $object-spoiler-color;
+
+    &-element {
+      border-bottom: 2px solid $object-splitter-color;
+      padding: $grid-step * 2;
+
+      &-title {
+        font: $base-font-family;
+        font-size: $base-font-size;
+
+        margin-bottom: $grid-step;
+      }
+
+      &-text {
+        font: $base-font-family;
+        font-size: $base-font-size;
+      }
+    }
+  }
+
+  border-bottom: 2px solid $object-body-color;
+}
