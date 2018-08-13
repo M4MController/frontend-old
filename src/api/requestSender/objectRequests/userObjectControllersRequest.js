@@ -10,12 +10,12 @@ export default class extends BaseRequest {
 
   get _recordProxyAttributes() {
     return {
-      'id': 'id',
+      'id': 1,
       'name': 'name',
       'status': 'status',
       'mac': 'mac',
       'meta': 'meta',
-      'object': 'object_id', // one-to-many relation field
+      'object': 1, // one-to-many relation field
     };
   }
 
@@ -23,8 +23,14 @@ export default class extends BaseRequest {
     return true;
   }
 
-  execute(objectId) {
-    this._url = this._url.replace(':object_id', objectId);
-    return this._prepareRequest();
+  async execute() {
+    return [{
+      'id': 1,
+      'name': 'name',
+      'status': 'status',
+      'mac': 'mac',
+      'meta': 'meta',
+      'object': 1, // one-to-many relation field
+    }];
   }
 }

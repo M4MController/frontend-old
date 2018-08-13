@@ -11,7 +11,7 @@ export default class UserSensorStatsRequest extends BaseRequest {
 
   get _recordProxyAttributes() {
     return {
-      'controller': 'controller_id', // one-to-many relation field
+      'controller': 1, // one-to-many relation field
       'month': 'month',
       'prevMonth': 'prev_month',
       'prevYear': 'prev_year',
@@ -19,6 +19,13 @@ export default class UserSensorStatsRequest extends BaseRequest {
   }
 
   execute(sensor_id) {
+    return {
+      'controller': 1, // one-to-many relation field
+      'month': 'month',
+      'prevMonth': 'prev_month',
+      'prevYear': 'prev_year',
+    };
+
     if (!sensor_id || typeof sensor_id !== 'number')
       throw new TypeError('sensor_id undefined or not a number');
 

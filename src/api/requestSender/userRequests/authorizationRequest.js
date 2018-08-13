@@ -2,6 +2,8 @@ import BaseRequest from 'src/api/requestSender/baseRequest';
 
 export default class AuthorizationRequest extends BaseRequest {
   execute (e_mail, password) {
+    return {};
+
     if (!e_mail && typeof e_mail !== 'string') {
       throw new TypeError('e_mail undefined or not a string');
     }

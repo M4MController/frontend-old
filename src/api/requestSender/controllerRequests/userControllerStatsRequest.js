@@ -3,14 +3,21 @@ import BaseRequest from 'src/api/requestSender/baseRequest';
 export default class UserControllerStatsRequest extends BaseRequest {
   _recordProxyAttributes() {
     return {
-      'controller': 'controller_id', // one-to-many relation field
+      'controller': 1, // one-to-many relation field
       'month': 'month',
       'prevMonth': 'prev_month',
       'prevYear': 'prev_year',
     };
   }
 
-  execute(controller_id) {
+  async execute(controller_id) {
+    return {
+      'controller': 1, // one-to-many relation field
+      'month': 'month',
+      'prevMonth': 'prev_month',
+      'prevYear': 'prev_year',
+    };
+
     if (!controller_id || typeof controller_id !== 'number')
       throw new TypeError('controller_id undefined or not a number');
 

@@ -3,16 +3,26 @@ import BaseRequest from 'src/api/requestSender/baseRequest';
 export default class UserControllerSensorsRequest extends BaseRequest {
   get _recordProxyAttributes() {
     return {
-      'id': 'id',
+      'id': 1,
       'name': 'name',
       'status': 'status',
       'company': 'company',
-      'controller': 'controller_id', //one-to-many relation field
+      'controller': 1, //one-to-many relation field
     };
   }
 
   get isMultiple() {
     return true;
+  }
+
+  async execute() {
+    return [{
+      'id': 1,
+      'name': 'name',
+      'status': 'status',
+      'company': 'company',
+      'controller': 1, //one-to-many relation field
+    }];
   }
 
   execute (controller_id) {
