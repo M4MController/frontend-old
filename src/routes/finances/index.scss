@@ -7,6 +7,8 @@ $object-shadow-color: $object-card-header-color;
 $object-splitter-color: darken($object-card-body-background, 20);
 $object-spoiler-header-color: darken($object-card-body-background, 10);
 $object-spoiler-color: darken($object-card-body-background, 5);
+$input-border-color: lightgray;
+$btn-color: $btn-neutral-bg-start;
 // Sizes
 $subtitle-size: $grid-step ;
 
@@ -14,6 +16,13 @@ $subtitle-size: $grid-step ;
   &-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   &-left {
@@ -23,6 +32,44 @@ $subtitle-size: $grid-step ;
   &-right {
     align-self: flex-end;
   }
+
+  &-center {
+    align-self: center;
+  }
+
+  &-top {
+    justify-self: flex-start;
+  }
+
+  &-bottom {
+    justify-self: flex-end;
+  }
+
+  &-middle {
+    justify-self: center;
+  }
+}
+
+.panel {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: $grid-step * 15;
+
+  &-card {
+    padding: $grid-step * 2;
+    width: 33%;
+
+    &-inactive {
+      @extend .panel-card;
+      background-color: $object-spoiler-color;
+    }
+    &-active {
+      @extend .panel-card;
+      background-color: $object-body-color;
+    }
+  }
+
 }
 
 .object {
@@ -53,7 +100,6 @@ $subtitle-size: $grid-step ;
 }
 
 .spoiler {
-
   &-header {
     background-color: $object-spoiler-header-color;
     padding: $grid-step * 2;
@@ -93,4 +139,74 @@ $subtitle-size: $grid-step ;
   }
 
   border-bottom: 2px solid $object-body-color;
+}
+
+.btn-pay {
+  background-color: $btn-color;
+  border: 0px none;
+  border-radius: $grid-step/2;
+
+  color: $btn-neutral-color;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+
+  width: $grid-step*11;
+  height: $grid-step*4;
+
+  margin-left: $grid-step * 2;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.input-control {
+  border: 1px solid lightgray;
+  border-radius: $grid-step;
+
+  text-align: right;
+
+  height: $grid-step * 3;
+  margin: $grid-step;
+
+  &:focus {
+    outline: none;
+  }
+
+  font: $base-font-family;
+  font-size: $base-font-size;
+}
+
+.text {
+  font-family: $base-font-family;
+  &-small {
+    @extend .text;
+    font-size: $small-font-size;
+  }
+
+  &-base {
+    @extend .text;
+    font-size: $base-font-size;
+
+    &-highlight {
+      @extend .text-base;
+      background-color: $btn-color;
+      border: none;
+      border-radius: 50%;
+    }
+  }
+
+  &-large {
+    @extend .text;
+    font-size: $large-font-size;
+  }
+}
+
+img {
+  width: $grid-step * 7;
+  height: $grid-step * 7;
+  border: none;
+  border-radius: 50%;
+
+  margin: $grid-step;
 }

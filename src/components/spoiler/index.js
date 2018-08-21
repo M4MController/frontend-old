@@ -26,7 +26,7 @@ export default class Spoiler extends React.Component {
 
   render() {
     return(
-      <div className={this.props.className}>
+      <div className={this.props.className} style={this.props.style}>
         <div onClick={this.onTitleClick}>
           {this.props.title}
         </div>
