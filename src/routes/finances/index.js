@@ -49,6 +49,35 @@ const test_bills = [
   ]},
 ];
 
+/**
+ * test_pay_history [array] - array of pay_history objects
+ *
+ * pay_history [object]
+ * * time [string] - date and time reference of payment
+ * * expenses [array] - array of expense objects
+ *
+ * expense [object]
+ * * provider [string] - provider's name
+ * * service [string] - service's name
+ * * cost [number] - expense's cost
+ */
+
+const test_pay_history = [
+  {time: '1 апреля 23:36', expenses:[
+    {provider: 'Ростелеком', service: 'Интернет', cost: 1000},
+    {provider: 'ЖКХ', service: 'Горячая вода', cost: 600},
+    {provider: 'ЖКХ', service: 'Холодная вода', cost: 500},
+  ]},{time: '1 апреля 23:36', expenses:[
+    {provider: 'Ростелеком', service: 'Интернет', cost: 1000},
+    {provider: 'ЖКХ', service: 'Горячая вода', cost: 600},
+    {provider: 'ЖКХ', service: 'Холодная вода', cost: 500},
+  ]},{time: '1 апреля 23:36', expenses:[
+    {provider: 'Ростелеком', service: 'Интернет', cost: 1000},
+    {provider: 'ЖКХ', service: 'Горячая вода', cost: 600},
+    {provider: 'ЖКХ', service: 'Холодная вода', cost: 500},
+  ]},
+];
+
 export default class Finances extends React.Component {
   constructor(props) {
     super(props);
@@ -117,11 +146,56 @@ export default class Finances extends React.Component {
   }
 
   render() {
-    let bills = this.props.bills || test_bills; // []
-    let objects = this.props.objects || test_objects; // []
+    //let bills = this.props.bills || test_bills; // []
+    //let objects = this.props.objects || test_objects; // []
+    let pay_history = this.props.pay_history || test_pay_history;
 
     return (
       <div>
+
+        <div className='object item col-5'>
+          <div className='object-header'>
+            <div className='drag-container-row'>
+              <div className='drag-left'>
+                <div className='object-header-title'>
+                      История платежей
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='expense-list'>
+            {pay_history.map((elem, key) =>
+              <div className='expense' key={key}>
+                <div className='date'>
+                  <strong className='drag-container-row'>
+                    <div className='drag-left date-margin'>{elem.time}</div>
+                    <div className='drag-right date-margin'>{elem.expenses.reduce((prev, cur) => cur.cost + prev, 0)}&#8381;</div>
+                  </strong>
+                </div>
+                {elem.expenses.map((elem, key) =>
+                  <div className='expense-block' key={key}>
+                    <div className='drag-container-row expense-row'>
+                      <div className='expense-row-cell text-align-left'>{elem.provider}</div>
+                      <div className='expense-row-cell text-align-left'>{elem.service}</div>
+                      <div className='expense-row-cell text-align-right'>{elem.cost}&#8381;</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          <div className='object-footer drag-container-row'>
+            <div className='drag-right text-margin'>
+                Показать больше
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+/*
         <div className='panel'>
           {objects.map((elem, id) =>
             <div key={id} onClick={() => this.selectObject(id)}
@@ -136,6 +210,9 @@ export default class Finances extends React.Component {
               </div>
             </div>)}
         </div>
+        */
+
+/*
         <div className='object item col-5'>
           <div className='object-header'>
             <div className='object-header-title'>
@@ -153,7 +230,4 @@ export default class Finances extends React.Component {
 
           </div>
         </div>
-      </div>
-    );
-  }
-}
+        */

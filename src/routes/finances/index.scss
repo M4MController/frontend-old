@@ -9,6 +9,7 @@ $object-spoiler-header-color: darken($object-card-body-background, 10);
 $object-spoiler-color: darken($object-card-body-background, 5);
 $input-border-color: lightgray;
 $btn-color: $btn-neutral-bg-start;
+$object-date-color: #EFF5F5;
 // Sizes
 $subtitle-size: $grid-step ;
 
@@ -97,6 +98,16 @@ $subtitle-size: $grid-step ;
       font-size: $base-font-size;
     }
   }
+
+  &-footer {
+    display: flex;
+    flex-direction: column;
+    height: $grid-step * 4;
+    justify-content: center;
+
+
+    border-top: 2px solid $object-splitter-color;
+  }
 }
 
 .spoiler {
@@ -179,6 +190,7 @@ $subtitle-size: $grid-step ;
 
 .text {
   font-family: $base-font-family;
+
   &-small {
     @extend .text;
     font-size: $small-font-size;
@@ -200,6 +212,28 @@ $subtitle-size: $grid-step ;
     @extend .text;
     font-size: $large-font-size;
   }
+
+  &-align {
+    &-center {
+      @extend .text;
+      text-align: center;
+    }
+
+    &-left {
+      @extend .text;
+      text-align: left;
+    }
+
+    &-right {
+      @extend .text;
+      text-align: right;
+    }
+  }
+
+  &-margin {
+    @extend .text;
+    margin: $grid-step * 2;
+  }
 }
 
 img {
@@ -209,4 +243,29 @@ img {
   border-radius: 50%;
 
   margin: $grid-step;
+}
+
+.date {
+  height: $grid-step * 4;
+  background-color: $object-date-color;
+
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+
+  &-margin {
+    margin: $grid-step $grid-step * 2;
+  }
+}
+
+.expense {
+  &-block {
+  background-color: $object-body-color;
+  }
+
+  &-row {
+    &-cell {
+      flex: 1;
+    }
+    margin: $grid-step $grid-step * 2;
+  }
 }
