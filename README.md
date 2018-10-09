@@ -4,7 +4,7 @@ The working dev site is here: https://m4m-dev.herokuapp.com
 ## Running the app
 At first clone the repository:
 ```bash
-$ git clone git@github.com:M4MController/frontend.git && cd frontend
+$ git clone git@github.com:M4MController/frontend-old.git && cd frontend-old
 ```
 
 Now you can build and run the app, there are several ways to do it:
