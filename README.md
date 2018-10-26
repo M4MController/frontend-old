@@ -1,5 +1,5 @@
-# M4M Web App [![Build Status](https://travis-ci.org/M4MController/frontend.svg?branch=master)](https://travis-ci.org/M4MController/frontend)
-The working dev site is here: https://m4m-dev.herokuapp.com
+# M4M Web App
+
 
 ## Running the app
 At first clone the repository:
